@@ -1,0 +1,8 @@
+.header-details{
+    display: flex;
+    flex-direction: column;
+}
+
+.banner-image {
+    height: 20rem;
+}
