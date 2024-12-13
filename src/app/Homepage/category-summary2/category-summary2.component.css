@@ -1,0 +1,23 @@
+.jobs{
+    margin-top: 8px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+a{
+    width: 48%;
+    padding-bottom: 16px;
+    margin-top: 16px;
+}
+.borderBottomDashed {
+    border-bottom: 1px dashed rgb(220, 220, 220);
+}
+strong{
+    font-size: 1.125em;
+    line-height: 1.15em;
+}
+p{
+    margin-top: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 95%;
+}

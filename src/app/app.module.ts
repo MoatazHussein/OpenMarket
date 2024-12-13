@@ -16,7 +16,17 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CategoriesHeaderComponent } from './components/categories-header/categories-header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { Homepage2Component } from './Homepage/homepage2.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { HomepageAllCategoriesSectionComponent } from './Homepage/homepage-all-categories-section/homepage-all-categories-section.component';
+import { HomepageSectionsHeaderComponent } from './Homepage/shared/homepage-sections-header/homepage-sections-header.component';
+import { HomepageSingleCategoryComponent } from './Homepage/homepage-all-categories-section/homepage-single-category/homepage-single-category.component';
+import { StaticSection1Component } from './Homepage/static-section1/static-section1.component';
+import { CategorySummaryComponent } from './Homepage/category-summary/category-summary.component';
+import { SubcategoriesLinksComponent } from './Homepage/shared/subcategories-links/subcategories-links.component';
+import { SingleProductComponent } from './Homepage/shared/single-product/single-product.component';
+import { CategorySummary2Component } from './Homepage/category-summary2/category-summary2.component';
+import { Item1Component } from './Homepage/shared/item1/item1.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +36,17 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     FooterComponent,
     CategoriesHeaderComponent,
     HomePageComponent,
-    SearchBarComponent
+    Homepage2Component,
+    SearchBarComponent,
+    HomepageAllCategoriesSectionComponent,
+    HomepageSectionsHeaderComponent,
+    HomepageSingleCategoryComponent,
+    StaticSection1Component,
+    CategorySummaryComponent,
+    SubcategoriesLinksComponent,
+    SingleProductComponent,
+    CategorySummary2Component,
+    Item1Component
   ],
   imports: [
     BrowserModule,

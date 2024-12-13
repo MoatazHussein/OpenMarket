@@ -1,0 +1,8 @@
+.categories{
+    gap: 10px;
+    flex-wrap: wrap;
+    direction: rtl;
+}
+.categories a{
+    width: 11.77%;
+}
