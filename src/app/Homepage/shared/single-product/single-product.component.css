@@ -1,0 +1,30 @@
+a{
+    width: 220px;
+    display: inline-block;
+}
+
+img{
+    border-radius: 8px;
+    vertical-align: top;
+}
+.price{
+    padding: 5px 8px;
+    margin-top: -44px;
+    background: rgba(0, 0, 0, 0.7);
+    max-width: 90%;
+    left: 8px;
+    font-size: 1.25em;
+    line-height: 1.25em;
+    margin-bottom: 16px;
+    margin-right: auto;
+    width: fit-content;
+    position: relative;
+    border-radius: 8px;
+    display: flex;
+    color: #fff;
+}
+p{
+    margin-top: 8px;
+    line-height: 1.5em;
+    color: #000;
+}

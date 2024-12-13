@@ -10,14 +10,35 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+
 import { HeaderComponent } from './components/header/header.component';
 import { HeaderDetailsComponent } from './components/header-details/header-details.component';
+import { HomepageAllCategoriesSectionComponent } from './Homepage/homepage-all-categories-section/homepage-all-categories-section.component';
+import { HomepageSectionsHeaderComponent } from './Homepage/shared/homepage-sections-header/homepage-sections-header.component';
+import { HomepageComponent } from './Homepage/homepage.component';
+import { HomepageSingleCategoryComponent } from './Homepage/homepage-all-categories-section/homepage-single-category/homepage-single-category.component';
+import { StaticSection1Component } from './Homepage/static-section1/static-section1.component';
+import { CategorySummaryComponent } from './Homepage/category-summary/category-summary.component';
+import { SubcategoriesLinksComponent } from './Homepage/shared/subcategories-links/subcategories-links.component';
+import { SingleProductComponent } from './Homepage/shared/single-product/single-product.component';
+import { CategorySummary2Component } from './Homepage/category-summary2/category-summary2.component';
+import { Item1Component } from './Homepage/shared/item1/item1.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HeaderDetailsComponent
+    HeaderDetailsComponent,
+    HomepageComponent,
+    HomepageAllCategoriesSectionComponent,
+    HomepageSectionsHeaderComponent,
+    HomepageSingleCategoryComponent,
+    StaticSection1Component,
+    CategorySummaryComponent,
+    SubcategoriesLinksComponent,
+    SingleProductComponent,
+    CategorySummary2Component,
+    Item1Component
   ],
   imports: [
     BrowserModule,

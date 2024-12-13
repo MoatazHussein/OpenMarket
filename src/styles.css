@@ -1,9 +1,43 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap");
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Vazirmatn", "Helvetica Neue", sans-serif;
+}
 
 :root {
   --mdc-filled-text-field-container-color: white; /* Default color */
+  --bs-primary: #0061fe;
 }
 
+a {
+  text-decoration: none;
+  color: #0061fe;
+}
+a:hover {
+  color: #0061fe;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.rtl{
+  direction: rtl;
+}
+.black{
+  color: black;
+}
+
+@media (min-width: 1200px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+      max-width: 1221px;
+  }
+}

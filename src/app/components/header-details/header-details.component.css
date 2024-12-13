@@ -4,5 +4,6 @@
 }
 
 .banner-image {
-    height: 20rem;
+    height: 260px;
+    object-fit: cover;
 }
