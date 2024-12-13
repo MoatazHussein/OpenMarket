@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class HeaderDetailsComponent {
 
+  availableOptions: string[] = ['لابتوبات', 'ساعات ذكية', 'سماعات', 'موبايلات', 'دراجات نارية', 'سيارات للايجار', 'سيارات للبيع', 'شقق للايجار', 'شقق للبيع'];
 }

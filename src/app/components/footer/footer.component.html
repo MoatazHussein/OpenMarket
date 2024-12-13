@@ -1,0 +1,45 @@
+<div class="footer-elements">
+    <div class="footer-element">
+        <a class="logo-anchor" href="#">
+            <img src="assets/logo.png" alt="Logo" class="logo-image" />
+        </a>
+        <p class="footer-rights"> جميع الحقوق محفوظة <br>لموقع السوق المفتوح <span>© <!-- -->2024</span></p>
+
+        <div class="social-media-icons">
+            <a href="https://facebook.com" target="_blank" aria-label="Twitter">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer-element">
+        <h4>{{title_01}}</h4>
+        <a *ngFor="let element of ElementsColumn_01;" [href]="element.link">
+            {{element.name}} </a>
+    </div>
+
+    <div class="footer-element">
+        <h4>{{title_02}}</h4>
+        <a *ngFor="let element of ElementsColumn_02;" [href]="element.link">
+            {{element.name}} </a>
+    </div>
+    <div class="footer-element">
+        <h4>{{title_03}}</h4>
+        <a *ngFor="let element of ElementsColumn_03;" [href]="element.link">
+            {{element.name}} </a>
+    </div>
+    <div class="footer-element">
+        <h4>{{title_04}}</h4>
+        <a *ngFor="let element of ElementsColumn_04;" [href]="element.link">
+            {{element.name}} </a>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="nav-container">
+    <ul class="categories">
+      <li *ngFor="let category of categories" class="category">
+        <span>{{ category.name }}</span>
+        <ul class="subcategories">
+          <li
+            *ngFor="let subcategory of category.subcategories"
+            (click)="navigateTo(subcategory.route)"
+          >
+            {{ subcategory.name }}
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  

@@ -1,0 +1,67 @@
+/* Center the search bar and button on the page */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    direction: rtl;
+  }
+  
+  .search-wrapper input {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #080707;
+    border-radius: 0px 10px 10px 0px;
+    flex: 1; /* Ensures the input grows if needed */
+    outline: none;
+    width: 60rem;
+  }
+  
+  .search-wrapper button {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #007bff; /* Primary button color */
+    color: white;
+    border: 1px solid #080707;
+    border-radius: 10px 0 0px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 10rem;
+
+  }
+  
+  .search-wrapper button:hover {
+    background-color: #0056b3; 
+  }
+  
+  li {
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  li:hover,
+  li.selected {
+    background-color: #007bff;
+    color: white;
+  }
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%; 
+    max-width: 400px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute; /* Positions the dropdown relative to the container */
+    z-index: 1000;
+    top: calc(100% + 5px); /* Place the dropdown just below the input with some spacing */
+  }
+  
+  /* Add padding to the parent container for relative positioning */
+  .search-wrapper {
+    position: relative;
+  }
+  

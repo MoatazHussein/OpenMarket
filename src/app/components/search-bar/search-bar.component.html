@@ -1,0 +1,21 @@
+<div class="search-container">
+    <div class="search-wrapper">
+      <input
+        type="text"
+        placeholder="ابحث...."
+        [formControl]="searchControl"
+      />
+      <button (click)="onSearch()">بحث</button>
+  
+      <ul *ngIf="filteredOptions.length > 0 && showSuggestions">
+        <li
+          *ngFor="let option of filteredOptions; let i = index"
+          [class.selected]="i === selectedOptionIndex"
+          (click)="onOptionClick(option)"
+        >
+          {{ option }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  

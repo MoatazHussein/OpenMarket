@@ -12,15 +12,25 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { HeaderComponent } from './components/header/header.component';
 import { HeaderDetailsComponent } from './components/header-details/header-details.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CategoriesHeaderComponent } from './components/categories-header/categories-header.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HeaderDetailsComponent
+    HeaderDetailsComponent,
+    FooterComponent,
+    CategoriesHeaderComponent,
+    HomePageComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule, 
     FontAwesomeModule,
     MatSlideToggleModule,
     FormsModule,

@@ -1,0 +1,38 @@
+.footer-elements{
+    background-color: #e5ede9;
+    display: flex;
+    direction: rtl;
+    justify-content: space-evenly;
+}
+
+
+.footer-element{
+    padding: 1rem;
+}
+
+.footer-element a {
+    display: block;
+    margin: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.footer-rights{
+  margin: 25px;
+  color: gray;
+}
+.social-media-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .social-media-icons i {
+    font-size: 24px;
+    color: #757575; /* Default color */
+    transition: color 0.3s;
+  }
+  
+  .social-media-icons i:hover {
+    color: #0073e6; /* Change color on hover */
+  }
+  
