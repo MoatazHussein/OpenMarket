@@ -24,7 +24,7 @@ export class CategoriesHeaderComponent {
         { name: 'خدمات ونش مسطحات', route: '/category1/sub11' },
         { name: 'خدمات تنظيف السيارت', route: '/category1/sub12' },
         { name: 'تقييم المركبات', route: '/category1/sub13' },
-      ],
+      ]
     },
     {
       name: 'عقارات',
@@ -34,7 +34,7 @@ export class CategoriesHeaderComponent {
         { name: 'عقار للبدل', route: '/category2/sub3' },
         { name: 'عقار دولي', route: '/category2/sub4' },
         { name: 'مكاتب عقارات', route: '/category2/sub5' },
-      ],
+      ]
     },
     {
       name: 'الكترونيات',
@@ -53,7 +53,7 @@ export class CategoriesHeaderComponent {
         { name: 'اجهزة وشبكات ', route: '/category3/sub12' },
         { name: 'تقييمات الموبايلات والتابلت', route: '/category3/sub13' },
         { name: 'تقييمات الاجهزة الالكترونية', route: '/category3/sub14' },
-      ],
+      ]
     },
     {
       name: 'الوظائف',
@@ -61,7 +61,7 @@ export class CategoriesHeaderComponent {
         { name: 'باحث عن عمل', route: '/category4/sub1' },
         { name: 'جهة توظيف', route: '/category4/sub2' },
         { name: 'التعليم والتدريب', route: '/category4/sub2' },
-      ],
+      ]
     },
   ];
 
@@ -72,4 +72,12 @@ export class CategoriesHeaderComponent {
     this.router.navigate([route]);
   }
   
+  mainCategoryRouting(category: {name: string, subcategories: { name: string; route: string; }[]}){
+    switch(category.name){
+      case 'سيارات ومركبات':
+        this.router.navigate(['Vehicles']);
+        break;
+    }
+  }
+
 }

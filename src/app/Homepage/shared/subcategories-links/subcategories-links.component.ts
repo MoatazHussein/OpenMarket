@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Category, ICategory } from '../../../models/category.model';
+import { Category } from '../../../models/category.model';
 
 @Component({
   selector: 'app-subcategories-links',
@@ -7,5 +7,5 @@ import { Category, ICategory } from '../../../models/category.model';
   styleUrl: './subcategories-links.component.css'
 })
 export class SubcategoriesLinksComponent {
-  @Input() categories: ICategory[] | undefined = undefined;
+  @Input() categories?: Category[];
 }

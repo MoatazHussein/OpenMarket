@@ -1,6 +1,6 @@
 <div class="nav-container">
     <ul class="categories">
-      <li *ngFor="let category of categories" class="category">
+      <li *ngFor="let category of categories" class="category" (click)="mainCategoryRouting(category)">
         <span>{{ category.name }}</span>
         <ul class="subcategories">
           <li

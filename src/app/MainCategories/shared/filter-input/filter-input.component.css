@@ -1,0 +1,18 @@
+input{
+    width: 40px;
+    height: 40px;
+    width: 100%;
+    padding: 0 16px;
+    border-radius: 8px;
+    border: 1px solid rgb(220, 220, 220);
+    margin-bottom: 20px;
+}
+input:focus-visible{
+    outline: none;
+}
+
+.mat-mdc-option:hover:not(.mdc-list-item--disabled),
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(.mat-mdc-option-multiple){
+    background-color: #fff !important;
+}
+

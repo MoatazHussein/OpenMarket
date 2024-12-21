@@ -1,7 +1,10 @@
 <a  href="">
-    <img width="220" height="200" class="" alt="" [src]="product?.imageUrl">
-    <div class="price">
-        <div class="amount">{{product?.price}}</div>دينار
+    <img width="220" height="200" class="" alt="" [src]="product.imageUrl">
+    <div class="price" *ngIf="product.useARCurrency">
+        <div class="amount">{{product.price }}</div>دينار
     </div>
-    <p>{{product?.name}}</p>
+    <div class="price" *ngIf="!product.useARCurrency">
+        <div class="amount">{{product.price | currency:'KWD':'':'1.0-2' }}<span>KWD</span></div>
+    </div>
+    <p>{{product.name}}</p>
 </a>

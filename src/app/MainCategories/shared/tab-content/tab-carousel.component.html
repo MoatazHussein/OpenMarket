@@ -1,0 +1,18 @@
+<div class="tabsContent">
+<mat-form-field class="search-field">
+  <input matInput [formControl]="typeSearchControl" placeholder="بحث...">
+  <mat-icon matPrefix>search</mat-icon>
+</mat-form-field>
+
+<swiper dir="rtl" [config]="config" *ngIf="filteredTypeItems.length > 0">
+          <ng-template swiperSlide *ngFor="let item of filteredTypeItems">
+            <a href="">
+              <img *ngIf="item.image" src="https://opensooqui2.os-cdn.com/api/apiV/android/xh/cp/field_1450113225.png" height="25" width="25">
+              <div>{{item.name}}
+                <span>({{item.quantity}})</span> 
+              </div>
+            </a>
+          </ng-template>
+        </swiper>
+      </div>
+        

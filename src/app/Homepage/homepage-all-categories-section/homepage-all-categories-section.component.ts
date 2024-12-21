@@ -9,25 +9,16 @@ import { Category } from '../../models/category.model';
 export class HomepageAllCategoriesSectionComponent {
 
   categories: Category[] = [
-    new Category(1,'متاجر','https://opensooqui2.os-cdn.com/api/apiV/web/categories/ComputerAndLaptops.webp'),
-    new Category(2,'متاجر','https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'),
-    new Category(3,'متاجر','https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'),
-    new Category(4,'لابتوب','https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'),
-    new Category(5,'متاجر','https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'),
-    new Category(6,'متاجر','https://opensooqui2.os-cdn.com/api/apiV/web/categories/ComputerAndLaptops.webp'),
-    new Category(7,'متاجر','https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'),
-    new Category(8,'لابتوب','https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'),
-    new Category(1,'متاجر','https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'),
-    new Category(1,'متاجر','https://opensooqui2.os-cdn.com/api/apiV/web/categories/ComputerAndLaptops.webp'),
-    new Category(1,'متاجر','https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'),
-    new Category(1,'لابتوب','https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'),
-    new Category(1,'متاجر','https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'),
-    new Category(1,'متاجر','https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'),
-    new Category(1,'لابتوب','https://opensooqui2.os-cdn.com/api/apiV/web/categories/ComputerAndLaptops.webp'),
-    new Category(1,'متاجر','https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'),
-    new Category(1,'متاجر','https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'),
-    new Category(1,'متاجر','https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp')
-  ];
-
-
+    {id: 9, name: 'متاجر',imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'},
+    {id: 9, name: 'متاجر',imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'},
+    {id: 9, name: 'متاجر',imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'},
+    {id: 9, name: 'متاجر',imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'},
+    {id: 9, name: 'متاجر',imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'},
+    {id: 9, name: 'متاجر',imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'},
+    {id: 9, name: 'متاجر',imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'},
+    {id: 9, name: 'متاجر',imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'},
+    {id: 9, name: 'متاجر',imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'},
+    {id: 9, name: 'متاجر',imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'},
+    {id: 9, name: 'متاجر',imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp'}
+  ]
 }

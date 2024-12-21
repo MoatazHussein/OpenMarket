@@ -8,7 +8,7 @@ import { Job } from '../../models/job.model';
   styleUrl: './category-summary2.component.css'
 })
 export class CategorySummary2Component {
-  category: Category = new Category(1,'وظائف شاغرة','');
+  category: Category = {id:1, name: 'وظائف شاغرة',imageUrl: ''};
   jobs: Job[] = [
     new Job(5,'معلم حلويات','شيف حلويات وكنافة وأصناف مختلفة سخنه وبارده قشطه وجبنه'),
     new Job(5,'معلم حلويات','شيف حلويات وكنافة وأصناف مختلفة سخنه وبارده قشطه وجبنه'),
