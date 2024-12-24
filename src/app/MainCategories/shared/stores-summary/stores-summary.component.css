@@ -1,0 +1,31 @@
+.products{
+    gap: 25px;
+}
+a{
+    border: 1px solid rgb(220, 220, 220);
+    width: 20%;
+    border-radius: 8px;
+}
+a img.width-100{
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    width: 100%;
+}
+
+a img.small{
+    border-radius: 8px;
+    border: 1px solid rgb(220, 220, 220);
+}
+a h3{
+    max-height: 42px;
+    font-size: 0.875em;
+    padding-bottom: 8px;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+a p{
+    font-size: 0.75em;
+    line-height: 1.5em;
+    color: #000;
+}

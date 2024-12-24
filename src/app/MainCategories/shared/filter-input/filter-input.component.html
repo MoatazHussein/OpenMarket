@@ -1,0 +1,12 @@
+<input type="text" dir="rtl"
+         [placeholder]="label"
+         [formControl]="control"
+         [matAutocomplete]="auto"
+         matAutocompletePosition="below"
+         (input)="filter()"
+        (focus)="filter()" #input>
+  <mat-autocomplete #auto="matAutocomplete" [disableRipple]="true" [hideSingleSelectionIndicator]="true">
+    @for (option of filteredOptions; track option) {
+      <mat-option [value]="option">{{option}}</mat-option>
+    }
+  </mat-autocomplete>

@@ -1,0 +1,60 @@
+#VehiclesFilterMain{
+    background: rgb(218, 229, 255);
+    position: relative;
+    padding-bottom: 16px;
+    direction: rtl;
+}
+
+.headerImage{
+    position: absolute;
+    left: 15%;
+}
+.circle{
+    position: absolute;
+    shape-outside: circle(50% at 0% 0%);
+    background-color: rgb(1, 96, 254);
+    top: 0px;
+    width: 349px;
+    height: 349px;
+    clip-path: circle(50% at 0% 0%);
+    left: 0px;
+}
+h1{
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+}
+.filters{
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+.right-filter{
+    border: 1px solid rgb(220, 220, 220);
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #fff;
+    width: 300px;
+}
+.right-filter h2{
+    font-size: 1.25em;
+    line-height: 1.25em;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+button{
+    width: 100%;
+    padding: 10px 16px;
+    border: 1px solid transparent;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #000;
+    cursor: pointer;
+}
+
+.left-filter{
+    width: 875px;
+  }

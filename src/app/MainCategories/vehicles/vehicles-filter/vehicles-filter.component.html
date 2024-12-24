@@ -1,0 +1,44 @@
+<section id="VehiclesFilterMain">
+    <div class="container">
+        <img src="https://opensooqui2.os-cdn.com/prod/public/images/taxonomy/landing/carBike-v1.webp" class="headerImage" width="191" height="102" alt="Car header image">
+        <div class="circle"></div>
+        <h1 class="">سيارات ومركبات للبيع في الكويت </h1>
+        <div class="filters row">
+            <div class="right-filter col-md-3">
+                <h2>سيارات للبيع</h2>
+                <form class="form">
+                    <app-filter-input label="النوع" [options]="['اوبل','أودي','اينوس','ام جي','بنتلي','أودي','اينوس','أودي','اينوس']" [control]="controlBrand"></app-filter-input>
+
+                    <app-filter-input label="الموديل" [options]="['اوبل','test','اينوس','ام جي','بنتلي']" [control]="controlModel"></app-filter-input>
+
+                    <app-filter-input label="الفئة" [options]="['اوبل','أودي','اينوس','ام جي','بنتلي','أودي','اينوس','أودي','اينوس']" [control]="controlCat"></app-filter-input>
+
+                    <h6>سنة الصنع</h6>
+                    <div class="d-flex" style="gap: 10px;">
+                        <app-filter-input label="السنة (من)" [options]="years" [control]="controlYearFrom"></app-filter-input>
+
+                        <app-filter-input label="السنة (الى)" [options]="years" [control]="controlYearTo"></app-filter-input>
+                    </div>
+                    <button>اظهر</button>
+                </form>
+            </div>
+            <div class="left-filter col-md-9">
+                <mat-tab-group animationDuration="0ms" [disableRipple]="true" preserveContent>
+                    <mat-tab label="النوع" labelClass="filters-tab" preserveContent>
+                        <app-tab-carousel [TabItems]="brandItems" [control]="brandControl"></app-tab-carousel>
+                    </mat-tab>
+                    <mat-tab label="موديل" labelClass="filters-tab" preserveContent>
+                        <ng-template matTabContent>
+                            <app-tab-carousel [TabItems]="modelItems" [control]="modelControl"></app-tab-carousel>
+                        </ng-template>
+                    </mat-tab>
+                    <mat-tab label="سنة الصنع" labelClass="filters-tab" preserveContent>
+                        <ng-template matTabContent>
+                            <app-tab-carousel [TabItems]="yearItems" [control]="yearControl"></app-tab-carousel>
+                        </ng-template>
+                    </mat-tab>
+                  </mat-tab-group>
+            </div>
+        </div>
+    </div>
+</section>

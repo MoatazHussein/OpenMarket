@@ -6,9 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrl: './homepage-sections-header.component.css'
 })
 export class HomepageSectionsHeaderComponent {
-  @Input() rightText: string = '';
-  @Input() rightLink: string = '';
-  @Input() leftText: string = '';
-  @Input() leftLink: string = '';
+  @Input() rightText?: string = '';
+  @Input() rightLink?: string = '';
+  @Input() leftText?: string = '';
+  @Input() leftLink?: string = '';
   @Input() rightIsLink: boolean = false;
 }

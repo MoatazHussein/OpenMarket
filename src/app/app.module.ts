@@ -10,11 +10,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
+import { AppRoutingModule } from './app-routing.module';
+import { SwiperModule } from 'swiper/angular';
 import { HeaderComponent } from './components/header/header.component';
 import { HeaderDetailsComponent } from './components/header-details/header-details.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CategoriesHeaderComponent } from './components/categories-header/categories-header.component';
-import { AppRoutingModule } from './app-routing.module';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { Homepage2Component } from './Homepage/homepage2.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
@@ -34,6 +36,12 @@ import { SidebarSearchComponent } from './components/sidebar-search/sidebar-sear
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { CheckboxSearchComponent } from './components/checkbox-search/checkbox-search.component';
+import { VehiclesComponent } from './MainCategories/vehicles/vehicles.component';
+import { VehiclesFilterComponent } from './MainCategories/vehicles/vehicles-filter/vehicles-filter.component';
+import { FilterInputComponent } from './MainCategories/shared/filter-input/filter-input.component';
+import { TabCarouselComponent } from './MainCategories/shared/tab-content/tab-content.component';
+import { SubCategoriesComponent } from './MainCategories/shared/sub-categories/sub-categories.component';
+import { StoresSummaryComponent } from './MainCategories/shared/stores-summary/stores-summary.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +66,12 @@ import { CheckboxSearchComponent } from './components/checkbox-search/checkbox-s
     ProductCardComponent,
     SidebarSearchComponent,
     CheckboxSearchComponent,
+    VehiclesComponent,
+    VehiclesFilterComponent,
+    FilterInputComponent,
+    TabCarouselComponent,
+    SubCategoriesComponent,
+    StoresSummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -73,8 +87,9 @@ import { CheckboxSearchComponent } from './components/checkbox-search/checkbox-s
     MatSelectModule,
     MatPaginatorModule,
     MatCheckboxModule,
-    MatExpansionModule
-
+    MatExpansionModule,
+    MatTabsModule,
+    SwiperModule
   ],
   providers: [
     provideAnimationsAsync()

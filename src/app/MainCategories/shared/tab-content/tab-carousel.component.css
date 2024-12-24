@@ -1,0 +1,54 @@
+.tab-content {
+    padding: 20px;
+  }
+
+  .search-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .carousel-item {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .carousel-item p {
+    margin-top: 8px;
+    text-align: center;
+  }
+
+.tabsContent{
+  padding: 16px;
+  border-radius: 8px 0px 8px 8px;
+  min-height: 330px;
+  border: 1px solid rgb(220, 220, 220);
+  background-color: #fff;
+}
+
+a{
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 8px;
+}
+a div{
+  font-size: 0.8125em;
+  color: #000;
+}
+a div span{
+  margin-right: 3px;
+}
+
+input{
+  font-family: "Vazirmatn", "Helvetica Neue", sans-serif !important;
+}
