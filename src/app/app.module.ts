@@ -27,6 +27,13 @@ import { SubcategoriesLinksComponent } from './Homepage/shared/subcategories-lin
 import { SingleProductComponent } from './Homepage/shared/single-product/single-product.component';
 import { CategorySummary2Component } from './Homepage/category-summary2/category-summary2.component';
 import { Item1Component } from './Homepage/shared/item1/item1.component';
+import { CarsCategoryComponent } from './components/cars-category/cars-category.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { SidebarSearchComponent } from './components/sidebar-search/sidebar-search.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { CheckboxSearchComponent } from './components/checkbox-search/checkbox-search.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +53,11 @@ import { Item1Component } from './Homepage/shared/item1/item1.component';
     SubcategoriesLinksComponent,
     SingleProductComponent,
     CategorySummary2Component,
-    Item1Component
+    Item1Component,
+    CarsCategoryComponent,
+    ProductCardComponent,
+    SidebarSearchComponent,
+    CheckboxSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +70,11 @@ import { Item1Component } from './Homepage/shared/item1/item1.component';
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatExpansionModule
+
   ],
   providers: [
     provideAnimationsAsync()

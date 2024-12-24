@@ -1,15 +1,14 @@
-<div class="footer-elements">
-    <div class="footer-element">
+<div class="footer-elements row">
+    <div class="footer-element col-md-2 text-center text-lg-end">
         <a class="logo-anchor" href="#">
             <img src="assets/logo.png" alt="Logo" class="logo-image" />
         </a>
         <p class="footer-rights"> جميع الحقوق محفوظة <br>لموقع السوق المفتوح <span>© <!-- -->2024</span></p>
-
         <div class="social-media-icons">
-            <a href="https://facebook.com" target="_blank" aria-label="Twitter">
+            <a href="https://facebook.com" target="_blank" aria-label="facebook">
                 <i class="fab fa-facebook"></i>
             </a>
-            <a href="https://instagram.com" target="_blank" aria-label="LinkedIn">
+            <a href="https://instagram.com" target="_blank" aria-label="instagram">
                 <i class="fab fa-instagram"></i>
             </a>
             <a href="https://twitter.com" target="_blank" aria-label="Twitter">
@@ -18,26 +17,26 @@
             <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
                 <i class="fab fa-linkedin"></i>
             </a>
-        </div>
     </div>
 
-    <div class="footer-element">
+    </div>
+    <div class="footer-element col-md-2 text-center text-lg-end">
         <h4>{{title_01}}</h4>
         <a *ngFor="let element of ElementsColumn_01;" [href]="element.link">
             {{element.name}} </a>
     </div>
 
-    <div class="footer-element">
+    <div class="footer-element col-md-2 text-center text-lg-end">
         <h4>{{title_02}}</h4>
         <a *ngFor="let element of ElementsColumn_02;" [href]="element.link">
             {{element.name}} </a>
     </div>
-    <div class="footer-element">
+    <div class="footer-element col-md-2 text-center text-lg-end">
         <h4>{{title_03}}</h4>
         <a *ngFor="let element of ElementsColumn_03;" [href]="element.link">
             {{element.name}} </a>
     </div>
-    <div class="footer-element">
+    <div class="footer-element col-md-2 text-center text-lg-end">
         <h4>{{title_04}}</h4>
         <a *ngFor="let element of ElementsColumn_04;" [href]="element.link">
             {{element.name}} </a>

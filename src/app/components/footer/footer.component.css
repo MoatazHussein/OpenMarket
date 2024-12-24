@@ -24,6 +24,7 @@
 .social-media-icons {
     display: flex;
     gap: 10px;
+    justify-content:center;
   }
   
   .social-media-icons i {

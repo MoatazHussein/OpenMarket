@@ -1,0 +1,27 @@
+<div class="cars-category">
+<div class="sidebar-search">
+<sidebar-search></sidebar-search>
+</div>
+<div class="product-container">
+    <div class="product-card" *ngFor="let product of paginatedProducts">
+      <product-card 
+      [image]="product.imageUrl" 
+      [title]="product.title"
+      [description]="product.description"
+      [location]="product.location"
+      [mobile]="product.mobile"
+      [price]="product.price"
+      [navigateTo]="product.navigateTo"
+      >
+    </product-card> 
+    </div>
+  </div>
+</div>
+  <!-- Paginator -->
+  <mat-paginator
+    [length]="totalProducts"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[10, 20, 50]"
+    (page)="onPageChange($event)"
+    showFirstLastButtons>
+  </mat-paginator>

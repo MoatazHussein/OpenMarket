@@ -1,0 +1,33 @@
+<div class="dropdown-container">
+    <div class="dropdown" (blur)="onBlur()">
+        <label class="search-label">{{label}}</label>
+        <!-- Search Input -->
+        <input type="text" class="search-input" placeholder="بحث..." [(ngModel)]="searchText"
+            (focus)="showFilteredOptions()" (input)="filterOptions()" />
+
+        <!-- Dropdown Options -->
+        <div class="options-list" *ngIf="showOptions">
+
+            <!-- "All" Checkbox -->
+            <div class="option all-option" style="display: hide;">
+                <input type="checkbox" id="all" [checked]="allSelected" (change)="toggleAllOptions($event)"
+                />
+                <label for="all">الكل</label>
+            </div>
+            <div *ngFor="let option of filteredOptions" class="option selected-options">
+                <input type="checkbox" [id]="option" [checked]="selectedOptions.includes(option)"
+                    (change)="toggleOption(option, $event)" />
+                <label [for]="option">{{ option }}</label>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Selected Items as Tags -->
+    <div class="selected-tags">
+        <span *ngFor="let selected of selectedOptions" class="tag" (click)="removeSelectedOption(selected)">
+            {{ selected }}
+            <button class="remove-btn">✖</button>
+        </span>
+    </div>
+</div>

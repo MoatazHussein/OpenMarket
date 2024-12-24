@@ -1,0 +1,71 @@
+<!-- <div class="product-card card mb-1" style="max-width: 840px;" (click)="navigateToRoute()">
+    <div class="product-card-container row g-0">
+        <div class="product-image col-md-4">
+            <img [src]="image" alt="product" />
+        </div>
+        <div class="product-details col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <p class="card-text">
+                    {{description}}
+                </p>
+                <p class="card-text"><small class="text-body-secondary">{{location}}</small></p>
+            </div>
+            <div class="product-footer">
+        <div class="action-buttons col-md-3">
+            <button mat-raised-button color="accent" class="call-button" (click)="onCallButtonClick($event)">
+                <mat-icon>call</mat-icon>
+{{mobile}}            </button>
+            <button mat-raised-button color="accent" class="chat-button" (click)="onChatButtonClick($event)">
+                <mat-icon>chat </mat-icon>
+                دردش
+            </button> 
+            <button mat-raised-button color="accent" class="favorite-button" (click)="onFavoriteButtonClick($event)">
+                <mat-icon>favorite</mat-icon>
+            </button>
+        </div>
+        <div class="product-price">
+           {{price}} 
+        </div>
+    </div>
+    </div>
+    </div>
+</div> -->
+
+<div class="card mb-3 text-end product-card" dir="rtl" style="max-width: 840px;">
+    <div class="row g-0">
+        <!-- Left: Image -->
+        <div class="col-md-4 product-image ">
+            <img [src]="image" alt="product" />
+        </div>
+        <!-- Right: Content -->
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <p class="card-text">
+                    {{description}}
+                </p>
+                <p class="card-text"><small class="text-body-secondary">{{location}}</small></p>
+            </div>
+            <!-- Footer: Buttons and Price -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap p-3">
+                <!-- Buttons -->
+                <div class="d-flex gap-2 flex-wrap action-buttons">
+                    <button mat-raised-button color="accent" class="call-button" (click)="onCallButtonClick($event)">
+                        <mat-icon>call</mat-icon>
+                        {{mobile}} </button>
+                    <button mat-raised-button color="accent" class="chat-button" (click)="onChatButtonClick($event)">
+                        <mat-icon>chat </mat-icon>
+                        دردش
+                    </button>
+                    <button mat-raised-button color="accent" class="favorite-button"
+                        (click)="onFavoriteButtonClick($event)">
+                        <mat-icon>favorite</mat-icon>
+                    </button>
+                </div>
+                <!-- Price -->
+                <p class="mb-0 fw-bold text-start me-auto product-price" style="white-space: nowrap;"> {{price}} </p>
+            </div>
+        </div>
+    </div>
+</div>

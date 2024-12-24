@@ -68,7 +68,6 @@ export class CategoriesHeaderComponent {
   constructor(private router: Router) {}
 
   navigateTo(route: string): void {
-    console.log('Navigating to:', route);
     this.router.navigate([route]);
   }
   

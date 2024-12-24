@@ -1,6 +1,6 @@
-<div class="app-header">
+<div class="app-header row">
   <!-- Logo Section -->
-   <div class="locaions-search">
+   <div class="locaions-search col-md-4">
   <a class="logo-anchor" href="#">
     <img src="assets/logo.png" alt="Logo" class="logo-image" />
   </a>
@@ -25,7 +25,7 @@
   </form>
 </div>
   <!-- Buttons Section -->
-  <div class="button-group">
+  <div class="button-group  col-md-3">
       <button mat-icon-button aria-label="Notifications" class="notification-button">
           <mat-icon>notifications</mat-icon>
           <span *ngIf="notificationCount > 0" class="notification-badge">{{ notificationCount }}</span>
@@ -42,9 +42,11 @@
     <mat-icon>person_add</mat-icon>
     تسجيل الدخول
   </button> -->
+<div class="action-buttons col-md-3">
   <button mat-raised-button color="accent" class="add-button">
     <mat-icon>photo_camera</mat-icon>
     أضف إعلانك الآن
   </button>
+</div>
 
 </div>

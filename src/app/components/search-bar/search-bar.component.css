@@ -14,7 +14,6 @@
     border-radius: 0px 10px 10px 0px;
     flex: 1; /* Ensures the input grows if needed */
     outline: none;
-    width: 60rem;
   }
   
   .search-wrapper button {
@@ -27,7 +26,6 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 10rem;
-
   }
   
   .search-wrapper button:hover {

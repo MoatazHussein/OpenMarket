@@ -1,6 +1,6 @@
-.header-details{
+.header-details {
     display: flex;
-     flex-direction: column;
+    flex-direction: column;
 }
 
 .banner-image {

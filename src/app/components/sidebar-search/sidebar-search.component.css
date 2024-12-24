@@ -1,0 +1,7 @@
+.search-container{
+    display: block;
+    width: 300px;
+    margin: 40px;
+    border-radius: 1.2rem;
+    border-color: blue;
+}
