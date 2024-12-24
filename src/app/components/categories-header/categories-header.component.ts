@@ -67,11 +67,14 @@ export class CategoriesHeaderComponent {
 
   constructor(private router: Router) {}
 
-  navigateTo(route: string): void {
+  navigateTo(route: string, e : Event): void {
+    debugger;
     this.router.navigate([route]);
+    e.stopPropagation();
   }
   
   mainCategoryRouting(category: {name: string, subcategories: { name: string; route: string; }[]}){
+    debugger;
     switch(category.name){
       case 'سيارات ومركبات':
         this.router.navigate(['Vehicles']);
