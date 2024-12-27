@@ -1,0 +1,41 @@
+.thumbsSlider{
+    margin-top: 10px;
+}
+
+.info{
+    border: 1px solid rgb(220, 220, 220);
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    direction: rtl;
+}
+.info ul{
+    justify-content: space-between;
+    flex-wrap: wrap;
+    list-style-position: inside;
+    list-style: none;
+}
+.info ul li{
+    padding: 12px;
+    width: 49%;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+}
+.info ul li p{
+    margin: 0;
+}
+.greyBg{
+    background-color: #f7f7fd;
+}
+.info ul span{
+    font-weight: bold;
+}
+.similiar{
+    direction: rtl;
+}
+
+.similiar .products{
+    flex-wrap: wrap;
+    gap: 10px;
+}

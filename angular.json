@@ -41,6 +41,8 @@
               "node_modules/swiper/modules/navigation/navigation.min.css",
               "node_modules/swiper/modules/pagination/pagination.min.css",
               "node_modules/swiper/modules/grid/grid.min.css",
+              "node_modules/swiper/modules/thumbs/thumbs.min.css",
+              "node_modules/swiper/modules/freemode/freemode.min.css",
               "src/styles.css"
             ],
             "scripts": []

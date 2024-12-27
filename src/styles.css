@@ -124,3 +124,27 @@ img {
   pointer-events: all;
   cursor: pointer;
 }
+.thumbsSlider .swiper-slide{
+  border: 4px solid transparent;
+  cursor: pointer;
+}
+.thumbsSlider .swiper-slide-thumb-active{
+  border: 4px solid #337ab7;
+  border-radius: 8px;
+}
+.thumbsSlider img{
+  height: 84px;
+  width: 100%;
+}
+
+.mainSlider{
+  background-color: #f7f7fd;
+}
+.mainSlider img{
+  display: block;
+  margin: 0 auto;
+}
+.mainSlider img{
+  width: auto;
+  max-height: calc(100vh - 80px);
+}

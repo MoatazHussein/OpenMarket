@@ -42,6 +42,11 @@ import { FilterInputComponent } from './MainCategories/shared/filter-input/filte
 import { TabCarouselComponent } from './MainCategories/shared/tab-content/tab-content.component';
 import { SubCategoriesComponent } from './MainCategories/shared/sub-categories/sub-categories.component';
 import { StoresSummaryComponent } from './MainCategories/shared/stores-summary/stores-summary.component';
+import { SingleProductPageComponent } from './single-product-page/single-product-page.component';
+import { SingleProductSidebarComponent } from './single-product-page/single-product-sidebar/single-product-sidebar.component';
+import { SingleProductContentComponent } from './single-product-page/single-product-content/single-product-content.component';
+
+
 
 @NgModule({
   declarations: [
@@ -71,7 +76,10 @@ import { StoresSummaryComponent } from './MainCategories/shared/stores-summary/s
     FilterInputComponent,
     TabCarouselComponent,
     SubCategoriesComponent,
-    StoresSummaryComponent
+    StoresSummaryComponent,
+    SingleProductPageComponent,
+    SingleProductSidebarComponent,
+    SingleProductContentComponent
   ],
   imports: [
     BrowserModule,

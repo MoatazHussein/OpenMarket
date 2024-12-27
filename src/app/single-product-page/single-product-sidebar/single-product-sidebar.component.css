@@ -1,0 +1,96 @@
+.mainCard{
+    padding: 16px;
+    margin-bottom: 32px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 18px;
+    background-color: #fff;
+    direction: rtl;
+}
+
+.price{
+    color: rgb(176, 0, 32);
+    font-size: 1.875em;
+    line-height: 1.89em;
+    font-weight: bold;
+}
+
+button {
+    background-color: #0864fc;
+    color: white;
+    border: none;
+    width: 100%;
+    height: 50px;
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    font-size: 1.3125em;
+    line-height: 1.3125em;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 16px; 
+}
+
+.chat-button{
+    background-color: #fff;
+    color: black;
+    border: 1px solid #000;
+}
+ol{
+    list-style-type: disc;
+    padding: 0;
+    width: 100%;
+    list-style-position: inside;
+}
+ol li{
+    color: #595959;
+}
+.ownerCard,
+.locationCard{
+    border: 1px solid rgb(220, 220, 220);
+    padding: 16px;
+    margin-bottom: 32px;
+    border-radius: 8px;
+    direction: rtl;
+}
+.ownerCard h3,
+.locationCard h3{
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.ownerCard a{
+    gap: 15px;
+}
+.ownerCard a h3{
+    color: #0061fe;
+    font-size: 16px;
+}
+.ownerCard a img{
+    border-radius: 50%;
+}
+a .user{
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+}
+.darkGrayColor{
+    color: #595959;
+    font-size: 0.938em;
+}
+.locationCard h6{
+    font-weight: bold;
+}
+.locationCard a{
+    margin-top: 16px;
+    position: relative;
+    display: block;
+}
+.locationCard a span{
+    position: absolute;
+    color: #000;
+    font-weight: bold;
+    left: 24px;
+    bottom: 5px;
+}

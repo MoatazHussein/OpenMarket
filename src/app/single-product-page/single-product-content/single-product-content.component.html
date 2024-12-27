@@ -1,0 +1,45 @@
+<div class="gallery">
+<swiper
+      style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
+      [spaceBetween]="10"
+      [navigation]="true"
+      [loop]="true"
+      [speed]="100"
+      [thumbs]="{ swiper: thumbsSwiper }"
+      class="mainSlider"
+    >
+      <ng-template swiperSlide *ngFor="let image of images">
+        <img [src]="image" />
+        </ng-template>
+    </swiper>
+    <swiper
+      (swiper)="thumbsSwiper = $event"
+      [spaceBetween]="10"
+      [slidesPerView]="8"
+      [freeMode]="true"
+      [watchSlidesProgress]="true"
+      [height]="84"
+      [autoHeight]="false"
+      [speed]="100"
+      class="thumbsSlider"
+    >
+    <ng-template swiperSlide *ngFor="let image of images">
+        <img [src]="image" />
+        </ng-template>
+    </swiper>
+</div>
+<div class="info">
+    <h4>المعلومات</h4>
+    <ul class="d-flex">
+        <li class="d-flex" *ngFor="let item of items; let i = index;" [ngClass]="{'greyBg': i%4==0 || i%4==1}">
+            <p>{{item.key}}</p>
+            <span>{{item.value}}</span>
+        </li>
+    </ul>
+</div>
+<div class="similiar">
+    <h4>اعلانات مشابهة</h4>
+    <div class="products d-flex">
+        <app-single-product style="width: 24%;" *ngFor="let product of topProducts" [product]="product"></app-single-product>
+    </div>
+</div>
