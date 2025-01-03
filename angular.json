@@ -42,7 +42,7 @@
               "node_modules/swiper/modules/pagination/pagination.min.css",
               "node_modules/swiper/modules/grid/grid.min.css",
               "node_modules/swiper/modules/thumbs/thumbs.min.css",
-              "node_modules/swiper/modules/freemode/freemode.min.css",
+              "node_modules/swiper/modules/free-mode/free-mode.min.css",
               "src/styles.css"
             ],
             "scripts": []

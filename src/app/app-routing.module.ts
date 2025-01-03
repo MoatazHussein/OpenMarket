@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FooterComponent } from './components/footer/footer.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { CarsCategoryComponent } from './components/cars-category/cars-category.component';
-import { VehiclesComponent } from './MainCategories/vehicles/vehicles.component';
-import { SingleProductPageComponent } from './single-product-page/single-product-page.component';
+import { VehiclesforSaleComponent } from './modules/Categories/MainCategories/vehicles/subCategories/vehicles-for-sale/vehicles-for-sale.component';
+import { VehiclesComponent } from './modules/Categories/MainCategories/vehicles/vehicles.component';
+import { HomePageComponent } from './modules/Homepage/home-page/home-page.component';
+import { SingleProductPageComponent } from './modules/Categories/MainCategories/shared/single-product-page/single-product-page.component';
 
 const routes: Routes = [
-  { path: 'category1/sub1', component: CarsCategoryComponent },
+  { path: 'category1/sub1', component: VehiclesforSaleComponent },
   // { path: 'category1/sub2', component: FooterComponent },
   // { path: 'category2/sub1', component: FooterComponent },
   // { path: 'category2/sub2', component: FooterComponent },
