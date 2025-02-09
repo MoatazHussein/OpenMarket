@@ -4,6 +4,9 @@ import { VehiclesforSaleComponent } from './modules/Categories/MainCategories/ve
 import { VehiclesComponent } from './modules/Categories/MainCategories/vehicles/vehicles.component';
 import { HomePageComponent } from './modules/Homepage/home-page/home-page.component';
 import { SingleProductPageComponent } from './modules/Categories/MainCategories/shared/single-product-page/single-product-page.component';
+import { CreateStep1Component } from './modules/ProductCreate/create-step1/create-step1.component';
+import { CreateStep2Component } from './modules/ProductCreate/create-step2/create-step2.component';
+import { CreateStep3Component } from './modules/ProductCreate/create-step3/create-step3.component';
 
 const routes: Routes = [
   { path: 'category1/sub1', component: VehiclesforSaleComponent },
@@ -13,6 +16,9 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'Vehicles', component: VehiclesComponent },
   { path: 'search/:id', component: SingleProductPageComponent },
+  { path: 'InsertItem', component: CreateStep1Component},
+  { path: 'InsertItem/:id', component: CreateStep2Component },
+  { path: 'InsertItem/:id/Details', component: CreateStep3Component },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 
   { path: '**', component: HomePageComponent }, 
 ];

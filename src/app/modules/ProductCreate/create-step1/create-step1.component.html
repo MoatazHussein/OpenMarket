@@ -1,0 +1,20 @@
+<section>
+
+  <div class="container">
+    <h3 dir="rtl">ما الذي تود بيعه او الإعلان عنه؟</h3>
+    <div class="row">
+      <div class="col-md-9 categories-container">
+        <ul>
+          <li 
+          *ngFor="let category of categories" 
+          (click)="navigateToSubcategories(category.id)"
+          class="category-item"
+          >
+          {{ category.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</section>
