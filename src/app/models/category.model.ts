@@ -1,5 +1,5 @@
-export class Category{
-    id?: number;
+export interface Category{
+    id: number;
     name?: string;
     imageUrl?: string;
     subCategories?: Category[]

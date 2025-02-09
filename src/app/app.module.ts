@@ -8,11 +8,12 @@ import { LayoutModule } from './modules/layout/layout.module';
 import { HomepageModule } from './modules/Homepage/home-page.module';
 import { CategoriesModule } from './modules/Categories/categories.module';
 import { CoreModule } from './core/core.module';
+import { ProductCreateModule } from './modules/ProductCreate/productCreate.module';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     LayoutModule,
     HomepageModule,
-    CategoriesModule
+    CategoriesModule,
+    ProductCreateModule,
+    HttpClientModule
   ],
   providers: [
     provideAnimationsAsync()

@@ -1,0 +1,105 @@
+
+<section>
+  <div *ngIf="attributeForm" class="container">
+    <h3 dir="rtl">أضف تفاصيل الاعلان</h3>
+    <div class="row">
+      <div class="col-md-9 form-container" dir="rtl">
+        <form [formGroup]="attributeForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+          <div class="form-group">
+            <label>اسم المنتج</label>
+            <input [formControlName]="'Name'" type="text" class="form-control" required="true">
+          </div>
+          <div class="form-group">
+            <label>وصف المنتج</label>
+            <textarea [formControlName]="'Description'" class="form-control" required="true" rows="5"></textarea>
+          </div>
+          <div class="form-group">
+            <label>السعر</label>
+            <input [formControlName]="'Price'" type="number" class="form-control" required="true" min="1">
+          </div>
+
+          <div *ngFor="let attribute of attributes" class="form-group">
+            <ng-container [ngSwitch]="attribute.type">
+              <label *ngSwitchCase="1">
+                {{ attribute.nameEn }}
+              </label>
+              <input *ngSwitchCase="1" 
+                     [formControlName]="'attribute_' + attribute.id" 
+                     type="text" 
+                     class="form-control">
+              
+              <label *ngSwitchCase="2">
+                {{ attribute.nameEn }}
+              </label>
+              <input *ngSwitchCase="2" 
+                     [formControlName]="'attribute_' + attribute.id" 
+                     type="number" 
+                     class="form-control">
+              
+              <!-- <ng-container *ngIf="attributeOptionsMap[attribute.id].length > 0"> -->
+                <label *ngSwitchCase="0">
+                    {{ attribute.nameEn }}
+                  </label>
+                <select *ngSwitchCase="0" 
+                    [formControlName]="'attribute_' + attribute.id"
+                    class="form-control"
+                    (change)="onAttributeChange(attribute)"
+                    [attr.data-id]="attribute.id"
+                    [attr.data-parent]="attribute.filterId">
+                    <option *ngFor="let option of attributeOptionsMap[attribute.id]" 
+                            [value]="option">
+                        {{ option }}
+                    </option>
+                    </select>
+                <!-- </ng-container> -->
+              
+            </ng-container>
+    
+            <!-- Error messages -->
+            <div *ngIf="attributeForm.get('attribute_' + attribute.id)?.invalid && 
+                        (attributeForm.get('attribute_' + attribute.id)?.dirty || 
+                         attributeForm.get('attribute_' + attribute.id)?.touched)" 
+                 class="error-message">
+              Please enter a valid value.
+            </div>
+          </div>
+
+
+          <div class="upload-container">
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              (change)="onFileSelect($event)"
+              #fileInput
+              style="display: none"
+            >
+            
+            <button type="button" (click)="fileInput.click()">
+              اختر الصور
+            </button>
+            
+            <div class="preview-container" *ngIf="previewImages.length">
+              <div class="image-preview" *ngFor="let image of previewImages; let i = index">
+                <img [src]="image.url" alt="Preview">
+                <button type="button" class="remove-btn" (click)="removeImage(i)">
+                  Remove
+                </button>
+              </div>
+            </div>
+            
+          </div>
+          
+          <button type="submit" 
+                  [disabled]="attributeForm.invalid" 
+                  class="btn btn-primary">
+            أضف اعلانك الان
+          </button>
+        </form>
+      </div>
+    </div>
+    
+
+
+  </div>
+</section>

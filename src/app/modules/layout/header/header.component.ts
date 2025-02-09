@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
 import { HomePageService } from '../../../core/services/home-page.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'header',
@@ -19,7 +20,9 @@ export class HeaderComponent {
   myControl = new FormControl('');
   
 
-  constructor(private homePageService: HomePageService) {}
+  constructor(private homePageService: HomePageService
+    , private router: Router
+  ) {}
 
 
   private _filter(value: string): string[] {
@@ -41,6 +44,10 @@ ngOnInit() {
  // Method to update notification count dynamically
  updateNotificationCount(newCount: number) {
   this.notificationCount = newCount;
+}
+
+AddProduct(){
+  this.router.navigate(['/InsertItem'])
 }
   
 }
