@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, shareReplay } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 interface PreviewImage {
   url: string;
@@ -227,12 +228,22 @@ export class CreateStep3Component {
         }
       }
 
+      console.log(attributesList);
+
       formData.append('SubCategoryID',this.subCategoryId.toString());
-      formData.append('releatedDetailsValues', JSON.stringify(attributesList));
+      // formData.append('releatedDetailsValues', JSON.stringify(attributesList));
       formData.append('Title', 'test');
-      formData.append('CityID', '1');
+      formData.append('CityID', '4');
       formData.append('Adress', 'address');
       formData.append('ContactNumber', '01024458947');
+      formData.append('subCategoryName', 'string');
+      formData.append('cityName', 'string');
+
+
+      attributesList.forEach((attirebuteId, index) => {
+        formData.append(`releatedDetailsValues[${index}].AttirebuteId`, attirebuteId.AttributeId.toString());
+        formData.append(`releatedDetailsValues[${index}].Value`, attirebuteId.Value);
+      });
 
       if (this.previewImages.length > 0) {
         this.previewImages.forEach((image, index) => {
@@ -240,12 +251,25 @@ export class CreateStep3Component {
         });
       }
 
-      this.http.post('test',formData).subscribe({
+      this.http.post(this.productsApiUrl, formData).subscribe({
         next: () => {
           console.log('te');
-        }
+        },error: (error) => {
+          console.error('Error adding product:', error);
+        }, 
       });
+
+      // this.http.post('test',formData).subscribe({
+      //   next: () => {
+      //     console.log('te');
+      //   }
+      // });
     }
   }
+
+  private productsApiUrl = `${environment.apiUrl}/Product`;
+
+
+
 
 }

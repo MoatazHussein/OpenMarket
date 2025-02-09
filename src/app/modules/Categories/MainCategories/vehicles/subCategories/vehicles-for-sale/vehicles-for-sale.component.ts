@@ -81,10 +81,10 @@ export class VehiclesforSaleComponent {
     this.productService.addProduct(this.newProduct, this.selectedFiles).subscribe({
       next: (response) => {
         console.log('Product added successfully:', response);
-      },
+     },
       error: (error) => {
         console.error('Error adding product:', error);
-      },
+      }, 
     });
   }
 

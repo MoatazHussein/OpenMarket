@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface AttributeDetailsDTO {
   id: number;
@@ -30,7 +31,7 @@ export interface AllGenericDTO<T> {
   providedIn: 'root'
 })
 export class AttributeService {
-  private apiUrl = 'https://localhost:7012/api/AttributeDetails';
+  private apiUrl = `${environment.apiUrl}/AttributeDetails`;
 
   constructor(private http: HttpClient) {}
 

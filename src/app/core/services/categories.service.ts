@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../../models/category.model';
+import { environment } from '../../../environments/environment';
 
 /*export interface Category {
   id: number;
@@ -18,7 +19,7 @@ export interface SubCategory {
   providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl = 'https://localhost:7012/api/Category?pageNumber=1&pageSize=10';
+  private apiUrl = `${environment.apiUrl}/Category?pageNumber=1&pageSize=10`;
 
   constructor(private http: HttpClient) {}
 
