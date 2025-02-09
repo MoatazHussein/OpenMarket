@@ -14,10 +14,15 @@ export class ProductCardComponent {
   @Input() description: string="مستعمل ,‏ جي إم سي ,‏ سوبربان ,‏ 2008 ,‏ ‏ +200,000 كم ‏,‏ اس يو في";
   @Input() location: string="مدينة الكويت, جابر الأحمد";
   @Input() mobile: string="556221XX";
-  @Input() price:string="880 دينار";
+  @Input() price:string="880";
+  @Input() currency:string="دينار";
   @Input() navigateTo:string="/home";
 
+  modifiedMobile:string='';
 
+  ngOnInit() {
+    this.modifiedMobile=this.replaceLastTwoNumbers(this.mobile);
+  }
   // Navigate to the desired route
   navigateToRoute() {
     this.router.navigate([this.navigateTo]);
@@ -35,5 +40,9 @@ export class ProductCardComponent {
   onFavoriteButtonClick(event: MouseEvent){
     event.stopPropagation(); // Prevents the click event from bubbling up to the parent div
     console.log('onFavoriteButtonClick inside div clicked!');
+  }
+
+  replaceLastTwoNumbers(input: string): string {
+    return input.replace(/(\d{2})(?!.*\d)/, 'XX');
   }
 }

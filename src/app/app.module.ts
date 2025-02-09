@@ -8,6 +8,7 @@ import { LayoutModule } from './modules/layout/layout.module';
 import { HomepageModule } from './modules/Homepage/home-page.module';
 import { CategoriesModule } from './modules/Categories/categories.module';
 import { CoreModule } from './core/core.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     CoreModule,
     AppRoutingModule,
     SharedModule,

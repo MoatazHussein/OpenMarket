@@ -6,7 +6,7 @@ import { HomePageComponent } from './modules/Homepage/home-page/home-page.compon
 import { SingleProductPageComponent } from './modules/Categories/MainCategories/shared/single-product-page/single-product-page.component';
 
 const routes: Routes = [
-  { path: 'category1/sub1', component: VehiclesforSaleComponent },
+  { path: 'Carsforsale', component: VehiclesforSaleComponent },
   // { path: 'category1/sub2', component: FooterComponent },
   // { path: 'category2/sub1', component: FooterComponent },
   // { path: 'category2/sub2', component: FooterComponent },

@@ -19,7 +19,7 @@
                 <div class="d-flex gap-2 flex-wrap action-buttons">
                     <button mat-raised-button color="accent" class="call-button" (click)="onCallButtonClick($event)">
                         <mat-icon>call</mat-icon>
-                        {{mobile}} </button>
+                        {{modifiedMobile}} </button>
                     <button mat-raised-button color="accent" class="chat-button" (click)="onChatButtonClick($event)">
                         <mat-icon>chat </mat-icon>
                         دردش
@@ -30,7 +30,7 @@
                     </button>
                 </div>
                 <!-- Price -->
-                <p class="mb-0 fw-bold text-start me-auto product-price" style="white-space: nowrap;"> {{price}} </p>
+                <p class="mb-0 fw-bold text-start me-auto product-price" style="white-space: nowrap;"> {{price}} {{currency}}</p>
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 .nav-container {
     background-color: #549bd1; 
     font-family: Arial, sans-serif;
-    direction: rtl;
+    /* direction: rtl; */
     padding: 10px 0;
     margin: 5px 0px;
   }
@@ -47,6 +47,7 @@
     z-index: 10;
     width: 150px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    text-align: center;
   }
   
   .category:hover .subcategories {

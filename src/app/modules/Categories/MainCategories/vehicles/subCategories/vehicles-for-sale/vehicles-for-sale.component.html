@@ -11,6 +11,7 @@
       [location]="product.location"
       [mobile]="product.mobile"
       [price]="product.price"
+      [currency]="currency"
       [navigateTo]="product.navigateTo"
       >
     </product-card> 
@@ -21,7 +22,10 @@
   <mat-paginator
     [length]="totalProducts"
     [pageSize]="pageSize"
-    [pageSizeOptions]="[10, 20, 50]"
+    [pageSizeOptions]="[5,10,20, 50]"
     (page)="onPageChange($event)"
     showFirstLastButtons>
   </mat-paginator>
+
+  <button (click)="onSubmit()">SUBMIT</button>
+  <input type="file" (change)="onFilesSelected($event)" multiple />

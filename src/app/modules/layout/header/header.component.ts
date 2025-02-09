@@ -35,7 +35,7 @@ ngOnInit() {
     map((value: any) => this._filter(value || '')),
   );
 
-  console.log("Categories",this.homePageService.getCategories());
+  // console.log("Categories",this.homePageService.getCategories());
 }
 
  // Method to update notification count dynamically
