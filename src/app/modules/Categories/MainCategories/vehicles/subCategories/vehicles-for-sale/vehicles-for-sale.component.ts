@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ProductCard } from '../../../../../../models/product-card.model';
 import { ProductService } from '../../../../../../core/services/product.service';
-import { ProductDTO } from '../../../../../../models/product-DTO.model';
+import { FilterValue } from '../../../../../../models/filter-value.model';
 
 @Component({
   selector: 'VehiclesforSale',
@@ -12,33 +12,19 @@ import { ProductDTO } from '../../../../../../models/product-DTO.model';
 export class VehiclesforSaleComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
   products: ProductCard[] = [];
   paginatedProducts: ProductCard[] = [];
+  totalProducts = 0;
   currency: string = "دينار";
   selectedFiles: File[] = [];
-  pageSize = 5;
+
+  subCategoryId = 1;
   currentPage = 0;
-  totalProducts = 0;
-  newProduct: ProductDTO = {
-    name: "string",
-    description: "string",
-    title: "string",
-    price: 99,
-    subCategoryID: 1,
-    subCategoryName: "string",
-    userID: "1",
-    cityID: 4,
-    cityName: "string",
-    adress: "string",
-    contactNumber: "string",
-    releatedDetailsValues: [
-      {
-        attirebuteId: 28,
-        value: "جديد"
-      }
-    ]
-  };
+  pageSize = 5;
+  search: string = '';
+  sortBy: string = '';
+  sortOrder: string = '';
+  filterValues: FilterValue[] = [];
 
   constructor(private productService: ProductService) {
   }
@@ -55,37 +41,19 @@ export class VehiclesforSaleComponent {
   }
 
   loadProducts(): void {
-    this.productService.getProducts(this.currentPage + 1, this.pageSize, '').subscribe({
+    this.productService.getProducts(this.subCategoryId, this.currentPage + 1, this.pageSize, this.search, this.sortBy = '', this.sortOrder = '', this.filterValues).subscribe({
       next: (response) => {
         // console.log("data",response);
-        this.paginatedProducts = response.data;
-        // console.log(response.totalPageCount);
-        this.totalProducts = 16;
+        this.paginatedProducts = this.productService.mapProduct(response.products.values);
+        this.totalProducts = response.products.totalItemsCount;
       },
       error: (err) => {
         console.error('Failed to load Products:', err);
-        this.products = [];
+        this.paginatedProducts = [];
       }
     });
   }
 
-  onFilesSelected(event: Event) {
-    const target = event.target as HTMLInputElement;
-    if (target.files) {
-      this.selectedFiles = Array.from(target.files);
-    }
-  }
 
-  onSubmit() {
-    debugger;
-    this.productService.addProduct(this.newProduct, this.selectedFiles).subscribe({
-      next: (response) => {
-        console.log('Product added successfully:', response);
-     },
-      error: (error) => {
-        console.error('Error adding product:', error);
-      }, 
-    });
-  }
 
 }

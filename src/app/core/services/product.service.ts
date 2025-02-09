@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ProductDTO } from '../../models/product-DTO.model';
+import { FilterValue } from '../../models/filter-value.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,11 @@ import { ProductDTO } from '../../models/product-DTO.model';
 export class ProductService {
 
   private productsApiUrl = `${environment.apiUrl}/Product`;
+  private productSubCategoryApiUrl = `${environment.apiUrl}/SubCategory`;
 
   constructor(private http: HttpClient) { }
 
-  getProducts(pageNumber: number = 1, pageSize: number = 10, search: string = ''): Observable<{ data: any[]; totalPageCount: number }> {
+  getAllProducts(pageNumber: number = 1, pageSize: number = 10, search: string = ''): Observable<{ data: any[]; totalPageCount: number }> {
     let params = new HttpParams()
       .set('pageNumber', pageNumber.toString())
       .set('pageSize', pageSize.toString())
@@ -26,19 +28,23 @@ export class ProductService {
           console.error('Invalid response format:', response);
           return { data: [], totalPageCount: 0 };
         }
-        const mappedProduct = response.values.map(item => ({
-          id: item.id,
-          title: item.title,
-          description: item.description,
-          imageUrl: `assets/car.png`,
-          price: item.price,
-          location: item.adress,
-          mobile: item.contactNumber,
-          navigateTo: "/product-details"
-        }));
+        const mappedProduct=this.mapProduct(response.values);
         return { data: mappedProduct, totalPageCount: response.totalPageCount };
       })
     );
+  }
+
+  getProducts(subCategoryId: number, pageNumber: number=1,pageSize:number=10,search:string='',sortBy:string='',sortOrder:string='',filterValues:FilterValue[]=[]): Observable<any> {
+    var params:any={
+      "pageNumber": pageNumber,
+      "pageSize": pageSize,
+      "search": search,
+      "sortBy": sortBy,
+      "sortOrder": sortOrder,
+      "filterValues": filterValues
+    };
+    const url = `${this.productSubCategoryApiUrl}/${subCategoryId}`;
+    return this.http.post(url, params);
   }
 
   addProduct(product: ProductDTO, images: File[]) {
@@ -64,5 +70,20 @@ export class ProductService {
   
     console.log("formData",formData);
     return this.http.post(this.productsApiUrl, formData);
+  }
+
+  mapProduct(product:any){
+    const mappedProduct = product.map((item: { id: any; title: any; description: any; price: any; adress: any; contactNumber: any; }) => ({
+      id: item.id,
+      title: item.title,
+      description: item.description,
+      imageUrl: `assets/car.png`,
+      price: item.price,
+      location: item.adress,
+      mobile: item.contactNumber,
+      navigateTo: "/product-details"
+    }));
+    
+    return mappedProduct;
   }
 }
