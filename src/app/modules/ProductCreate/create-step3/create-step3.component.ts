@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { AllGenericDTO, AttributeDetailsDTO, AttributeService } from '../../../core/services/attributeDetails.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { map, Observable, shareReplay } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map, Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
+import { ProductService } from '../../../core/services/product.service';
+import { HomePageService } from '../../../core/services/home-page.service';
 
 interface PreviewImage {
   url: string;
@@ -43,7 +44,9 @@ export class CreateStep3Component {
     private route: ActivatedRoute,
     private attributeService: AttributeService,
     private fb: FormBuilder,
-    private http: HttpClient
+    private homepageService: HomePageService,
+    private productService: ProductService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -208,66 +211,21 @@ export class CreateStep3Component {
 
   onSubmit() {
     if (this.attributeForm.valid) {
-      const formData = new FormData();
-      const attributesList: AttributeValue[] = [];
-      
-      const formValues = this.attributeForm.value;
+      this.homepageService.isLoading.next(true);
 
-      for ( const key of Object.keys(formValues) ) {
-        if (key !== 'Images' && formValues[key] !== null && formValues[key] !== undefined) {
-          if(key.includes('attribute_')){
-            const attributeId = parseInt(key.split('_')[1]);
-            attributesList.push({
-              AttributeId: attributeId,
-              Value: formValues[key]
-            });
-          } else {
-            const value = formValues[key];
-            formData.append(key, value);
-          }
-        }
-      }
-
-      console.log(attributesList);
-
-      formData.append('SubCategoryID',this.subCategoryId.toString());
-      // formData.append('releatedDetailsValues', JSON.stringify(attributesList));
-      formData.append('Title', 'test');
-      formData.append('CityID', '4');
-      formData.append('Adress', 'address');
-      formData.append('ContactNumber', '01024458947');
-      formData.append('subCategoryName', 'string');
-      formData.append('cityName', 'string');
-
-
-      attributesList.forEach((attirebuteId, index) => {
-        formData.append(`releatedDetailsValues[${index}].AttirebuteId`, attirebuteId.AttributeId.toString());
-        formData.append(`releatedDetailsValues[${index}].Value`, attirebuteId.Value);
-      });
-
-      if (this.previewImages.length > 0) {
-        this.previewImages.forEach((image, index) => {
-          formData.append('Images', image.file, image.file.name);
-        });
-      }
-
-      this.http.post(this.productsApiUrl, formData).subscribe({
+      this.productService.addProduct(this.attributeForm,this.subCategoryId,this.previewImages).subscribe({
         next: () => {
-          console.log('te');
+          console.log('Success');
+          this.homepageService.isLoading.next(false);
+          this.router.navigate(['/home']);
         },error: (error) => {
           console.error('Error adding product:', error);
-        }, 
+          this.homepageService.isLoading.next(false);
+        } 
       });
 
-      // this.http.post('test',formData).subscribe({
-      //   next: () => {
-      //     console.log('te');
-      //   }
-      // });
     }
   }
-
-  private productsApiUrl = `${environment.apiUrl}/Product`;
 
 
 

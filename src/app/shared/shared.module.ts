@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SwiperModule } from 'swiper/angular';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FeatureComponentsModule } from '../feature-components/feature-components.module';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 // Add any other shared components, directives, or pipes here
 
@@ -22,6 +23,7 @@ import { FeatureComponentsModule } from '../feature-components/feature-component
     SwiperModule,
     FontAwesomeModule,
     FeatureComponentsModule,
+    MatProgressSpinnerModule
   ],
 })
 export class SharedModule {}

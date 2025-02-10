@@ -7,6 +7,7 @@ import { HeaderComponent } from "./header/header.component";
 import { SharedModule } from "../../shared/shared.module";
 import { CategoriesHeaderComponent } from "./categories-header/categories-header.component";
 import { SearchBarComponent } from "./search-bar/search-bar.component";
+import { SpinnerComponent } from "./spinner/spinner.component";
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { SearchBarComponent } from "./search-bar/search-bar.component";
         FooterComponent,
         CategoriesHeaderComponent,
         SearchBarComponent,
+        SpinnerComponent
     ],
     imports: [
         CommonModule,
@@ -28,6 +30,7 @@ import { SearchBarComponent } from "./search-bar/search-bar.component";
         FooterComponent,
         CategoriesHeaderComponent,
         SearchBarComponent,
+        SpinnerComponent
     ],
 })
 export class LayoutModule { }
