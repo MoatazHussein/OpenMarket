@@ -4,6 +4,16 @@ import { map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ProductDTO } from '../../models/product-DTO.model';
 import { FilterValue } from '../../models/filter-value.model';
+import { FormGroup } from '@angular/forms';
+
+interface PreviewImage {
+  url: string;
+  file: File;
+}
+interface AttributeValue {
+  AttributeId: number;
+  Value: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -47,8 +57,8 @@ export class ProductService {
     return this.http.post(url, params);
   }
 
-  addProduct(product: ProductDTO, images: File[]) {
-    const formData = new FormData();
+  addProduct(product: FormGroup, subCategoryId: number, previewImages: PreviewImage[]) {
+    /*const formData = new FormData();
     formData.append('name', product.name);
     formData.append('description', product.description);
     formData.append('title', product.title);
@@ -69,7 +79,52 @@ export class ProductService {
     });
   
     console.log("formData",formData);
-    return this.http.post(this.productsApiUrl, formData);
+    return this.http.post(this.productsApiUrl, formData);*/
+      const formData = new FormData();
+      const attributesList: AttributeValue[] = [];
+      
+      const formValues = product.value;
+
+      for ( const key of Object.keys(formValues) ) {
+        if (key !== 'Images' && formValues[key] !== null && formValues[key] !== undefined) {
+          if(key.includes('attribute_')){
+            const attributeId = parseInt(key.split('_')[1]);
+            attributesList.push({
+              AttributeId: attributeId,
+              Value: formValues[key]
+            });
+          } else {
+            const value = formValues[key];
+            formData.append(key, value);
+          }
+        }
+      }
+
+
+      formData.append('SubCategoryID',subCategoryId.toString());
+      formData.append('Title', 'test');
+      formData.append('CityID', '1');
+      formData.append('Adress', 'address');
+      formData.append('ContactNumber', '01024458947');
+      formData.append('subCategoryName', 'string');
+      formData.append('cityName', 'string');
+
+
+      attributesList.forEach((attirebuteId, index) => {
+        if(attirebuteId.Value == ''){
+          return;
+        }
+        formData.append(`releatedDetailsValues[${index}].AttirebuteId`, attirebuteId.AttributeId.toString());
+        formData.append(`releatedDetailsValues[${index}].Value`, attirebuteId.Value);
+      });
+
+      if (previewImages.length > 0) {
+        previewImages.forEach((image, index) => {
+          formData.append('Images', image.file, image.file.name);
+        });
+      }
+
+      return this.http.post(this.productsApiUrl, formData);
   }
 
   mapProduct(product:any){
