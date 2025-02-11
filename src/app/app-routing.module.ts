@@ -9,7 +9,7 @@ import { CreateStep2Component } from './modules/ProductCreate/create-step2/creat
 import { CreateStep3Component } from './modules/ProductCreate/create-step3/create-step3.component';
 
 const routes: Routes = [
-  { path: 'Carsforsale', component: VehiclesforSaleComponent },
+  { path: 'Carsforsale/:id', component: VehiclesforSaleComponent },
   // { path: 'category1/sub2', component: FooterComponent },
   // { path: 'category2/sub1', component: FooterComponent },
   // { path: 'category2/sub2', component: FooterComponent },

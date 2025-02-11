@@ -5,7 +5,7 @@
         <ul class="subcategories">
           <li
             *ngFor="let subcategory of category.subCategories"
-            (click)="navigateTo(subcategory.route,$event)"
+            (click)="navigateTo(subcategory,$event)"
           >
             {{ subcategory.name }}
           </li>

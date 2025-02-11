@@ -3,6 +3,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ProductCard } from '../../../../../../models/product-card.model';
 import { ProductService } from '../../../../../../core/services/product.service';
 import { FilterValue } from '../../../../../../models/filter-value.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'VehiclesforSale',
@@ -18,7 +19,7 @@ export class VehiclesforSaleComponent {
   currency: string = "دينار";
   selectedFiles: File[] = [];
 
-  subCategoryId = 1002;
+  subCategoryId = 10;
   currentPage = 0;
   pageSize = 5;
   search: string = '';
@@ -26,11 +27,14 @@ export class VehiclesforSaleComponent {
   sortOrder: string = '';
   filterValues: FilterValue[] = [];
 
-  constructor(private productService: ProductService) {
+  constructor(private route: ActivatedRoute,private productService: ProductService) {
   }
 
   ngOnInit() {
-    this.loadProducts();
+    this.route.paramMap.subscribe(params => {
+      this.subCategoryId = Number(params.get('id'));
+      this.loadProducts();
+    });
   }
 
   // Handle page change event
