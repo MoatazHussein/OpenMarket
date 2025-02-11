@@ -1,7 +1,7 @@
 <div class="search-container">
-<checkbox-search [label]="statusLabel" [options]="statusOptions"></checkbox-search>
+<checkbox-search [label]="statusLabel" [filterId]="28" [options]="statusOptions" (searchEvent)="forwardSearch($event)"></checkbox-search>
+<!--<hr>
+<checkbox-search [label]="typeLabel" [filterId]="29" [options]="typeOptions" (searchEvent)="forwardSearch($event)"></checkbox-search>
 <hr>
-<checkbox-search [label]="typeLabel" [options]="typeOptions"></checkbox-search>
-<hr>
-<checkbox-search [label]="modelLabel" [options]="modelOptions"></checkbox-search>
+ <checkbox-search [label]="modelLabel" filterId="30" [options]="modelOptions" (searchEvent)="forwardSearch($event)"></checkbox-search> -->
 </div>

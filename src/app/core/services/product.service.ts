@@ -73,11 +73,13 @@ export class ProductService {
   }
 
   mapProduct(product:any){
-    const mappedProduct = product.map((item: { id: any; title: any; description: any; price: any; adress: any; contactNumber: any; }) => ({
+    const mappedProduct = product.map((item: {
+      productImages: any; id: any; title: any; description: any; price: any; adress: any; contactNumber: any; 
+}) => ({
       id: item.id,
       title: item.title,
       description: item.description,
-      imageUrl: `assets/car.png`,
+      imagesUrl: item.productImages,
       price: item.price,
       location: item.adress,
       mobile: item.contactNumber,

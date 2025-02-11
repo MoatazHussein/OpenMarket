@@ -54,6 +54,13 @@ export class VehiclesforSaleComponent {
     });
   }
 
+  handleSearchFromContainer(searchData: any) {
+    debugger;
+    console.log(`Received from`, searchData);
+    this.filterValues=searchData;
+    this.loadProducts();
+  }
+
 
 
 }

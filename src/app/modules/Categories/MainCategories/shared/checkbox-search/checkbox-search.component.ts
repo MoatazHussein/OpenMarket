@@ -1,4 +1,5 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { FilterValue } from '../../../../../models/filter-value.model';
 
 @Component({
   selector: 'checkbox-search',
@@ -8,6 +9,8 @@ import { Component, HostListener, Input } from '@angular/core';
 export class CheckboxSearchComponent {
  @Input() options: string[] = ['جديد', 'مستعمل']; 
  @Input() label: string = "الحالة"; 
+ @Input() filterId: Number=0; // Unique key for each search component
+ @Output() searchEvent = new EventEmitter<FilterValue>();
   filteredOptions: string[] = [...this.options];
   selectedOptions: string[] = [];
   searchText = '';
@@ -83,7 +86,12 @@ export class CheckboxSearchComponent {
     }
   }
 sendAPIRequest(){
-  console.log(this.selectedOptions);
+  console.log('selectedOptions',this.selectedOptions);
   console.log("send request...");
+  const searchObject : any = [];
+  this.selectedOptions.forEach(e=>{
+    searchObject.push({"filterId":this.filterId,"value":e})
+  });
+  this.searchEvent.emit(searchObject);
 }
 }
