@@ -19,7 +19,7 @@ export class VehiclesforSaleComponent {
   currency: string = "دينار";
   selectedFiles: File[] = [];
 
-  subCategoryId = 10;
+  subCategoryId = 1;
   currentPage = 0;
   pageSize = 5;
   search: string = '';
