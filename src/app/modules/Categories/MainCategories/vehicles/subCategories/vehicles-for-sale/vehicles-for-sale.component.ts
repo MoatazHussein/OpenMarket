@@ -58,9 +58,9 @@ export class VehiclesforSaleComponent {
     });
   }
 
-  handleSearchFromContainer(searchData: any) {
-    debugger;
-    console.log(`Received from`, searchData);
+  handleSearchFromContainer(searchData: FilterValue[]) {
+    // debugger;
+    console.log(`Received Search Data`, searchData);
     this.filterValues=searchData;
     this.loadProducts();
   }

@@ -9,8 +9,8 @@ import { FilterValue } from '../../../../../models/filter-value.model';
 export class CheckboxSearchComponent {
  @Input() options: string[] = ['جديد', 'مستعمل']; 
  @Input() label: string = "الحالة"; 
- @Input() filterId: Number=0; // Unique key for each search component
- @Output() searchEvent = new EventEmitter<FilterValue>();
+ @Input() filterId: number=0; // Unique id for each search component
+ @Output() searchEvent = new EventEmitter<FilterValue[]>();
   filteredOptions: string[] = [...this.options];
   selectedOptions: string[] = [];
   searchText = '';
@@ -50,14 +50,14 @@ export class CheckboxSearchComponent {
       );
       this.allSelected = false; // Deselect "All" if an option is unchecked
     }
-    this.sendAPIRequest();
+    this.onSelectionChange();
   }
 
   // Toggle all options
   toggleAllOptions(event: any) {
     this.allSelected = event.target.checked;
     this.selectedOptions = this.allSelected ? [...this.options] : [];
-    this.sendAPIRequest();
+    this.onSelectionChange();
   }
 
 
@@ -67,7 +67,7 @@ export class CheckboxSearchComponent {
       (selected) => selected !== option
     );
     this.allSelected = false;
-    this.sendAPIRequest();
+    this.onSelectionChange();
   }
 
   // Hide options on blur
@@ -85,13 +85,15 @@ export class CheckboxSearchComponent {
       this.showOptions = false;
     }
   }
-sendAPIRequest(){
-  console.log('selectedOptions',this.selectedOptions);
-  console.log("send request...");
-  const searchObject : any = [];
+  
+onSelectionChange(){
+  debugger;
+  // console.log('selectedOptions',this.selectedOptions);
+  const searchObject : FilterValue[] = [];
   this.selectedOptions.forEach(e=>{
     searchObject.push({"filterId":this.filterId,"value":e})
   });
   this.searchEvent.emit(searchObject);
 }
+
 }
