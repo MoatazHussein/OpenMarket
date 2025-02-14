@@ -1,8 +1,11 @@
 <div class="search-container">
-<checkbox-search [label]="statusLabel" [filterId]="28" [options]="statusOptions" (searchEvent)="updateAllFilters(28, $event)"></checkbox-search>
-<hr>
-<checkbox-search [label]="typeLabel" [filterId]="29" [options]="typeOptions" (searchEvent)="updateAllFilters(29, $event)"></checkbox-search>
-<hr>
-<checkbox-search [label]="modelLabel" [filterId]="30" [options]="modelOptions" (searchEvent)="updateAllFilters(30, $event)"></checkbox-search>
+<checkbox-search 
+  *ngFor="let filter of filterConfigs" 
+  [label]="filter.label" 
+  [filterId]="filter.id" 
+  [options]="filter.options"
+  (searchEvent)="updateAllFilters(filter.id, $event)">
+</checkbox-search>
 <hr>
 </div>
+

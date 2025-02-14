@@ -7,14 +7,12 @@ import { FilterValue } from '../../../../../models/filter-value.model';
 })
 export class SidebarSearchComponent {
   @Output() allSearchesEvent = new EventEmitter<any>();
-  // allFilters:  any = [];
-
-  statusLabel: string = "الحالة";
-  statusOptions: string[] = ['جديد', 'مستعمل'];
-  typeLabel: string = "النوع";
-  typeOptions: string[] = ["أوبل", 'اودي', 'مرسيدس', 'افاتار'];
-  modelLabel: string = "الموديل"
-  modelOptions: string[] = ['2023', '2022', '2021', '2019'];
+  
+  filterConfigs = [
+    { id: 28, label: 'الحالة', options: ['جديد', 'مستعمل'] },
+    { id: 29, label: 'النوع', options: ["أوبل", 'اودي', 'مرسيدس', 'افاتار'] },
+    { id: 33, label: 'الموديل', options: ['2023', '2022', '2021', '2019'] }
+  ];
 
   combinedFilters: FilterValue[] = [];
   private filtersFromComponents: { [key: number]: any[] } = {};
