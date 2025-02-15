@@ -1,11 +1,10 @@
 <div class="search-container">
-<checkbox-search 
-  *ngFor="let filter of filterConfigs" 
+<checkbox-search
+  *ngFor="let filter of filters" 
   [label]="filter.label" 
   [filterId]="filter.id" 
   [options]="filter.options"
   (searchEvent)="updateAllFilters(filter.id, $event)">
 </checkbox-search>
-<hr>
 </div>
 

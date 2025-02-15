@@ -4,6 +4,7 @@ import { ProductCard } from '../../../../../../models/product-card.model';
 import { ProductService } from '../../../../../../core/services/product.service';
 import { FilterValue } from '../../../../../../models/filter-value.model';
 import { ActivatedRoute } from '@angular/router';
+import { AllGenericDTO, AttributeDetailsDTO, AttributeService } from '../../../../../../core/services/attributeDetails.service';
 
 @Component({
   selector: 'VehiclesforSale',
@@ -11,7 +12,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './vehicles-for-sale.component.css'
 })
 export class VehiclesforSaleComponent {
-
+  yearlyOptions: string[] = [];
+  filterConfigs: any = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   products: ProductCard[] = [];
   paginatedProducts: ProductCard[] = [];
@@ -27,14 +29,16 @@ export class VehiclesforSaleComponent {
   sortOrder: string = '';
   filterValues: FilterValue[] = [];
 
-  constructor(private route: ActivatedRoute,private productService: ProductService) {
+  constructor(private route: ActivatedRoute, private productService: ProductService, private attributeService: AttributeService) {
   }
 
   ngOnInit() {
+    this.getYearlyOptions();
     this.route.paramMap.subscribe(params => {
       this.subCategoryId = Number(params.get('id'));
       this.loadProducts();
     });
+    this.loadAttributes();
   }
 
   // Handle page change event
@@ -61,10 +65,47 @@ export class VehiclesforSaleComponent {
   handleSearchFromContainer(searchData: FilterValue[]) {
     // debugger;
     console.log(`Received Search Data`, searchData);
-    this.filterValues=searchData;
+    this.filterValues = searchData;
     this.loadProducts();
   }
 
+  loadAttributes() {
+    this.attributeService.getAttributesBySubCategory(this.subCategoryId)
+      .subscribe({
+        next: (response: AllGenericDTO<AttributeDetailsDTO>) => {
+          var subCategoryAttributes = response.values.filter(i => i.subCategoryId == this.subCategoryId);
+          subCategoryAttributes.forEach(e => {
+            this.filterConfigs.push({ id: e.id, label: e.nameAr, options: '', type: e.type, nameEn: e.nameEn });
+          });
+          this.FillFilters();
+        },
+        error: (error) => {
+          console.error('Error loading attributes', error);
+        }
+      });
+  }
+  FillFilters() {
+    debugger;
+    this.filterConfigs.forEach((attribute: any) => {
+      this.attributeService.getDropdownOptions(attribute.id).subscribe(
+        {
+          next: (OptionsData) => {
+            if (attribute.type == 0) {
+              attribute.options = OptionsData;
+            }
+            else if (attribute.type == 2 && attribute.nameEn == "Year") {
+              attribute.options = this.yearlyOptions;
+            }
+          },
+        }
+      )
+    }
+    );
+  }
 
-
+  getYearlyOptions() {
+    for (var i = (new Date()).getFullYear(); i >= 1970; i--) {
+      this.yearlyOptions.push(i.toString());
+    }
+  }
 }

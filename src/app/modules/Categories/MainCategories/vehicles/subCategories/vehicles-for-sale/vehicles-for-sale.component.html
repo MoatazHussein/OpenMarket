@@ -1,11 +1,11 @@
 <div class="cars-category">
 <div class="sidebar-search">
-<sidebar-search (allSearchesEvent)="handleSearchFromContainer($event)"></sidebar-search>
+<sidebar-search [filters]="filterConfigs" (allSearchesEvent)="handleSearchFromContainer($event)"></sidebar-search>
 </div>
 <div class="product-container">
     <div class="product-card" *ngFor="let product of paginatedProducts">
       <product-card 
-      [image]='product.imagesUrl[0]'
+      [image]='product.imagesUrl[0] || "assets/placeholder.jpg"'
       [title]="product.title"
       [description]="product.description"
       [location]="product.location"
@@ -16,6 +16,11 @@
       >
     </product-card> 
     </div>
+    <div class="no-results" *ngIf="paginatedProducts.length==0">
+      <h2>
+        لم يتم العثور على نتائج
+      </h2>
+  </div>
   </div>
 </div>
   <!-- Paginator -->

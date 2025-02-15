@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { FilterValue } from '../../../../../models/filter-value.model';
 @Component({
   selector: 'sidebar-search',
@@ -6,14 +6,9 @@ import { FilterValue } from '../../../../../models/filter-value.model';
   styleUrl: './sidebar-search.component.css'
 })
 export class SidebarSearchComponent {
+  @Input() filters: any; 
   @Output() allSearchesEvent = new EventEmitter<any>();
   
-  filterConfigs = [
-    { id: 28, label: 'الحالة', options: ['جديد', 'مستعمل'] },
-    { id: 29, label: 'النوع', options: ["أوبل", 'اودي', 'مرسيدس', 'افاتار'] },
-    { id: 33, label: 'الموديل', options: ['2023', '2022', '2021', '2019'] }
-  ];
-
   combinedFilters: FilterValue[] = [];
   private filtersFromComponents: { [key: number]: any[] } = {};
 
