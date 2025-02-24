@@ -5,6 +5,8 @@ import { ProductService } from '../../../../../../core/services/product.service'
 import { FilterValue } from '../../../../../../models/filter-value.model';
 import { ActivatedRoute } from '@angular/router';
 import { AllGenericDTO, AttributeDetailsDTO, AttributeService } from '../../../../../../core/services/attributeDetails.service';
+import { map, Observable } from 'rxjs';
+import { FiltersService } from '../../../../../../core/services/filters.service';
 
 @Component({
   selector: 'VehiclesforSale',
@@ -29,7 +31,7 @@ export class VehiclesforSaleComponent {
   sortOrder: string = '';
   filterValues: FilterValue[] = [];
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private attributeService: AttributeService) {
+  constructor(private route: ActivatedRoute, private productService: ProductService, private attributeService: AttributeService,private filtersService: FiltersService) {
   }
 
   ngOnInit() {
@@ -39,7 +41,23 @@ export class VehiclesforSaleComponent {
       this.loadProducts();
     });
     this.loadAttributes();
+    // console.log("filterConfigs", this.filterConfigs);
+
+      this.filtersService.changedFilter$.subscribe(FilterData => {
+        if (FilterData != null){
+          this.handleDependentFilters(FilterData.FilterParams);
+          // console.log('FilterData:', FilterData.FilterParams);
+        }
+      });
+  
+      this.filtersService.filtersCriteria$.subscribe(SearchResult => {
+        if ( SearchResult != null){
+          this.ReloadProductsWithNewSearch(SearchResult);
+          // console.log('SearchResult:', SearchResult);
+        }
+      });
   }
+
 
   // Handle page change event
   onPageChange(event: PageEvent) {
@@ -62,7 +80,7 @@ export class VehiclesforSaleComponent {
     });
   }
 
-  handleSearchFromContainer(searchData: FilterValue[]) {
+  ReloadProductsWithNewSearch(searchData: FilterValue[]) {
     // debugger;
     console.log(`Received Search Data`, searchData);
     this.filterValues = searchData;
@@ -75,7 +93,7 @@ export class VehiclesforSaleComponent {
         next: (response: AllGenericDTO<AttributeDetailsDTO>) => {
           var subCategoryAttributes = response.values.filter(i => i.subCategoryId == this.subCategoryId);
           subCategoryAttributes.forEach(e => {
-            this.filterConfigs.push({ id: e.id, label: e.nameAr, options: '', type: e.type, nameEn: e.nameEn });
+            this.filterConfigs.push({ id: e.id, label: e.nameAr, options: '', type: e.type, nameEn: e.nameEn, parentId: e.filterId });
           });
           this.FillFilters();
         },
@@ -90,11 +108,16 @@ export class VehiclesforSaleComponent {
       this.attributeService.getDropdownOptions(attribute.id).subscribe(
         {
           next: (OptionsData) => {
-            if (attribute.type == 0) {
-              attribute.options = OptionsData;
+            if (attribute.parentId == null) {
+              if (attribute.type == 0) {
+                attribute.options = OptionsData;
+              }
+              else if (attribute.type == 2 && attribute.nameEn == "Year") {
+                attribute.options = this.yearlyOptions;
+              }
             }
-            else if (attribute.type == 2 && attribute.nameEn == "Year") {
-              attribute.options = this.yearlyOptions;
+            else {
+              attribute.disabled = true;
             }
           },
         }
@@ -107,5 +130,67 @@ export class VehiclesforSaleComponent {
     for (var i = (new Date()).getFullYear(); i >= 1970; i--) {
       this.yearlyOptions.push(i.toString());
     }
+  }
+
+  handleDependentFilters(filterParams:any){
+    debugger;
+    var filterData=filterParams.data;
+    var filterId=filterParams.filterId;
+    const Dependentfilters = this.filterConfigs.filter((item: any) => item.parentId === filterId);
+
+    if(filterData.length==1){
+      Dependentfilters.forEach((e:any)=>{
+      var DropdownOptions$ = this.getDropdownOptionsForDependentAttribute(e.id, filterData[0].value);
+      DropdownOptions$.subscribe({
+      next: (data) => {
+      const index = this.filterConfigs.findIndex((item: { id: any; }) => item.id === e.id);
+      if (index !== -1) {
+        this.filterConfigs[index].options = data; 
+        this.filterConfigs[index].disabled = false; 
+      }
+    },
+  })
+      });
+
+    }
+    else{
+      this.resetDependentFilters(filterId);
+    }
+  }
+
+  resetDependentFilters(parentId: number): void {
+    // Find all children of the given parent
+    const children = this.filterConfigs.filter((item: any) => item.parentId === parentId);
+  
+    // Recursively remove each child and its descendants
+    children.forEach((child: any) => {
+      this.resetDependentFilters(child.id);
+    });
+  
+    // reset the Dependent Filters from filterConfigs array
+    for (let i = this.filterConfigs.length - 1; i >= 0; i--) {
+      if (this.filterConfigs[i].parentId === parentId) {
+        const index = this.filterConfigs.findIndex((item: any) => item.parentId === parentId);
+        if (index !== -1) {
+          this.filtersService.resetFilterTrigger(this.filterConfigs[i].id);
+          this.filterConfigs[index].options = ''; 
+          this.filterConfigs[index].disabled = true; 
+        }
+      }
+    }
+  }
+
+  getDropdownOptionsForDependentAttribute(dependentAttributeId: number, parentSelectedValue: string): Observable<string[]> {
+    return this.attributeService.getDependentDropdownOptions(dependentAttributeId)
+      .pipe(
+        map(response => {
+          const filteredOptions = response.detailRows
+            .filter(row => row.dataLimition == parentSelectedValue)
+            .map(row => row.type);
+
+          return filteredOptions;
+        })
+      );
+
   }
 }

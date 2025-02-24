@@ -1,5 +1,7 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { FilterValue } from '../../../../../models/filter-value.model';
+import { Subscription } from 'rxjs';
+import { FiltersService } from '../../../../../core/services/filters.service';
 
 @Component({
   selector: 'checkbox-search',
@@ -10,12 +12,25 @@ export class CheckboxSearchComponent {
  @Input() options: string[] = ['جديد', 'مستعمل']; 
  @Input() label: string = "الحالة"; 
  @Input() filterId: number=0; // Unique id for each search component
+ @Input() parentId: number=0; 
+ @Input() disabled: boolean=false; 
  @Output() searchEvent = new EventEmitter<FilterValue[]>();
   filteredOptions: string[] = [...this.options];
   selectedOptions: string[] = [];
   searchText = '';
   showOptions = false;
   allSelected = false;
+  private subscription!: Subscription;
+
+  constructor(private filtersService: FiltersService) {}
+
+  ngOnInit() {
+    this.subscription = this.filtersService.resetFilterTrigger$.subscribe((id) => {
+      if (id === this.filterId) {
+        this.resetFilter();
+      }
+    });
+  }
 
   // Filter options dynamically based on input
   filterOptions() {
@@ -63,9 +78,17 @@ export class CheckboxSearchComponent {
 
   // Remove selected option from tags
   removeSelectedOption(option: string) {
+    debugger;
     this.selectedOptions = this.selectedOptions.filter(
       (selected) => selected !== option
     );
+    this.allSelected = false;
+    this.onSelectionChange();
+  }
+
+  resetFilter(){
+    debugger;
+    this.selectedOptions = [];
     this.allSelected = false;
     this.onSelectionChange();
   }
@@ -88,12 +111,27 @@ export class CheckboxSearchComponent {
   
 onSelectionChange(){
   debugger;
-  // console.log('selectedOptions',this.selectedOptions);
+ const searchObject : FilterValue[] = [];
+   this.selectedOptions.forEach(e=>{
+     searchObject.push({"filterId":this.filterId,"parentId":this.parentId,"value":e,})
+   });
+   this.searchEvent.emit(searchObject);
+   this.onDataChange();
+}
+
+onDataChange() {
+  debugger;
   const searchObject : FilterValue[] = [];
   this.selectedOptions.forEach(e=>{
-    searchObject.push({"filterId":this.filterId,"value":e})
+    searchObject.push({"filterId":this.filterId,"parentId":this.parentId,"value":e,})
   });
   this.searchEvent.emit(searchObject);
+  this.filtersService.sendDataFromFilter(this.filterId,searchObject);
+  // console.log("this.filterId",this.filterId);
+}
+
+ngOnDestroy() {
+  this.subscription.unsubscribe();
 }
 
 }

@@ -1,6 +1,6 @@
 <div class="cars-category">
 <div class="sidebar-search">
-<sidebar-search [filters]="filterConfigs" (allSearchesEvent)="handleSearchFromContainer($event)"></sidebar-search>
+<sidebar-search [filters]="filterConfigs"></sidebar-search>
 </div>
 <div class="product-container">
     <div class="product-card" *ngFor="let product of paginatedProducts">

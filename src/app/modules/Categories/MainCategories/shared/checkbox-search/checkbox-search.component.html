@@ -2,8 +2,8 @@
     <div class="dropdown" (blur)="onBlur()">
         <label class="search-label">{{label}}</label>
         <!-- Search Input -->
-        <input type="text" class="search-input" placeholder="بحث..." [(ngModel)]="searchText"
-            (focus)="showFilteredOptions()" (input)="filterOptions()" />
+        <input type="text" class="search-input" placeholder="بحث..." [(ngModel)]="searchText" [disabled]="disabled" 
+            (focus)="showFilteredOptions()" (input)="filterOptions();onDataChange();" />
 
         <!-- Dropdown Options -->
         <div class="options-list" *ngIf="showOptions">
