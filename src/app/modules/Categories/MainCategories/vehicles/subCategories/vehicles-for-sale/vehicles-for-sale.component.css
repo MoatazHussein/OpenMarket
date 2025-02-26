@@ -13,7 +13,7 @@
 .sidebar-search {
   display: block;
   /* background-color: aqua; */
-  min-width: 8rem;
+  /* min-width: 8rem; */
   direction: rtl;
   border: 2px solid #edf1f6;
   border-radius: 1.2rem;

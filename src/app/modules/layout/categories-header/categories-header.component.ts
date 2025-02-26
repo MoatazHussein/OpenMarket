@@ -19,27 +19,27 @@ export class CategoriesHeaderComponent implements OnInit {
 
   navigateTo(route: any, e : Event): void {
     debugger;
-    switch(route.name){
-      case 'سيارات للبيع':
-      case 'Cars for sale':
-      this.router.navigate(['/Carsforsale', route.id]);
-        break;
-    }
+    // switch(route.name){
+    //   case 'سيارات للبيع':
+    //   case 'Cars for sale':
+      this.router.navigate(['/SubCategory', route.id]);
+    //     break;
+    // }
     e.stopPropagation();
   }
   
   mainCategoryRouting(category: {name: string, subCategories: { name: string; route: string; }[]}){
     debugger;
-    switch(category.name){
-      case 'سيارات ومركبات':
-      case 'Cars & Vehicles':
-        this.router.navigate(['Vehicles']);
-        break;
-      case 'سيارات للبيع':
-      case 'Cars for sale':
-        this.router.navigate(['Carsforsale']);
-        break;
-    }
+    // switch(category.name){
+      // case 'سيارات ومركبات':
+      // case 'Cars & Vehicles':
+      //   this.router.navigate(['Vehicles']);
+      //   break;
+      // case 'سيارات للبيع':
+      // case 'Cars for sale':
+        // this.router.navigate(['Carsforsale']);
+        // break;
+    // }
   }
 
   loadCategories(): void {

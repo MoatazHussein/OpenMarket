@@ -39,9 +39,9 @@ export class VehiclesforSaleComponent {
     this.route.paramMap.subscribe(params => {
       this.subCategoryId = Number(params.get('id'));
       this.loadProducts();
+      this.loadAttributes();
+      // console.log("filterConfigs", this.filterConfigs);
     });
-    this.loadAttributes();
-    // console.log("filterConfigs", this.filterConfigs);
 
       this.filtersService.changedFilter$.subscribe(FilterData => {
         if (FilterData != null){
@@ -88,6 +88,7 @@ export class VehiclesforSaleComponent {
   }
 
   loadAttributes() {
+  this.filterConfigs= [];
     this.attributeService.getAttributesBySubCategory(this.subCategoryId)
       .subscribe({
         next: (response: AllGenericDTO<AttributeDetailsDTO>) => {
