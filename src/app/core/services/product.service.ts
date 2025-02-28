@@ -143,4 +143,9 @@ export class ProductService {
     
     return mappedProduct;
   }
+
+  getProduct(productID: string){
+    const url = `${this.productsApiUrl}/${productID}`;
+    return this.http.get(url);
+  }
 }

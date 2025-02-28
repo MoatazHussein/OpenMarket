@@ -40,9 +40,7 @@ export class HomePageComponent {
     // ]
   }
 
-  topProducts: Product[] = [
-    { id: 55, name: 'شواحن وكوابل . جديد', imageUrl: 'https://opensooq-images.os-cdn.com/previews/300x0/e5/b3/e5b3551c7cee030a149f4a9ccbe04e78157ed09e9dc0c1c2b1e9a1a8c2ef1884.jpg.webp', price: 55 },
-    { id: 55, name: 'شواحن وكوابل . جديد', imageUrl: 'https://opensooq-images.os-cdn.com/previews/300x0/e5/b3/e5b3551c7cee030a149f4a9ccbe04e78157ed09e9dc0c1c2b1e9a1a8c2ef1884.jpg.webp', price: 55 }
+  topProducts: any[] = [
   ];
 
   products: any[] = [];

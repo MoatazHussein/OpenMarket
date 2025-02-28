@@ -1,10 +1,10 @@
 <div class="mainCard">
-    <div class="price">12,500 دينار</div>
+    <div class="price">{{product.price}} دينار</div>
     <button mat-raised-button color="accent">
         <mat-icon>call</mat-icon>
-        01222 
+        {{product.contactNumber}}
     </button>
-    <button mat-raised-button color="accent" class="chat-button my-3">
+    <button mat-raised-button color="accent" class="chat-button my-3 d-none">
         <mat-icon>chat</mat-icon>
         <span style="margin-right: 10px;">دردش</span> 
     </button>
@@ -26,8 +26,8 @@
             <img width="90" height="90" alt=" امان" loading="lazy" src="https://opensooqui2.os-cdn.com/api/v/icons/misc/no_profile.png">
         </div>
         <div class="d-flex user">
-            <h3>امان</h3>
-            <div class="darkGrayColor">عضو منذ
+            <h3>{{product.userName}}</h3>
+            <div class="darkGrayColor d-none">عضو منذ
                 <span class="">٠٥-٠٨-٢٠٢١</span>
             </div>
         </div>
@@ -37,8 +37,8 @@
     <div class="d-flex mb-1">
         <h3>الموقع</h3>
     </div>
-    <h6>حولي - السالمية</h6>
-    <a href="">
+    <h6>{{product.cityName}}</h6>
+    <a href="" (click)="mapClick($event)">
         <img src="https://opensooqui2.os-cdn.com/prod/public/images/postMap.webp" alt="map" width="100%" height="100%">
         <span>عرض على الخريطة</span>
     </a>

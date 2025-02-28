@@ -5,6 +5,7 @@ import { CategorySummary2Component } from './components/category-summary2/catego
 import { HomepageSectionsHeaderComponent } from './components/homepage-sections-header/homepage-sections-header.component';
 import { SingleProductComponent } from './components/single-product/single-product.component';
 import { SubcategoriesLinksComponent } from './components/subcategories-links/subcategories-links.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -15,7 +16,8 @@ import { SubcategoriesLinksComponent } from './components/subcategories-links/su
         SubcategoriesLinksComponent,
     ],
     imports: [
-        CommonModule, 
+        CommonModule,
+        RouterModule
     ],
     exports: [
         SingleProductComponent,

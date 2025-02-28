@@ -1,12 +1,12 @@
 <section>
     <div class="container">
-        <h5>لينكولن نوتيلوس</h5>
+        <h5>{{product.title}}</h5>
         <div class="row">
             <div class="col-md-3">
-                <app-single-product-sidebar></app-single-product-sidebar>
+                <app-single-product-sidebar [product]="product"></app-single-product-sidebar>
             </div>
             <div class="col-md-9">
-                <app-single-product-content></app-single-product-content>
+                <app-single-product-content [product]="product"></app-single-product-content>
             </div>
         </div>
     </div>

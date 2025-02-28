@@ -8,15 +8,16 @@ import { CreateStep1Component } from './modules/ProductCreate/create-step1/creat
 import { CreateStep2Component } from './modules/ProductCreate/create-step2/create-step2.component';
 import { CreateStep3Component } from './modules/ProductCreate/create-step3/create-step3.component';
 import { LoginComponent } from './modules/Homepage/login/login.component';
+import { productResolver } from './core/services/productResolver.service';
 
 const routes: Routes = [
   { path: 'SubCategory/:id', component: VehiclesforSaleComponent },
-  // { path: 'category1/sub2', component: FooterComponent },
-  // { path: 'category2/sub1', component: FooterComponent },
-  // { path: 'category2/sub2', component: FooterComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'Vehicles', component: VehiclesComponent },
-  { path: 'search/:id', component: SingleProductPageComponent },
+  { path: 'search/:id'
+    , component: SingleProductPageComponent
+    , resolve: {productData: productResolver}
+  },
   { path: 'InsertItem', component: CreateStep1Component},
   { path: 'InsertItem/:id', component: CreateStep2Component },
   { path: 'InsertItem/:id/Details', component: CreateStep3Component },

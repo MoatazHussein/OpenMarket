@@ -10,6 +10,6 @@ import { Product } from '../../../models/product.model';
 export class CategorySummaryComponent {
   @Input() category!: Category;
 
-  @Input() topProducts: Product[] = [];
+  @Input() topProducts: any[] = [];
 
 }

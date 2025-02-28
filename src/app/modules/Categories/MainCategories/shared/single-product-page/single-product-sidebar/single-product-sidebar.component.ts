@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-single-product-sidebar',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './single-product-sidebar.component.css'
 })
 export class SingleProductSidebarComponent {
+  @Input() product: any;
 
+  mapClick(e: Event){
+    e.preventDefault();
+  }
 }

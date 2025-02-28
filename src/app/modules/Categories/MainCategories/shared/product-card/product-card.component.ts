@@ -17,6 +17,7 @@ export class ProductCardComponent {
   @Input() price:string="880";
   @Input() currency:string="دينار";
   @Input() navigateTo:string="/home";
+  @Input() id:string="";
 
   modifiedMobile:string='';
 

@@ -2,13 +2,13 @@
 <swiper
       style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
       [spaceBetween]="10"
-      [navigation]="true"
+      [navigation]="product.productImages.length > 1 ? true : false"
       [loop]="true"
       [speed]="100"
       [thumbs]="{ swiper: thumbsSwiper }"
       class="mainSlider"
     >
-      <ng-template swiperSlide *ngFor="let image of images">
+      <ng-template swiperSlide *ngFor="let image of product.productImages">
         <img [src]="image" />
         </ng-template>
     </swiper>
@@ -23,15 +23,16 @@
       [speed]="100"
       class="thumbsSlider"
     >
-    <ng-template swiperSlide *ngFor="let image of images">
+    <ng-template swiperSlide *ngFor="let image of product.productImages">
         <img [src]="image" />
         </ng-template>
     </swiper>
 </div>
 <div class="info">
     <h4>المعلومات</h4>
+    <p>{{product.description}}</p>
     <ul class="d-flex">
-        <li class="d-flex" *ngFor="let item of items; let i = index;" [ngClass]="{'greyBg': i%4==0 || i%4==1}">
+        <li class="d-flex" *ngFor="let item of product.informations; let i = index;" [ngClass]="{'greyBg': i%4==0 || i%4==1}">
             <p>{{item.key}}</p>
             <span>{{item.value}}</span>
         </li>
