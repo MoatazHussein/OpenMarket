@@ -1,11 +1,20 @@
 <img src="assets/homeBanner-ar.webp" alt="Logo" class="banner-image" />
 <app-homepage-all-categories-section></app-homepage-all-categories-section>
 <app-static-section1></app-static-section1>
+
+    <div class="" *ngFor="let product of categorysummary">
+      <app-category-summary
+      [category]="product.category"
+      [topProducts]="product.topProducts"
+      >
+    </app-category-summary> 
+    </div>
+
+<!-- <app-category-summary [category]="category" [topProducts]="topProducts"></app-category-summary> -->
+<!-- <app-category-summary [category]="category" [topProducts]="topProducts"></app-category-summary> -->
+<!-- <app-category-summary2></app-category-summary2>
 <app-category-summary [category]="category" [topProducts]="topProducts"></app-category-summary>
-<app-category-summary [category]="category" [topProducts]="topProducts"></app-category-summary>
-<app-category-summary2></app-category-summary2>
-<app-category-summary [category]="category" [topProducts]="topProducts"></app-category-summary>
-<app-category-summary2></app-category-summary2>
-<div class="container d-flex rtl my-3" style="gap: 20px;">
+<app-category-summary2></app-category-summary2> -->
+<!-- <div class="container d-flex rtl my-3" style="gap: 20px;">
     <app-item1 *ngFor="let item of item1SectionArray" [itemData]="item" style="width: 50%;"></app-item1>
-</div>
+</div> -->
