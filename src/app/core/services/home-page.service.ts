@@ -1,15 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { Category } from '../../models/category.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class HomePageService {
-    categories: string[] = ["مركبات", "عقارات"];
     isLoading: Subject<boolean> = new Subject<boolean>();
-
-    getCategories() {
-        return this.categories;
-    }
 
 }

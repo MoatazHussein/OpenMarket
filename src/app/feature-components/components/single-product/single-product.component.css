@@ -12,11 +12,12 @@ img{
     margin-top: -44px;
     background: rgba(0, 0, 0, 0.7);
     max-width: 90%;
-    left: 8px;
+    /* left: 8px; */
     font-size: 1.25em;
     line-height: 1.25em;
     margin-bottom: 16px;
-    margin-right: auto;
+    /* margin-right: auto; */
+    margin-right: 10px;
     width: fit-content;
     position: relative;
     border-radius: 8px;
