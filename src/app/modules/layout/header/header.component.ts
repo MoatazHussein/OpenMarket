@@ -5,6 +5,7 @@ import { HomePageService } from '../../../core/services/home-page.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import{RegisterDialogComponent} from '../../Homepage/register-dialog/register-dialog.component'
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'header',
@@ -21,10 +22,11 @@ export class HeaderComponent {
   notificationCount = 5;
   myControl = new FormControl('');
   
-
+  isLoggedIn = false;
   constructor(private homePageService: HomePageService
     , private router: Router
     ,public dialog: MatDialog
+    ,private authService :AuthService
   ) {}
 
 
@@ -40,6 +42,9 @@ ngOnInit() {
     startWith(''),
     map((value: any) => this._filter(value || '')),
   );
+  this.authService.isLoggedIn().subscribe(status => {
+    this.isLoggedIn = status;
+  });
 
   // console.log("Categories",this.homePageService.getCategories());
 }
@@ -50,7 +55,12 @@ ngOnInit() {
 }
 
 AddProduct(){
-  //this.router.navigate(['/InsertItem'])
+  if( this.isLoggedIn){
+
+    this.router.navigate(['/InsertItem'])
+  }else{
+
+  
   const dialogRef = this.dialog.open(RegisterDialogComponent, {
     height: '650px',
     width: '450px',
@@ -61,7 +71,12 @@ AddProduct(){
     console.log('The dialog was closed');
   });
 }
+}
 Login(){
   this.router.navigateByUrl("/login");
+}
+LogOut() {
+  this.authService.logout();
+  this.router.navigate(['/login']);
 }
 }

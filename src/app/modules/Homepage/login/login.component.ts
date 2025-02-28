@@ -34,6 +34,7 @@ export class LoginComponent {
     //this.isLoading = true;
     this.authService.login(this.loginForm.value).subscribe({
       next: () => {
+        this.authService.setLoggedIn(true);
         this.snackBar.open('✅ Login successful!', 'Close', { duration: 3000 });
         this.router.navigate(['/dashboard']); 
       },
