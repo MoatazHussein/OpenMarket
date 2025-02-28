@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-register-dialog',
   templateUrl: './register-dialog.component.html',
@@ -16,7 +17,9 @@ export class RegisterDialogComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    public dialogRef: MatDialogRef<RegisterDialogComponent>
+    public dialogRef: MatDialogRef<RegisterDialogComponent>,
+    private snackBar: MatSnackBar,
+    
   ) {
     this.registerForm = this.fb.group({
       fullName: ['', Validators.required],
@@ -47,12 +50,15 @@ export class RegisterDialogComponent {
 
     this.authService.register(formData).subscribe({
       next: (response) => {
-        this.authService.setLoggedIn(true);
+       // this.authService.setLoggedIn(true);
         this.dialogRef.close();
-        this.router.navigate(['/dashboard']); // Change to your route
+        // this.router.navigate(['/dashboard']); // Change to your route
+         this.router.navigate(['/login']); // Change to your route
       },
       error: (error) => {
         console.error('Registration failed', error);
+        this.snackBar.open(`❌ Register Failed ${error.message}`, 'Close', { duration: 3000 });
+
       }
     });
   }

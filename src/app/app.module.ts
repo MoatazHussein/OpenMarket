@@ -10,7 +10,8 @@ import { CategoriesModule } from './modules/Categories/categories.module';
 import { CoreModule } from './core/core.module';
 import { ProductCreateModule } from './modules/ProductCreate/productCreate.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './core/services/interceptors/auth.service';
 @NgModule({
   declarations: [
     AppComponent
@@ -28,7 +29,12 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
