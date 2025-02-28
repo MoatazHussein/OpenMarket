@@ -7,6 +7,7 @@ import { SingleProductPageComponent } from './modules/Categories/MainCategories/
 import { CreateStep1Component } from './modules/ProductCreate/create-step1/create-step1.component';
 import { CreateStep2Component } from './modules/ProductCreate/create-step2/create-step2.component';
 import { CreateStep3Component } from './modules/ProductCreate/create-step3/create-step3.component';
+import { LoginComponent } from './modules/Homepage/login/login.component';
 
 const routes: Routes = [
   { path: 'SubCategory/:id', component: VehiclesforSaleComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'InsertItem', component: CreateStep1Component},
   { path: 'InsertItem/:id', component: CreateStep2Component },
   { path: 'InsertItem/:id/Details', component: CreateStep3Component },
+  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 
   { path: '**', component: HomePageComponent }, 
 ];

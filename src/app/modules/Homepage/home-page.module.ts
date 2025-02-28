@@ -8,6 +8,7 @@ import { Item1Component } from './shared/item1/item1.component';
 import { StaticSection1Component } from './static-section1/static-section1.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { RegisterDialogComponent } from './register-dialog/register-dialog.compo
     Item1Component,
     StaticSection1Component,
     RegisterDialogComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule,

@@ -61,13 +61,7 @@ AddProduct(){
     console.log('The dialog was closed');
   });
 }
-openRegisterDialog() {
-  const dialogRef = this.dialog.open(RegisterDialogComponent, {
-
-  });
-
-  dialogRef.afterClosed().subscribe((result) => {
-    console.log('The dialog was closed');
-  });
+Login(){
+  this.router.navigateByUrl("/login");
 }
 }

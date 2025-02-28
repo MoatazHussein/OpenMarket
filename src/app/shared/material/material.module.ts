@@ -13,6 +13,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const materialModules = [
     MatSlideToggleModule,
@@ -32,7 +34,10 @@ const materialModules = [
     MatInputModule,
     MatSlideToggleModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    
+    MatCardModule,
+    MatSnackBarModule
 ];
 
 @NgModule({
