@@ -9,6 +9,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const materialModules = [
     MatSlideToggleModule,
@@ -21,6 +25,14 @@ const materialModules = [
     MatCheckboxModule,
     MatExpansionModule,
     MatTabsModule,
+
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSlideToggleModule,
+    HttpClientModule,
+    ReactiveFormsModule
 ];
 
 @NgModule({

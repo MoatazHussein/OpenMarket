@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
 import { HomePageService } from '../../../core/services/home-page.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import{RegisterDialogComponent} from '../../Homepage/register-dialog/register-dialog.component'
 
 @Component({
   selector: 'header',
@@ -22,6 +24,7 @@ export class HeaderComponent {
 
   constructor(private homePageService: HomePageService
     , private router: Router
+    ,public dialog: MatDialog
   ) {}
 
 
@@ -47,7 +50,24 @@ ngOnInit() {
 }
 
 AddProduct(){
-  this.router.navigate(['/InsertItem'])
+  //this.router.navigate(['/InsertItem'])
+  const dialogRef = this.dialog.open(RegisterDialogComponent, {
+    height: '650px',
+    width: '450px',
+    
+    });
+
+  dialogRef.afterClosed().subscribe((result) => {
+    console.log('The dialog was closed');
+  });
 }
-  
+openRegisterDialog() {
+  const dialogRef = this.dialog.open(RegisterDialogComponent, {
+
+  });
+
+  dialogRef.afterClosed().subscribe((result) => {
+    console.log('The dialog was closed');
+  });
+}
 }

@@ -7,6 +7,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { Item1Component } from './shared/item1/item1.component';
 import { StaticSection1Component } from './static-section1/static-section1.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     HomepageSingleCategoryComponent,
     Item1Component,
     StaticSection1Component,
+    RegisterDialogComponent,
   ],
   imports: [
     CommonModule,
