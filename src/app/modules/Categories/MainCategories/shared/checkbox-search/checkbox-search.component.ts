@@ -2,6 +2,7 @@ import { Component, EventEmitter, HostListener, Input, Output } from '@angular/c
 import { FilterValue } from '../../../../../models/filter-value.model';
 import { Subscription } from 'rxjs';
 import { FiltersService } from '../../../../../core/services/filters.service';
+import { LanguageService } from '../../../../../core/services/language.service';
 
 @Component({
   selector: 'checkbox-search',
@@ -20,15 +21,21 @@ export class CheckboxSearchComponent {
   searchText = '';
   showOptions = false;
   allSelected = false;
+  currentLang: string = 'ar';
   private subscription!: Subscription;
 
-  constructor(private filtersService: FiltersService) {}
+  constructor(private filtersService: FiltersService,private languageService: LanguageService) {}
 
   ngOnInit() {
     this.subscription = this.filtersService.resetFilterTrigger$.subscribe((id) => {
       if (id === this.filterId) {
         this.resetFilter();
       }
+    });
+
+    this.currentLang = this.languageService.getLanguage();
+    this.languageService.language$.subscribe(lang => {
+      this.currentLang = lang;
     });
   }
 

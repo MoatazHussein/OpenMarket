@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from '../../../core/services/category.service';
+import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
   selector: 'categories-header',
@@ -8,13 +9,18 @@ import { CategoryService } from '../../../core/services/category.service';
   styleUrl: './categories-header.component.css'
 })
 export class CategoriesHeaderComponent implements OnInit {
-  lang='ar';
+  currentLang: string = 'ar';
   categories :any;
 
-  constructor(private router: Router,private categoryService: CategoryService) {}
+  constructor(private router: Router,private categoryService: CategoryService,private languageService: LanguageService) {}
 
   ngOnInit(): void {
-    this.loadCategories();
+    this.currentLang = this.languageService.getLanguage();
+    this.languageService.language$.subscribe(lang => {
+      this.currentLang = lang;
+      this.loadCategories();
+    });
+ 
   }
 
   navigateTo(route: any, e : Event): void {
@@ -43,7 +49,7 @@ export class CategoriesHeaderComponent implements OnInit {
   }
 
   loadCategories(): void {
-    this.categoryService.getCategories(1,10,'',this.lang).subscribe({
+    this.categoryService.getCategories(1,10,'',this.currentLang).subscribe({
       next: (data) => {
         for (const key in data) {
           if (data[key].name) {
@@ -61,7 +67,7 @@ export class CategoriesHeaderComponent implements OnInit {
         }
       }
         this.categories = data;
-        if (this.lang =='ar'){
+        if (this.currentLang =='ar'){
            this.categories = [...this.categories].reverse();
         }
 

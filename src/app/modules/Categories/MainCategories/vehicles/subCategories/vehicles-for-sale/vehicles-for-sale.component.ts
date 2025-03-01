@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AllGenericDTO, AttributeDetailsDTO, AttributeService } from '../../../../../../core/services/attributeDetails.service';
 import { map, Observable } from 'rxjs';
 import { FiltersService } from '../../../../../../core/services/filters.service';
+import { LanguageService } from '../../../../../../core/services/language.service';
 
 @Component({
   selector: 'VehiclesforSale',
@@ -31,11 +32,25 @@ export class VehiclesforSaleComponent {
   sortOrder: string = '';
   filterValues: FilterValue[] = [];
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private attributeService: AttributeService,private filtersService: FiltersService) {
+  currentLang: string = 'ar';
+
+
+  constructor(private route: ActivatedRoute, private productService: ProductService, private attributeService: AttributeService,private filtersService: FiltersService,private languageService: LanguageService) {
   }
+  content$: Observable<string> | undefined; // Observable for content that depends on language
 
   ngOnInit() {
     this.getYearlyOptions();
+
+    this.currentLang = this.languageService.getLanguage();
+    this.languageService.language$.subscribe(lang => {
+      this.currentLang = lang;
+      this.loadProducts();
+      this.loadAttributes();
+    });
+
+
+ 
     this.route.paramMap.subscribe(params => {
       this.subCategoryId = Number(params.get('id'));
       this.loadProducts();
@@ -94,7 +109,7 @@ export class VehiclesforSaleComponent {
         next: (response: AllGenericDTO<AttributeDetailsDTO>) => {
           var subCategoryAttributes = response.values.filter(i => i.subCategoryId == this.subCategoryId);
           subCategoryAttributes.forEach(e => {
-            this.filterConfigs.push({ id: e.id, label: e.nameAr, options: '', type: e.type, nameEn: e.nameEn, parentId: e.filterId });
+            this.filterConfigs.push({ id: e.id, label:  this.currentLang == 'ar'?e.nameAr:e.nameEn, options: '', type: e.type, nameEn: e.nameEn, parentId: e.filterId });
           });
           this.FillFilters();
         },
@@ -128,7 +143,7 @@ export class VehiclesforSaleComponent {
   }
 
   getYearlyOptions() {
-    for (var i = (new Date()).getFullYear(); i >= 1970; i--) {
+    for (var i = (new Date()).getFullYear(); i >= 1990; i--) {
       this.yearlyOptions.push(i.toString());
     }
   }

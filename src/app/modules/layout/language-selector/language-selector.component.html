@@ -1,0 +1,6 @@
+<div class="language-container">
+  <button class="language-toggle" [ngClass]="{ 'right': currentLang === 'en', 'left': currentLang === 'ar' }"
+    (click)="toggleLanguage()">
+    {{ currentLang === 'ar' ? 'English' : 'عربي' }}
+  </button>
+</div>

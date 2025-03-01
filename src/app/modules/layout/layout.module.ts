@@ -8,6 +8,7 @@ import { SharedModule } from "../../shared/shared.module";
 import { CategoriesHeaderComponent } from "./categories-header/categories-header.component";
 import { SearchBarComponent } from "./search-bar/search-bar.component";
 import { SpinnerComponent } from "./spinner/spinner.component";
+import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SpinnerComponent } from "./spinner/spinner.component";
         FooterComponent,
         CategoriesHeaderComponent,
         SearchBarComponent,
-        SpinnerComponent
+        SpinnerComponent,
+        LanguageSelectorComponent
     ],
     imports: [
         CommonModule,
