@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FooterComponent } from './footer.component';
+import { SafetyRulesComponent } from './safety-rules.component';
 
-describe('FooterComponent', () => {
-  let component: FooterComponent;
-  let fixture: ComponentFixture<FooterComponent>;
+describe('SafetyRulesComponent', () => {
+  let component: SafetyRulesComponent;
+  let fixture: ComponentFixture<SafetyRulesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FooterComponent]
+      declarations: [SafetyRulesComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(FooterComponent);
+    fixture = TestBed.createComponent(SafetyRulesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -82,7 +82,7 @@ export class VehiclesforSaleComponent {
   }
 
   loadProducts(): void {
-    this.productService.getProducts(this.subCategoryId, this.currentPage + 1, this.pageSize, this.search, this.sortBy = '', this.sortOrder = '', this.filterValues).subscribe({
+    this.productService.getProducts(this.subCategoryId, this.currentPage + 1, this.pageSize, this.search, this.sortBy = 'Date', this.sortOrder = 'desc', this.filterValues).subscribe({
       next: (response) => {
         // console.log("data",response);
         this.paginatedProducts = this.productService.mapProduct(response.products.values);

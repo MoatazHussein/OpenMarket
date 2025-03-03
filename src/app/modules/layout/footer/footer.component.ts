@@ -13,10 +13,10 @@ export class FooterComponent {
   title_04:string = "أخرى";
 
 
-  ElementsColumn_01:any= [{name : "ما هو موقع السوق المفتوح؟",link:"about"},{name : "الخدمات الاعلانية",link:"home"},{name : "خريطة الموقع",link:"contact"},{name : "دول أخرى",link:"home"}];
-  ElementsColumn_02:any= [{name : "مساعدة",link:"about"},{name : "فريق المبيعات",link:"home"},{name : "شروط الاستخدام",link:"contact"},{name : "سياسة الخصوصية",link:"home"},{name:"قواعد السلامة",link:"home"}];
-  ElementsColumn_03:any= [{name : "أسعار و حاسبات",link:"about"},{name : "اسعار ومواصفات السيارات ",link:"home"},{name : "اسعار ومواصفات الموبايل",link:"contact"},{name : "اسعار ومواصفات التابلت",link:"home"},{name:"أسعار ومواصفات العقارات",link:"home"},{name:"حاسبة العقارات",link:"home"},{name:"حاسبة القروض",link:"home"}];
-  ElementsColumn_04:any= [{name : "بيع أي شيء",link:"about"},{name : "اكثر السيارات مبيعا في الكويت",link:"home"},{name : "كلمات وصفية",link:"contact"},{name : "مراكز خدمات السيارات",link:"home"},{name:"أوقات الصلاة",link:"home"}];
+  ElementsColumn_01:any= [{name : "ما هو موقع السوق المفتوح؟",link:"About"},{name : "الخدمات الاعلانية",link:"AdvertisingServices"},{name : "خريطة الموقع",link:"SiteMap"}/*,{name : "دول أخرى",link:"about"}*/];
+  ElementsColumn_02:any= [{name : "مساعدة",link:"Help"},{name : "فريق المبيعات",link:"SalesTeam"},{name : "شروط الاستخدام",link:"TermsOfUse"},{name : "سياسة الخصوصية",link:"PrivacyPolicy"},{name:"قواعد السلامة",link:"SafetyRules"}];
+  ElementsColumn_03:any= [{name : "أسعار و حاسبات",link:"about"},{name : "اسعار ومواصفات السيارات ",link:"about"},{name : "اسعار ومواصفات الموبايل",link:"about"},{name : "اسعار ومواصفات التابلت",link:"about"},{name:"أسعار ومواصفات العقارات",link:"about"},{name:"حاسبة العقارات",link:"about"},{name:"حاسبة القروض",link:"about"}];
+  ElementsColumn_04:any= [{name : "بيع أي شيء",link:"about"},{name : "اكثر السيارات مبيعا في الكويت",link:"about"},{name : "كلمات وصفية",link:"about"},{name : "مراكز خدمات السيارات",link:"about"},{name:"أوقات الصلاة",link:"about"}];
 
 }
 

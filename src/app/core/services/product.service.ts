@@ -44,7 +44,7 @@ export class ProductService {
     );
   }
 
-  getProducts(subCategoryId: number, pageNumber: number=1,pageSize:number=10,search:string='',sortBy:string='',sortOrder:string='',filterValues:FilterValue[]=[]): Observable<any> {
+  getProducts(subCategoryId: number, pageNumber: number=1,pageSize:number=10,search:string='',sortBy:string='Date',sortOrder:string='desc',filterValues:FilterValue[]=[]): Observable<any> {
     var params:any={
       "pageNumber": pageNumber,
       "pageSize": pageSize,

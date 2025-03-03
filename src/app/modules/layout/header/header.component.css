@@ -82,9 +82,11 @@
     border-radius: 1.2rem;
 }
 
-.add-button mat-icon {
+.add-button mat-icon ,
+.sign-up mat-icon{
     margin: 5px;
 }
+
 
 .add-button:hover {
     background-color: rgb(137, 191, 142);

@@ -9,6 +9,14 @@ import { CreateStep2Component } from './modules/ProductCreate/create-step2/creat
 import { CreateStep3Component } from './modules/ProductCreate/create-step3/create-step3.component';
 import { LoginComponent } from './modules/Homepage/login/login.component';
 import { productResolver } from './core/services/productResolver.service';
+import { AboutComponent } from './modules/layout/footer/footer-pages/about/about.component';
+import { AdvertisingServicesComponent } from './modules/layout/footer/footer-pages/advertising-services/advertising-services/advertising-services.component';
+import { SiteMapComponent } from './modules/layout/footer/footer-pages/site-map/site-map/site-map.component';
+import { HelpComponent } from './modules/layout/footer/footer-pages/help/help/help.component';
+import { SalesTeamComponent } from './modules/layout/footer/footer-pages/sales-team/sales-team/sales-team.component';
+import { TermsOfUseComponent } from './modules/layout/footer/footer-pages/terms-of-use/terms-of-use/terms-of-use.component';
+import { PrivacyPolicyComponent } from './modules/layout/footer/footer-pages/privacy-policy/privacy-policy/privacy-policy.component';
+import { SafetyRulesComponent } from './modules/layout/footer/footer-pages/safety-rules/safety-rules/safety-rules.component';
 
 const routes: Routes = [
   { path: 'SubCategory/:id', component: VehiclesforSaleComponent },
@@ -22,6 +30,14 @@ const routes: Routes = [
   { path: 'InsertItem/:id', component: CreateStep2Component },
   { path: 'InsertItem/:id/Details', component: CreateStep3Component },
   { path: 'login', component: LoginComponent },
+  { path: 'About', component: AboutComponent },
+  { path: 'AdvertisingServices', component: AdvertisingServicesComponent },
+  { path: 'SiteMap', component: SiteMapComponent },
+  { path: 'Help', component: HelpComponent },
+  { path: 'SalesTeam', component: SalesTeamComponent },
+  { path: 'TermsOfUse', component: TermsOfUseComponent },
+  { path: 'PrivacyPolicy', component: PrivacyPolicyComponent },
+  { path: 'SafetyRules', component: SafetyRulesComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 
   { path: '**', component: HomePageComponent }, 
 ];
