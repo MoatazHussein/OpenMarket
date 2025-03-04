@@ -17,6 +17,7 @@ import { SalesTeamComponent } from './modules/layout/footer/footer-pages/sales-t
 import { TermsOfUseComponent } from './modules/layout/footer/footer-pages/terms-of-use/terms-of-use/terms-of-use.component';
 import { PrivacyPolicyComponent } from './modules/layout/footer/footer-pages/privacy-policy/privacy-policy/privacy-policy.component';
 import { SafetyRulesComponent } from './modules/layout/footer/footer-pages/safety-rules/safety-rules/safety-rules.component';
+import { AuthGuard } from './core/auth/auth.guard';
 
 const routes: Routes = [
   { path: 'SubCategory/:id', component: VehiclesforSaleComponent },
@@ -26,7 +27,7 @@ const routes: Routes = [
     , component: SingleProductPageComponent
     , resolve: {productData: productResolver}
   },
-  { path: 'InsertItem', component: CreateStep1Component},
+  { path: 'InsertItem', component: CreateStep1Component,canActivate: [AuthGuard] },
   { path: 'InsertItem/:id', component: CreateStep2Component },
   { path: 'InsertItem/:id/Details', component: CreateStep3Component },
   { path: 'login', component: LoginComponent },

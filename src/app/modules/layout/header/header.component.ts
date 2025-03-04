@@ -4,8 +4,8 @@ import { map, Observable, startWith } from 'rxjs';
 import { HomePageService } from '../../../core/services/home-page.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import{RegisterDialogComponent} from '../../Homepage/register-dialog/register-dialog.component'
 import { AuthService } from '../../../core/services/auth.service';
+import { AddProductAccessServiceService } from '../../../core/services/add-product-access-service.service';
 
 @Component({
   selector: 'header',
@@ -27,6 +27,7 @@ export class HeaderComponent {
     , private router: Router
     ,public dialog: MatDialog
     ,private authService :AuthService
+    ,private addProductAccessServiceService :AddProductAccessServiceService
   ) {}
 
 
@@ -55,22 +56,8 @@ ngOnInit() {
 }
 
 AddProduct(){
-  if( this.isLoggedIn){
-
-    this.router.navigate(['/InsertItem'])
-  }else{
-
-  
-  const dialogRef = this.dialog.open(RegisterDialogComponent, {
-    height: '650px',
-    width: '450px',
-    
-    });
-
-  dialogRef.afterClosed().subscribe((result) => {
-    console.log('The dialog was closed');
-  });
-}
+  debugger;
+ this.addProductAccessServiceService.AddProduct();
 }
 Login(){
   this.router.navigateByUrl("/login");

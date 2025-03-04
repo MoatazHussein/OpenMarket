@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AddProductAccessServiceService } from '../../../core/services/add-product-access-service.service';
 
 @Component({
   selector: 'app-static-section1',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class StaticSection1Component {
 
+  constructor(private addProductAccessServiceService: AddProductAccessServiceService
+  ) { }
+
+  AddProduct() {
+    this.addProductAccessServiceService.AddProduct();
+  }
 }
