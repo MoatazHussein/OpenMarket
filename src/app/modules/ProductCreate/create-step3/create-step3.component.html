@@ -14,6 +14,21 @@
             <textarea [formControlName]="'Description'" class="form-control" required="true" rows="5"></textarea>
           </div>
           <div class="form-group">
+            <label> المدينة  </label>
+            <select [formControlName]="'CityID'" class="form-control">
+              <option *ngFor="let option of cityOptions" [value]="option.id">{{ option.name }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>العنوان</label>
+            <input [formControlName]="'Address'" type="text" class="form-control" required="true" min="1">
+          </div>
+          <div class="form-group">
+            <label>رقم التواصل</label>
+            <input [formControlName]="'ContactNumber'" type="text" pattern="^[0-9+()-\s]*$" class="form-control"
+              required="true" min="1">
+          </div>
+          <div class="form-group">
             <label>السعر</label>
             <input [formControlName]="'Price'" type="number" class="form-control" required="true" min="1">
           </div>
@@ -24,61 +39,61 @@
                 {{ attribute.nameEn }}
               </label>
               <input *ngSwitchCase="1" 
-                     [formControlName]="'attribute_' + attribute.id" 
-                     type="text" 
-                     class="form-control">
-              
+              [formControlName]="'attribute_' + attribute.id" 
+              type="text" 
+              class="form-control">
+
               <label *ngSwitchCase="2">
                 {{ attribute.nameEn }}
               </label>
               <input *ngSwitchCase="2" 
-                     [formControlName]="'attribute_' + attribute.id" 
-                     type="number" 
-                     class="form-control">
-              
+              [formControlName]="'attribute_' + attribute.id" 
+              type="number"
+              class="form-control">
+
               <!-- <ng-container *ngIf="attributeOptionsMap[attribute.id].length > 0"> -->
-                <label *ngSwitchCase="0">
-                    {{ attribute.nameEn }}
-                  </label>
-                <select *ngSwitchCase="0" 
-                    [formControlName]="'attribute_' + attribute.id"
-                    class="form-control"
-                    (change)="onAttributeChange(attribute)"
-                    [attr.data-id]="attribute.id"
-                    [attr.data-parent]="attribute.filterId">
-                    <option *ngFor="let option of attributeOptionsMap[attribute.id]" 
-                            [value]="option">
-                        {{ option }}
-                    </option>
-                    </select>
-                <!-- </ng-container> -->
-              
+              <label *ngSwitchCase="0">
+                {{ attribute.nameEn }}
+              </label>
+              <select *ngSwitchCase="0" 
+              [formControlName]="'attribute_' + attribute.id" 
+              class="form-control"
+              (change)="onAttributeChange(attribute)" 
+              [attr.data-id]="attribute.id"
+              [attr.data-parent]="attribute.filterId">
+                <option *ngFor="let option of attributeOptionsMap[attribute.id]" 
+                [value]="option">
+                  {{ option }}
+                </option>
+              </select>
+              <!-- </ng-container> -->
+
             </ng-container>
-    
+
             <!-- Error messages -->
             <div *ngIf="attributeForm.get('attribute_' + attribute.id)?.invalid && 
                         (attributeForm.get('attribute_' + attribute.id)?.dirty || 
                          attributeForm.get('attribute_' + attribute.id)?.touched)" 
-                 class="error-message">
+                         class="error-message">
               Please enter a valid value.
             </div>
           </div>
 
 
           <div class="upload-container">
-            <input
-              type="file"
-              multiple
-              accept="image/*"
-              (change)="onFileSelect($event)"
-              #fileInput
-              style="display: none"
+            <input 
+            type="file" 
+            multiple 
+            accept="image/*"
+            (change)="onFileSelect($event)" 
+             #fileInput
+            style="display: none"
             >
-            
+
             <button type="button" (click)="fileInput.click()">
               اختر الصور
             </button>
-            
+
             <div class="preview-container" *ngIf="previewImages.length">
               <div class="image-preview" *ngFor="let image of previewImages; let i = index">
                 <img [src]="image.url" alt="Preview">
@@ -87,18 +102,18 @@
                 </button>
               </div>
             </div>
-            
+
           </div>
-          
+
           <button type="submit" 
-                  [disabled]="attributeForm.invalid" 
-                  class="btn btn-primary">
+          [disabled]="attributeForm.invalid" 
+          class="btn btn-primary">
             أضف اعلانك الان
           </button>
         </form>
       </div>
     </div>
-    
+
 
 
   </div>
