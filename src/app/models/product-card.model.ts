@@ -1,6 +1,6 @@
 export interface ProductCard {
     id: string;
-    title: string;
+    name: string;
     description: string;
     imagesUrl: string[];
     location: string;
