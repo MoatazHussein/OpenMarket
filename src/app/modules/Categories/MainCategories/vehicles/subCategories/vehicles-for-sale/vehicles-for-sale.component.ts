@@ -5,7 +5,7 @@ import { ProductService } from '../../../../../../core/services/product.service'
 import { FilterValue } from '../../../../../../models/filter-value.model';
 import { ActivatedRoute } from '@angular/router';
 import { AllGenericDTO, AttributeDetailsDTO, AttributeService } from '../../../../../../core/services/attributeDetails.service';
-import { map, Observable } from 'rxjs';
+import { combineLatest, map, Observable } from 'rxjs';
 import { FiltersService } from '../../../../../../core/services/filters.service';
 import { LanguageService } from '../../../../../../core/services/language.service';
 
@@ -42,20 +42,26 @@ export class VehiclesforSaleComponent {
   ngOnInit() {
     this.getYearlyOptions();
 
-    this.currentLang = this.languageService.getLanguage();
-    this.languageService.language$.subscribe(lang => {
-      this.currentLang = lang;
-      this.loadProducts();
-      this.loadAttributes();
-    });
-
-
+    // this.currentLang = this.languageService.getLanguage();
+    // this.languageService.language$.subscribe(lang => {
+    //   console.log("gg",lang);
+    //   this.currentLang = lang;
+    //   this.loadProducts();
+    //   this.loadAttributes();
+    // });
  
-    this.route.paramMap.subscribe(params => {
+    // this.route.paramMap.subscribe(params => {
+    //   this.subCategoryId = Number(params.get('id'));
+    //   this.loadProducts();
+    //   this.loadAttributes();
+    //   // console.log("filterConfigs", this.filterConfigs);
+    // });
+
+    combineLatest([this.languageService.language$, this.route.paramMap]).subscribe(([lang, params]) => {
+      this.currentLang = lang;
       this.subCategoryId = Number(params.get('id'));
-      this.loadProducts();
-      this.loadAttributes();
-      // console.log("filterConfigs", this.filterConfigs);
+        this.loadProducts();
+        this.loadAttributes();
     });
 
       this.filtersService.changedFilter$.subscribe(FilterData => {
