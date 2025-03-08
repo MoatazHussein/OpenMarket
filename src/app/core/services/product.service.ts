@@ -44,7 +44,7 @@ export class ProductService {
     );
   }
 
-  getProducts(subCategoryId: number, pageNumber: number=1,pageSize:number=10,search:string='',sortBy:string='',sortOrder:string='',filterValues:FilterValue[]=[]): Observable<any> {
+  getProducts(subCategoryId: number, pageNumber: number=1,pageSize:number=10,search:string='',sortBy:string='Date',sortOrder:string='desc',filterValues:FilterValue[]=[]): Observable<any> {
     var params:any={
       "pageNumber": pageNumber,
       "pageSize": pageSize,
@@ -93,19 +93,22 @@ export class ProductService {
               AttributeId: attributeId,
               Value: formValues[key]
             });
-          } else {
-            const value = formValues[key];
-            formData.append(key, value);
-          }
+          } else if(key === 'Address'){
+            const value = formValues['Address'];
+            formData.append('Adress', value);
+        } else {
+          const value = formValues[key];
+          formData.append(key, value);
+        }
         }
       }
 
 
       formData.append('SubCategoryID',subCategoryId.toString());
       formData.append('Title', 'test');
-      formData.append('CityID', '1');
-      formData.append('Adress', 'address');
-      formData.append('ContactNumber', '01024458947');
+      // formData.append('CityID', '1');
+      // formData.append('Adress', 'address');
+      // formData.append('ContactNumber', '01024458947');
       formData.append('subCategoryName', 'string');
       formData.append('cityName', 'string');
 

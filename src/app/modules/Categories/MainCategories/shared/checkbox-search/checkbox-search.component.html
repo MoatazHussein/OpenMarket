@@ -1,8 +1,8 @@
 <div class="dropdown-container">
-    <div class="dropdown" (blur)="onBlur()">
+    <div class="dropdown" [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'" (blur)="onBlur()">
         <label class="search-label">{{label}}</label>
         <!-- Search Input -->
-        <input type="text" class="search-input" placeholder="بحث..." [(ngModel)]="searchText" [disabled]="disabled" 
+        <input type="text" class="search-input" [placeholder]="currentLang === 'ar' ? 'بحث...' : 'search...'" [(ngModel)]="searchText" [disabled]="disabled" 
             (focus)="showFilteredOptions()" (input)="filterOptions();onDataChange();" />
 
         <!-- Dropdown Options -->

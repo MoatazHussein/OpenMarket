@@ -47,7 +47,7 @@ export class SingleProductContentComponent implements OnInit, OnChanges, OnDestr
 
   getProducts(){
     this.sub.unsubscribe();
-    this.sub = this.productService.getProducts(this.product.subCategoryId, 1, 5, '', '', 'desc', []).subscribe({
+    this.sub = this.productService.getProducts(this.product.subCategoryId, 1, 5, '', 'Date', 'desc', []).subscribe({
       next: (response) => {
         const productsArr: any[] = response.products.values;
         console.log(productsArr);

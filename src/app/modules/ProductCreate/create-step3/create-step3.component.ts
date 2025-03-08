@@ -3,9 +3,10 @@ import { AllGenericDTO, AttributeDetailsDTO, AttributeService } from '../../../c
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
-import { environment } from '../../../../environments/environment';
 import { ProductService } from '../../../core/services/product.service';
 import { HomePageService } from '../../../core/services/home-page.service';
+import { CityService } from '../../../core/services/city.service';
+import { BaseEntity } from '../../../models/Base-Entity.model';
 
 interface PreviewImage {
   url: string;
@@ -23,16 +24,23 @@ interface AttributeValue {
   styleUrl: './create-step3.component.css'
 })
 export class CreateStep3Component {
-  productName: FormControl = new FormControl('',Validators.required);
-  productDesc: FormControl = new FormControl('',Validators.required);
-  productPrice: FormControl = new FormControl('',Validators.required);
-  productImages: FormControl = new FormControl(null,Validators.required);
+  productName: FormControl = new FormControl('', Validators.required);
+  productDesc: FormControl = new FormControl('', Validators.required);
+  productCityID: FormControl = new FormControl('', Validators.required);
+  productAddress: FormControl = new FormControl('', Validators.required);
+  productContactNumber: FormControl = new FormControl('', Validators.required);
+  productPrice: FormControl = new FormControl('', Validators.required);
+  productImages: FormControl = new FormControl(null, Validators.required);
 
+  cityOptions: BaseEntity[] = [];
   attributes: AttributeDetailsDTO[] = [];
   allAttributes: AttributeDetailsDTO[] = [];
   attributeForm: FormGroup = new FormGroup({
     Name: this.productName,
     Description: this.productDesc,
+    CityID: this.productCityID,
+    Address: this.productAddress,
+    ContactNumber: this.productContactNumber,
     Price: this.productPrice,
     Images: this.productImages
   });
@@ -46,8 +54,9 @@ export class CreateStep3Component {
     private fb: FormBuilder,
     private homepageService: HomePageService,
     private productService: ProductService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private cityService: CityService,
+  ) { }
 
   ngOnInit() {
     const paramId = this.route.snapshot.paramMap.get('id');
@@ -58,8 +67,20 @@ export class CreateStep3Component {
     }
     console.log(this.attributeForm);
     this.loadAttributes();
+    this.loadCities();
   }
 
+  loadCities() {
+    this.cityService.getAllCities()
+      .subscribe({
+        next: (response: BaseEntity[]) => {
+          this.cityOptions = response;
+        },
+        error: (error) => {
+          console.error('Error loading Cities', error);
+        }
+      });
+  }
   loadAttributes() {
     this.attributeService.getAttributesBySubCategory(this.subCategoryId)
       .subscribe({
@@ -67,7 +88,7 @@ export class CreateStep3Component {
           //debugger;
           this.allAttributes = response.values;
           this.attributes = response.values.filter(i => i.subCategoryId == this.subCategoryId);
-          
+
           this.initializeForm();
         },
         error: (error) => {
@@ -78,22 +99,22 @@ export class CreateStep3Component {
 
   initializeForm() {
     const formControls: { [key: string]: any } = {};
-    
+
     this.attributes.forEach(attribute => {
       const controlName = `attribute_${attribute.id}`;
-      if(attribute.type == '0' && attribute.filterId == null){
+      if (attribute.type == '0' && attribute.filterId == null) {
 
         this.attributeService.getDropdownOptions(attribute.id).subscribe(
           {
             next: (r) => {
               this.attributeOptionsMap[attribute.id] = r;
-              
+
             }
           }
         )
       }
-      
-      if(attribute.type == '0' && attribute.filterId != null){
+
+      if (attribute.type == '0' && attribute.filterId != null) {
         formControls[controlName] = [
           { value: '', disabled: true }
           , this.getValidators(attribute)
@@ -105,15 +126,18 @@ export class CreateStep3Component {
           , this.getValidators(attribute)
         ];
       }
-      
+
     });
 
-    
+
     this.attributeForm = this.fb.group(formControls);
-    this.attributeForm.addControl('Name',this.productName);
-    this.attributeForm.addControl('Description',this.productDesc);
-    this.attributeForm.addControl('Price',this.productPrice);
-    this.attributeForm.addControl('Images',this.productImages);
+    this.attributeForm.addControl('Name', this.productName);
+    this.attributeForm.addControl('Description', this.productDesc);
+    this.attributeForm.addControl('CityID', this.productCityID);
+    this.attributeForm.addControl('Address', this.productAddress);
+    this.attributeForm.addControl('ContactNumber', this.productContactNumber);
+    this.attributeForm.addControl('Price', this.productPrice);
+    this.attributeForm.addControl('Images', this.productImages);
   }
 
   getValidators(attribute: AttributeDetailsDTO) {
@@ -125,13 +149,13 @@ export class CreateStep3Component {
   /*getDropdownOptions(attribute: AttributeDetailsDTO) {
     return this.http.get<string[]>(`https://localhost:7012/api/AttributeDetails/dataLimition/${attribute.id}`);
   }*/
-  onAttributeChange(attribute: AttributeDetailsDTO){
+  onAttributeChange(attribute: AttributeDetailsDTO) {
     //debugger;
     const dependentSelects = document.querySelectorAll(`select[data-parent="${attribute.id}"]`);
-    
+
     dependentSelects.forEach((select: any) => {
       const dependentAttributeId = +select.getAttribute('data-id');
-      
+
       select.innerHTML = '<option value=""></option>';
       select.dispatchEvent(new Event('change', { bubbles: true }));
       this.getDropdownOptionsForDependentAttribute(attribute, dependentAttributeId)
@@ -145,7 +169,7 @@ export class CreateStep3Component {
               select.appendChild(optionElement);
               this.attributeForm.get(`attribute_${dependentAttributeId}`)?.enable();
             });
-            
+
           },
           error: (error) => {
             console.error('Error fetching dependent options', error);
@@ -164,7 +188,7 @@ export class CreateStep3Component {
           const filteredOptions = response.detailRows
             .filter(row => row.dataLimition == parentSelectedValue)
             .map(row => row.type);
-          
+
           return filteredOptions;
         })
       );
@@ -175,22 +199,22 @@ export class CreateStep3Component {
     const input = event.target as HTMLInputElement;
     if (input.files) {
       const files = Array.from(input.files);
-      
+
       files.forEach(file => {
         if (file.type.startsWith('image/')) {
           const reader = new FileReader();
-          
+
           reader.onload = () => {
             this.previewImages.push({
               url: reader.result as string,
               file: file
             });
           };
-          
+
           reader.readAsDataURL(file);
         }
       });
-      
+
       this.attributeForm.patchValue({
         Images: files
       });
@@ -213,15 +237,15 @@ export class CreateStep3Component {
     if (this.attributeForm.valid) {
       this.homepageService.isLoading.next(true);
 
-      this.productService.addProduct(this.attributeForm,this.subCategoryId,this.previewImages).subscribe({
+      this.productService.addProduct(this.attributeForm, this.subCategoryId, this.previewImages).subscribe({
         next: () => {
           console.log('Success');
           this.homepageService.isLoading.next(false);
           this.router.navigate(['/home']);
-        },error: (error) => {
+        }, error: (error) => {
           console.error('Error adding product:', error);
           this.homepageService.isLoading.next(false);
-        } 
+        }
       });
 
     }

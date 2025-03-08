@@ -49,7 +49,7 @@ export class HomePageComponent {
     this.categoryService.getSubCategories(1, 5).subscribe(
       (categories: any) => {
         categories.values.forEach((e: any) => {
-          this.productService.getProducts(e.id, 1, 5, '', '', 'desc', []).subscribe({
+          this.productService.getProducts(e.id, 1, 5, '', 'Date', 'desc', []).subscribe({
             next: (response) => {
               const productsArr = response.products.values;
               const products = productsArr.length ? productsArr[productsArr.length - 1] : undefined;
@@ -57,7 +57,7 @@ export class HomePageComponent {
               if (products) {
                 productsArr.forEach((p: any) => {
                   var image = p.productImages[0] ? p.productImages[0] : "assets/placeholder.jpg"
-                  this.products.push({ id: p.id, name: p.title, imageUrl: image, price: p.price });
+                  this.products.push({ id: p.id, name: p.name, imageUrl: image, price: p.price });
                 });
                 this.categorysummary.push({ category: { id: e.id, name: e.nameAr, imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp' }, topProducts: this.products });
               }

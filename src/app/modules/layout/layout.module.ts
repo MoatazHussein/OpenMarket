@@ -8,6 +8,15 @@ import { SharedModule } from "../../shared/shared.module";
 import { CategoriesHeaderComponent } from "./categories-header/categories-header.component";
 import { SearchBarComponent } from "./search-bar/search-bar.component";
 import { SpinnerComponent } from "./spinner/spinner.component";
+import { LanguageSelectorComponent } from './language-selector/language-selector.component';
+import { AboutComponent } from './footer/footer-pages/about/about.component';
+import { AdvertisingServicesComponent } from './footer/footer-pages/advertising-services/advertising-services/advertising-services.component';
+import { SiteMapComponent } from './footer/footer-pages/site-map/site-map/site-map.component';
+import { HelpComponent } from './footer/footer-pages/help/help/help.component';
+import { SalesTeamComponent } from './footer/footer-pages/sales-team/sales-team/sales-team.component';
+import { TermsOfUseComponent } from './footer/footer-pages/terms-of-use/terms-of-use/terms-of-use.component';
+import { PrivacyPolicyComponent } from './footer/footer-pages/privacy-policy/privacy-policy/privacy-policy.component';
+import { SafetyRulesComponent } from './footer/footer-pages/safety-rules/safety-rules/safety-rules.component';
 
 
 @NgModule({
@@ -17,7 +26,16 @@ import { SpinnerComponent } from "./spinner/spinner.component";
         FooterComponent,
         CategoriesHeaderComponent,
         SearchBarComponent,
-        SpinnerComponent
+        SpinnerComponent,
+        LanguageSelectorComponent,
+        AboutComponent,
+        AdvertisingServicesComponent,
+        SiteMapComponent,
+        HelpComponent,
+        SalesTeamComponent,
+        TermsOfUseComponent,
+        PrivacyPolicyComponent,
+        SafetyRulesComponent
     ],
     imports: [
         CommonModule,
