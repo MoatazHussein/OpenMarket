@@ -12,6 +12,7 @@ import { ProductCreateModule } from './modules/ProductCreate/productCreate.modul
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/services/interceptors/auth.service';
+import { AccountModule } from './modules/account/account.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -26,7 +27,8 @@ import { AuthInterceptor } from './core/services/interceptors/auth.service';
     HomepageModule,
     CategoriesModule,
     ProductCreateModule,
-    HttpClientModule
+    HttpClientModule,
+    AccountModule
   ],
   providers: [
     provideAnimationsAsync(),

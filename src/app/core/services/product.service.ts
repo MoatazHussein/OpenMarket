@@ -148,4 +148,8 @@ export class ProductService {
     const url = `${this.productsApiUrl}/${productID}`;
     return this.http.get(url);
   }
+  getUserProducts(){
+    const url = `${this.productsApiUrl}/User`;
+    return this.http.get<any>(url);
+  }
 }
