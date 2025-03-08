@@ -9,6 +9,9 @@ import { CreateStep2Component } from './modules/ProductCreate/create-step2/creat
 import { CreateStep3Component } from './modules/ProductCreate/create-step3/create-step3.component';
 import { LoginComponent } from './modules/Homepage/login/login.component';
 import { productResolver } from './core/services/productResolver.service';
+import { AccountDashboardComponent } from './modules/account/account-dashboard.component';
+import { AccountDetailsComponent } from './modules/account/account-details/account-details.component';
+import { AccountProductsComponent } from './modules/account/account-products/account-products.component';
 
 const routes: Routes = [
   { path: 'SubCategory/:id', component: VehiclesforSaleComponent },
@@ -22,6 +25,10 @@ const routes: Routes = [
   { path: 'InsertItem/:id', component: CreateStep2Component },
   { path: 'InsertItem/:id/Details', component: CreateStep3Component },
   { path: 'login', component: LoginComponent },
+  { path: 'account', component: AccountDashboardComponent, children: [
+    {path: 'details', component: AccountDetailsComponent},
+    {path: 'items', component: AccountProductsComponent}
+  ] },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 
   { path: '**', component: HomePageComponent }, 
 ];
