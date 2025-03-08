@@ -1,0 +1,17 @@
+<section>
+    <div class="container">
+        <div class="row rtl">
+            <div class="col-md-3 mt-4">
+                <div class="list-group">
+                    <a [routerLink]="['/account','details']" class="list-group-item list-group-item-action" routerLinkActive="active" aria-current="true">
+                      حسابي
+                    </a>
+                    <a [routerLink]="['/account','items']" class="list-group-item list-group-item-action" routerLinkActive="active">اعلاناتي</a>
+                  </div>
+            </div>
+            <div class="col-md-9 mt-4">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section>

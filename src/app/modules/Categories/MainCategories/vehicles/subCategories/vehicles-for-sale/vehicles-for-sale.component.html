@@ -4,7 +4,7 @@
   </div>
   <div class="product-container">
     <div class="product-card" *ngFor="let product of paginatedProducts">
-      <product-card [image]='product.imagesUrl[0] || "assets/placeholder.jpg"' [title]="product.title"
+      <product-card [image]='product.imagesUrl[0] || "assets/placeholder.jpg"' [title]="product.name"
         [description]="product.description" [location]="product.location" [mobile]="product.mobile"
         [price]="product.price" [currency]="currency" [navigateTo]="product.navigateTo" [id]="product.id">
       </product-card>

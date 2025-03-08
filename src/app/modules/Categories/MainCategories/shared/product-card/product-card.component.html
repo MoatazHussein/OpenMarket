@@ -20,11 +20,11 @@
                     <button mat-raised-button color="accent" class="call-button" (click)="onCallButtonClick($event)">
                         <mat-icon>call</mat-icon>
                         {{modifiedMobile}} </button>
-                    <button mat-raised-button color="accent" class="chat-button" (click)="onChatButtonClick($event)">
+                    <button mat-raised-button color="accent" class="chat-button d-none" (click)="onChatButtonClick($event)">
                         <mat-icon>chat </mat-icon>
                         دردش
                     </button>
-                    <button mat-raised-button color="accent" class="favorite-button"
+                    <button mat-raised-button color="accent" class="favorite-button d-none"
                         (click)="onFavoriteButtonClick($event)">
                         <mat-icon>favorite</mat-icon>
                     </button>
