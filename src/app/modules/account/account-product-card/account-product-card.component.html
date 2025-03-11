@@ -1,0 +1,34 @@
+<div class="card mb-3 text-end product-card" dir="rtl" style="max-width: 840px;">
+    <div class="row g-0">
+        <!-- Left: Image -->
+        <div class="col-md-4 product-image ">
+            <img [src]="image" alt="product"/>
+        </div>
+        <!-- Right: Content -->
+        <div class="col-md-6">
+            <div class="card-body p-0">
+                <h4 class="card-title">القسم: {{subCategoryName}}</h4>
+                <h5 class="card-title">{{name}}</h5>
+                <p class="card-text">
+                    {{description}}
+                </p>
+                <p class="card-text">
+                    <small class="text-body-secondary d-block">{{location}}</small>
+                    <small class="text-body-secondary">{{contactNumber}}</small>
+                </p>
+            </div>
+            <!-- Footer: Buttons and Price -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap p-0">
+                <!-- Buttons -->
+                <div class="d-flex gap-2 flex-wrap action-buttons">
+                    
+                </div>
+                <!-- Price -->
+                <p class="mb-0 fw-bold text-start me-auto product-price" style="white-space: nowrap;"> {{price}} {{'دينار'}}</p>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button mat-raised-button color="accent" class="add-button mt-5" (click)="PayProduct()">Pay</button>
+        </div>
+    </div>
+</div>

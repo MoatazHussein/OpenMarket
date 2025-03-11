@@ -5,12 +5,16 @@ import { SharedModule } from "../../shared/shared.module";
 import { AccountDetailsComponent } from "./account-details/account-details.component";
 import { AccountDashboardComponent } from "./account-dashboard.component";
 import { AccountProductsComponent } from "./account-products/account-products.component";
+import { AccountProductCardComponent } from "./account-product-card/account-product-card.component";
+import { AccountPayComponent } from "./account-pay/account-pay.component";
 
 @NgModule({
   declarations: [
     AccountDashboardComponent,
     AccountDetailsComponent,
-    AccountProductsComponent
+    AccountProductsComponent,
+    AccountProductCardComponent,
+    AccountPayComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +24,9 @@ import { AccountProductsComponent } from "./account-products/account-products.co
   exports: [
     AccountDashboardComponent,
     AccountDetailsComponent,
-    AccountProductsComponent
+    AccountProductsComponent,
+    AccountProductCardComponent,
+    AccountPayComponent
   ],
 })
 

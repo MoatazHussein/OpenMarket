@@ -1,11 +1,5 @@
-<div class="card">
-    <ul class="list-group list-group-flush" style="padding: 0;">
-      <li *ngFor="let product of products" class="list-group-item rtl">
-        <div class="d-flex" style="gap: 20px;">
-            <div>{{product.subCategoryName}}</div>
-            <div>{{product.name}}</div>
-            <div>({{product.price}} دينار)</div>
-        </div>
-      </li>
-    </ul>
+<div class="">
+      <div *ngFor="let product of products" class="rtl">
+        <account-product-card [image]="product.productImages[0]" [name]="product.name" [price]="product.price" [description]="product.description" [subCategoryName]="product.subCategoryName" [location]="product.cityName" [contactNumber]="product.contactNumber" [id]="product.id"></account-product-card>
+      </div>
   </div>
