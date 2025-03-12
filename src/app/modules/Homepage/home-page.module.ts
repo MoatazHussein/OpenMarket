@@ -9,6 +9,7 @@ import { StaticSection1Component } from './static-section1/static-section1.compo
 import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 import { LoginComponent } from './login/login.component';
+import { LandingSliderComponent } from './landing-slider/landing-slider.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LoginComponent } from './login/login.component';
     StaticSection1Component,
     RegisterDialogComponent,
     LoginComponent,
+    LandingSliderComponent,
   ],
   imports: [
     CommonModule,
