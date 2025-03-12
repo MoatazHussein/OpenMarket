@@ -7,7 +7,7 @@ import { HomePageService } from './core/services/home-page.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'OpenMarket';
+  title = 'Waseelati';
   isLoading = false;
   constructor(private homepageService: HomePageService){
 
