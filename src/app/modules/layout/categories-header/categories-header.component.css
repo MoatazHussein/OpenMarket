@@ -25,6 +25,11 @@
     transition: background 0.3s ease; /* Smooth hover effect */
   }
 
+  .category:last-child .subcategories{
+    right: 0;
+    left: auto;
+  }
+
   .category span{
     font-size: large;
     font-weight: bolder;
