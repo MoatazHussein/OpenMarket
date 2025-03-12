@@ -25,6 +25,9 @@ body {
   --mdc-filled-text-field-container-color: white; /* Default color */
   --bs-primary: #0061fe;
   --swiper-navigation-size: 20px;
+  --primary-color: #6b2327;
+  --secondary-color: #15080a;
+  --third-color: #ffffff;     
 }
 
 a {

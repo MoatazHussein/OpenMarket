@@ -97,3 +97,7 @@ a .user{
     left: 24px;
     bottom: 5px;
 }
+
+.call-button {
+    background-color: var(--primary-color);
+}
