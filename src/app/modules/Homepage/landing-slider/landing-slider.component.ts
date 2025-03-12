@@ -29,6 +29,7 @@ export class LandingSliderComponent {
     navigation: true,
     autoplay: { delay: 3000, disableOnInteraction: false },
     speed: 1000, 
+    loop: true, 
   };
 
 }
