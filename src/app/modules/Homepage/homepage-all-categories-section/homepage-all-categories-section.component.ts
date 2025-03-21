@@ -34,7 +34,7 @@ export class HomepageAllCategoriesSectionComponent {
     this.categoryService.getSubCategories(1, 20).subscribe(
       (categories: any) => {
         categories.values.forEach((e: any) => {
-          this.subCategories.push({ id: e.id, name: this.lang == 'ar' ? e.nameAr : e.nameEn, imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp' })
+          this.subCategories.push({ id: e.id, name: this.lang == 'ar' ? e.nameAr : e.nameEn, imageUrl: e.imageURL })
         })
       }
     );

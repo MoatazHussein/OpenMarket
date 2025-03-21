@@ -30,6 +30,8 @@ export class CategoryService {
       .set('pageNumber', pageNumber.toString())
       .set('pageSize', pageSize.toString())
       .set('search', search);
-    return this.http.get<any[]>(this.subCategoriesApiUrl);
+    return this.http.get<any[]>(this.subCategoriesApiUrl,{
+      params: params
+    });
   }
 }
