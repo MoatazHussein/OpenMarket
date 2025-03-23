@@ -1,6 +1,10 @@
 .terms-of-use {
-    min-height: 20rem;
+    min-height: 10rem;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.term-element{
+    direction: rtl;
+    margin: 40px;
 }
