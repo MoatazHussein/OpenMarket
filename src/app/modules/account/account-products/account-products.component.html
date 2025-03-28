@@ -1,5 +1,5 @@
 <div class="">
       <div *ngFor="let product of products" class="rtl">
-        <account-product-card [image]="product.productImages[0]" [name]="product.name" [price]="product.price" [description]="product.description" [subCategoryName]="product.subCategoryName" [location]="product.cityName" [contactNumber]="product.contactNumber" [id]="product.id"></account-product-card>
+        <account-product-card [image]="product.productImages[0]" [name]="product.name" [price]="product.price" [description]="product.description" [subCategoryName]="product.subCategoryName" [location]="product.cityName" [contactNumber]="product.contactNumber" [id]="product.id" [IsApproved]="product.isApproved" [IsPaid]="product.isPaid" [PaidUntilDate]="product.paidUntilDate"></account-product-card>
       </div>
   </div>

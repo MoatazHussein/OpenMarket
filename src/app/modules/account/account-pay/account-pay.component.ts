@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, Input, model } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CategoryService } from '../../../core/services/category.service';
 
 @Component({
   selector: 'account-pay',
@@ -22,7 +23,8 @@ export class AccountPayComponent {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private categoryService: CategoryService
   ) {
     this.daysForm = this.fb.group({
       days: ['', [Validators.required, Validators.min(1), Validators.pattern('^[0-9]*$')]],
@@ -32,7 +34,6 @@ export class AccountPayComponent {
   }
 
   ngOnInit(): void {
-    // Set the productId value when the component initializes
     this.daysForm.patchValue({
       productId: this.data.productID,
       rate: this.data.rate

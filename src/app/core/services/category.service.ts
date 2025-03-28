@@ -34,4 +34,10 @@ export class CategoryService {
       params: params
     });
   }
+
+  getProductPricePerDay(productID: string){
+    //let params = new HttpParams().set('productId', productID);
+
+    return this.http.get<{pricePerDay: number}>(this.subCategoriesApiUrl + '/GetPricePerDay/'+productID);
+  }
 }

@@ -2,6 +2,7 @@ import { Component, inject, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AccountPayComponent } from '../account-pay/account-pay.component';
+import { CategoryService } from '../../../core/services/category.service';
 
 @Component({
   selector: 'account-product-card',
@@ -10,7 +11,7 @@ import { AccountPayComponent } from '../account-pay/account-pay.component';
 })
 export class AccountProductCardComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private categoryService: CategoryService) {}
 
   @Input() image: string="";
   @Input() name: string="";
@@ -20,22 +21,43 @@ export class AccountProductCardComponent {
   @Input() id:string="";
   @Input() subCategoryName:string="";
   @Input() contactNumber:string="";
+  @Input() IsApproved:boolean=false;
+  @Input() IsPaid:boolean=false;
+  @Input() PaidUntilDate:Date= new Date(1900,1,1);
   dialog = inject(MatDialog);
+  rate: number = 0;
 
 
   ngOnInit() {
+    // this.dialog.afterOpened.subscribe({
+    //   next: (ref) => {
+    //     this.categoryService.getProductPricePerDay(this.id).subscribe({
+    //       next: (d) => {
+    //         this.rate = d.pricePerDay;
+    //         console.log(this.rate);
+    //       }
+    //     })
+    //   }
+    // });
   }
 
   PayProduct() {
-    this.dialog.open(AccountPayComponent, {
-      height: '400px',
-      width: '600px',
-      data: {
-        name: this.name,
-        productID: this.id,
-        rate: 1
-      },
-    });
+    this.categoryService.getProductPricePerDay(this.id).subscribe({
+      next: (d) => {
+        this.rate = d.pricePerDay;
+        console.log(this.rate);
+        this.dialog.open(AccountPayComponent, {
+          height: '400px',
+          width: '600px',
+          data: {
+            name: this.name,
+            productID: this.id,
+            rate: this.rate
+          },
+        });
+      }
+    })
+    
   }
 
 }

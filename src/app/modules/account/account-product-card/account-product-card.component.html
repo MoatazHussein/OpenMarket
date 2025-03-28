@@ -7,7 +7,7 @@
         <!-- Right: Content -->
         <div class="col-md-6">
             <div class="card-body p-0">
-                <h4 class="card-title">القسم: {{subCategoryName}}</h4>
+                <h4 class="card-title">القسم: {{subCategoryName}} ({{IsApproved ? 'Approved' : 'Not Approved'}})</h4>
                 <h5 class="card-title">{{name}}</h5>
                 <p class="card-text">
                     {{description}}
@@ -20,14 +20,14 @@
             <!-- Footer: Buttons and Price -->
             <div class="d-flex justify-content-between align-items-center flex-wrap p-0">
                 <!-- Buttons -->
-                <div class="d-flex gap-2 flex-wrap action-buttons">
-                    
+                <div class="d-flex gap-2 flex-wrap action-buttons" *ngIf="IsPaid == true">
+                    مدفوع حتى {{PaidUntilDate | date:'dd-MM-yyyy'}}
                 </div>
                 <!-- Price -->
                 <p class="mb-0 fw-bold text-start me-auto product-price" style="white-space: nowrap;"> {{price}} {{'دينار'}}</p>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2" *ngIf="IsApproved == true">
             <button mat-raised-button color="accent" class="add-button mt-5" (click)="PayProduct()">Pay</button>
         </div>
     </div>
