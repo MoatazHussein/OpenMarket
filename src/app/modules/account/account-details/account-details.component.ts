@@ -47,7 +47,7 @@ export class AccountDetailsComponent implements OnInit {
       fullName: ['', [Validators.required]],
       birthDate: ['', [Validators.required]],
       isMale: [true],
-      phone: ['', [Validators.maxLength(15)]],
+      phone: [{value: '', disabled: true}, [Validators.required,Validators.maxLength(15)]],
       email: [{value: '', disabled: true}, [Validators.required]]
     });
   }

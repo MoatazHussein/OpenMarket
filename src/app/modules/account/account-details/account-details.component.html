@@ -56,7 +56,7 @@
       
       <div class="form-group">
         <label for="phone">Phone</label>
-        <input type="tel" id="phone" formControlName="phone">
+        <input type="tel" id="phone" formControlName="phone" class="disabled-input">
         <div *ngIf="userForm.get('phone')?.errors?.['maxlength']" class="error">
           Phone number must be less than 15 characters
         </div>
