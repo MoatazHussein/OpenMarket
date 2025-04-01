@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { VerificationDialogComponent } from '../register-dialog/verification-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -38,10 +41,22 @@ export class LoginComponent {
         this.snackBar.open('✅ Login successful!', 'Close', { duration: 3000 });
         this.router.navigate(['/dashboard']); 
       },
-      error: () => {
-        this.snackBar.open('❌ Login failed. Check your credentials.', 'Close', { duration: 3000 });
+      error: (err) => {
+        if(err.error.includes('Account Not Verrified')){
+          let pho = err.error.split(':')[1];
+          this.openVerificationDialog(pho);
+        } else {
+          this.snackBar.open('❌ Login failed. Check your credentials.', 'Close', { duration: 3000 });
+        }
       },
       complete: () => (this.isLoading = false)
     });
   }
+
+  openVerificationDialog(phone: string) {
+      this.dialog.open(VerificationDialogComponent, {
+        width: '400px',
+        data: { phone: phone }
+      });
+    }
 }

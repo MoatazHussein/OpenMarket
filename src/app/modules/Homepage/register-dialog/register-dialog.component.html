@@ -23,12 +23,13 @@
 
 
     <mat-form-field appearance="outline">
-      <mat-label>Phone</mat-label>
-      <input matInput formControlName="phone" />
+      <span matTextPrefix>+965 &nbsp;</span>
+      <input matInput formControlName="phone" placeholder="Phone"/>
     </mat-form-field>
-    <mat-slide-toggle formControlName="isMale">Male</mat-slide-toggle>
 
-    <input type="file" (change)="onFileSelected($event)" />
+    <mat-slide-toggle style="display: block;margin: 20px 0;" formControlName="isMale">Male</mat-slide-toggle>
+
+    <input type="file" formControlName="profilePicture" (change)="onFileSelected($event)" required />
 
     <mat-dialog-actions align="end">
       <button mat-button (click)="dialogRef.close()">Cancel</button>

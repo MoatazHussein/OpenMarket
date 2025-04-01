@@ -10,6 +10,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 import { LoginComponent } from './login/login.component';
 import { LandingSliderComponent } from './landing-slider/landing-slider.component';
+import { VerificationDialogComponent } from './register-dialog/verification-dialog.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { LandingSliderComponent } from './landing-slider/landing-slider.componen
     RegisterDialogComponent,
     LoginComponent,
     LandingSliderComponent,
+    VerificationDialogComponent
   ],
   imports: [
     CommonModule,
