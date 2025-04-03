@@ -22,13 +22,13 @@ export class HomePageComponent {
     items: ['الوصول إلى الملايين من المشترين', 'أضف إعلانك وبيع أي شيء', 'بيع كل ما تريده بأفضل الأسعار'],
     bText: 'احصل على اعلانات اكثر',
     bLink: '',
-    imgUrl: 'https://opensooqui2.os-cdn.com/prod/public/images/entryPoints/addNewListing.webp'
+    imgUrl: 'https://waseelatidashboard.premiumasp.net/Images/Icons/1.png'
   }, {
-    header: ' 2بيع ما لا تحتاج واكسب المال',
-    items: ['2الوصول إلى الملايين من المشترين', '2أضف إعلانك وبيع أي شيء', 'بيع كل ما تريده بأفضل 2الأسعار'],
-    bText: 'اضف اعلانك الان',
+    header: 'احصل على إعلانات أكثر و بيع بشكل أسرع',
+    items: ['احصل على خصم', 'أضف إعلانات أكثر وبيع أكثر','اكسب مال أكثر'],
+    bText: 'احصل على إعلانات أكثر',
     bLink: '',
-    imgUrl: 'https://opensooqui2.os-cdn.com/prod/public/images/entryPoints/addNewListing.webp'
+    imgUrl: 'https://waseelatidashboard.premiumasp.net/Images/Icons/20.png'
   }];
   category: Category = {
     id: 5,

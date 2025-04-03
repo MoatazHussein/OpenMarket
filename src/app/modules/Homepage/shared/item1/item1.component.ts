@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AddProductAccessServiceService } from '../../../../core/services/add-product-access-service.service';
 
 @Component({
   selector: 'app-item1',
@@ -7,4 +8,12 @@ import { Component, Input } from '@angular/core';
 })
 export class Item1Component {
   @Input() itemData: any;
+
+   constructor(private addProductAccessServiceService :AddProductAccessServiceService
+    ) {}
+
+  AddProduct(){
+    debugger;
+   this.addProductAccessServiceService.AddProduct();
+  }
 }
