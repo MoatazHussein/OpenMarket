@@ -22,13 +22,16 @@ export class LoginComponent {
     private router: Router,
     private dialog: MatDialog
   ) {
+    // this.loginForm = this.fb.group({
+    //   email: ['', [Validators.required, Validators.email]],
+    //   password: ['', [Validators.required, Validators.minLength(6)]]
+    // });
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      phone: ['', [Validators.required]]
     });
   }
 
-  login() {
+  Old_login() {
     if (this.loginForm.invalid) {
       this.snackBar.open('Please enter valid credentials', 'Close', { duration: 3000 });
       return;
@@ -48,6 +51,27 @@ export class LoginComponent {
         } else {
           this.snackBar.open('❌ Login failed. Check your credentials.', 'Close', { duration: 3000 });
         }
+      },
+      complete: () => (this.isLoading = false)
+    });
+  }
+
+  login() {
+    if (this.loginForm.invalid) {
+      this.snackBar.open('Please enter valid phone', 'Close', { duration: 3000 });
+      return;
+    }
+
+    this.authService.login('+965' + this.loginForm.get('phone')?.value).subscribe({
+      next: (res) => {
+        if(res){
+          this.openVerificationDialog('+965' + this.loginForm.get('phone')?.value);
+        } else {
+          this.snackBar.open('❌ Login failed. Number Not Exist', 'Close', { duration: 3000 });
+        }
+      },
+      error: (err) => {
+        this.snackBar.open('❌ Login failed. Check your credentials.', 'Close', { duration: 3000 });
       },
       complete: () => (this.isLoading = false)
     });

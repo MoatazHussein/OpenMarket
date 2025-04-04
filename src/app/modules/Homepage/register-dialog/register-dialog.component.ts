@@ -71,7 +71,7 @@ export class RegisterDialogComponent {
       },
       error: (error) => {
         console.error('Registration failed', error);
-        this.snackBar.open(`❌ Register Failed ${error.message}`, 'Close', { duration: 3000 });
+        this.snackBar.open(`❌ Register Failed ${error.error}`, 'Close', { duration: 3000 });
 
       }
     });

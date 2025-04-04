@@ -15,17 +15,25 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(credentials: { email: string; password: string }): Observable<any> {
+  Old_login(credentials: { email: string; password: string }): Observable<any> {
     return this.http.post(`${this.baseUrl}/login`, credentials).pipe(
       tap((response: any) => {
         if (response.token) {
-          localStorage.setItem('token', response.token);
+          //localStorage.setItem('token', response.token);
+          document.cookie = `token=${response.token}; max-age=${60*60*24}; path=/; SameSite=None; Secure`;
           this.isLoggedInSubject.next(true);        }
       })
     );
   }
+  login(phone: string): Observable<any> {
+    let params = new HttpParams()
+    .set('phoneNumber', phone);
+
+    return this.http.get(`${this.baseUrl}/IsPhoneExisted`, {params});
+  }
 logOut(){
-  localStorage.removeItem('token');
+  //localStorage.removeItem('token');
+  document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=None; Secure`;
   this.setLoggedIn(false);
 }
   register(data: FormData): Observable<any> {
@@ -37,7 +45,8 @@ logOut(){
   }
 
   logout() {
-    localStorage.removeItem('token');
+    //localStorage.removeItem('token');
+    document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=None; Secure`;
     this.isLoggedInSubject.next(false);
   }
 
@@ -48,7 +57,16 @@ logOut(){
     const params = new HttpParams()
     .set('phoneNumber', data.phone)
     .set('code', data.code);
-    return this.http.post<any>(`${this.baseUrl}/Activate`, null, { params });
+    return this.http.post<any>(`${this.baseUrl}/Activate`, null, { params }).pipe(
+      tap((response) => {
+        debugger;
+        if(response?.isAuthenticated){
+          //localStorage.setItem('token', response.token);
+          document.cookie = `token=${response.token}; max-age=${60*60*24}; path=/; SameSite=None; Secure`;
+          this.isLoggedInSubject.next(true);
+        }
+      })
+    );
   }
   ResendCode(phone: string) {
     const params = new HttpParams()
@@ -58,6 +76,22 @@ logOut(){
   }
 
   private hasToken(): boolean {
-    return !!localStorage.getItem('token');
+    const token = this.getCookie('token');
+    return !!token;
+  }
+  getCookie(cname: string){
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
   }
 }
