@@ -3,7 +3,7 @@
       <mat-card-title>Login</mat-card-title>
       <mat-card-content>
         <form [formGroup]="loginForm" (ngSubmit)="login()">
-          <mat-form-field appearance="outline" class="full-width">
+          <!-- <mat-form-field appearance="outline" class="full-width">
             <mat-label>Email</mat-label>
             <input matInput formControlName="email" type="email" placeholder="Enter your email">
             <mat-error *ngIf="loginForm.get('email')?.invalid">Valid email is required</mat-error>
@@ -13,6 +13,11 @@
             <mat-label>Password</mat-label>
             <input matInput formControlName="password" type="password" placeholder="Enter your password">
             <mat-error *ngIf="loginForm.get('password')?.invalid">Password is required (min 6 chars)</mat-error>
+          </mat-form-field> -->
+          <mat-form-field appearance="outline">
+            <span matTextPrefix>+965 &nbsp;</span>
+            <input matInput formControlName="phone" placeholder="Phone"/>
+            <mat-error *ngIf="loginForm.get('phone')?.invalid">Valid Phone is required</mat-error>
           </mat-form-field>
   
           <button mat-raised-button color="primary" type="submit" class="full-width" [disabled]="isLoading">

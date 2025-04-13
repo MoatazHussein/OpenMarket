@@ -84,11 +84,11 @@ export class VerificationDialogComponent {
 
     this.authService.verifyAccount(verificationData).subscribe({
       next: (response) => {
-        this.snackBar.open('Account verified successfully!', 'Close', {
+        this.snackBar.open('Login successfully!', 'Close', {
           duration: 3000,
         });
         this.dialogRef.close();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/home']);
       },
       error: (error) => {
         console.error('Verification failed', error);
@@ -134,6 +134,7 @@ export class VerificationDialogComponent {
     this.clearTimers();
   }
   ngOnInit(){
+    this.resendCode();
     this.startTimer();
   }
 
