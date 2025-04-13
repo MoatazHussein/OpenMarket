@@ -3,7 +3,7 @@
     <sidebar-search [filters]="filterConfigs"></sidebar-search>
   </div>
   <div class="product-container">
-    <div class="product-card" *ngFor="let product of paginatedProducts">
+    <div class="product-card" *ngFor="let product of paginatedProducts; trackBy: trackProductById">
       <product-card [image]='product.imagesUrl[0] || "assets/placeholder.jpg"' [title]="product.name"
         [description]="product.description" [location]="product.location" [mobile]="product.mobile"
         [price]="product.price" [currency]="currency" [navigateTo]="product.navigateTo" [id]="product.id">

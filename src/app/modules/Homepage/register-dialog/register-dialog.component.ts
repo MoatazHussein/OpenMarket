@@ -25,13 +25,13 @@ export class RegisterDialogComponent {
     private dialog: MatDialog
   ) {
     this.registerForm = this.fb.group({
-      fullName: ['', Validators.required],
-      birthDate: ['', Validators.required],
-      isMale: [true, Validators.required],
+      // fullName: ['', Validators.required],
+      // birthDate: ['', Validators.required],
+      // isMale: [true, Validators.required],
       phone: ['', [Validators.required,Validators.maxLength(15)]],
-      profilePicture: [null, Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      email: ['', [Validators.required, Validators.email]]
+      // profilePicture: [null, Validators.required],
+      // password: ['', [Validators.required, Validators.minLength(6)]],
+      // email: ['', [Validators.required, Validators.email]]
     });
   }
 

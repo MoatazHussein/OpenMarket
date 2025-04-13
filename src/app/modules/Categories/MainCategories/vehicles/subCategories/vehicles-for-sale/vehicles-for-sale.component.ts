@@ -215,4 +215,8 @@ export class VehiclesforSaleComponent {
       );
 
   }
+
+  trackProductById(index: number, item: any): any {
+    return item.id;
+  }
 }
