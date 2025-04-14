@@ -20,7 +20,7 @@
             <mat-error *ngIf="loginForm.get('phone')?.invalid">Valid Phone is required</mat-error>
           </mat-form-field>
   
-          <button mat-raised-button color="primary" type="submit" class="full-width" [disabled]="isLoading">
+          <button type="submit" class="full-width theme-button" [disabled]="isLoading">
             <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
             Login
           </button>

@@ -42,12 +42,9 @@ button{
     align-items: center;
     justify-content: center;
     border: 1px solid transparent;
-    color: rgb(255, 255, 255);
+    /* color: rgb(255, 255, 255); */
     border-radius: 8px;
     text-align: center;
     font-weight: bold;
-    background-color: #0061fe;
-}
-button:hover{
-    background-color: #1565c0;
+    /* background-color: #0061fe; */
 }

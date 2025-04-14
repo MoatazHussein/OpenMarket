@@ -16,6 +16,7 @@
 }
 .no-results {
   min-width: 58.5rem;
+  min-height: 8rem;
   text-align: center;
 }
 

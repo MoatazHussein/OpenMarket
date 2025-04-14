@@ -17,14 +17,14 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap p-3">
                 <!-- Buttons -->
                 <div class="d-flex gap-2 flex-wrap action-buttons">
-                    <button mat-raised-button color="accent" class="call-button" (click)="onCallButtonClick($event)">
+                    <button class="call-button theme-button" (click)="onCallButtonClick($event)">
                         <mat-icon>call</mat-icon>
                         {{modifiedMobile}} </button>
-                    <button mat-raised-button color="accent" class="chat-button d-none" (click)="onChatButtonClick($event)">
+                    <button class="chat-button d-none theme-button" (click)="onChatButtonClick($event)">
                         <mat-icon>chat </mat-icon>
                         دردش
                     </button>
-                    <button mat-raised-button color="accent" class="favorite-button d-none"
+                    <button class="favorite-button d-none theme-button"
                         (click)="onFavoriteButtonClick($event)">
                         <mat-icon>favorite</mat-icon>
                     </button>

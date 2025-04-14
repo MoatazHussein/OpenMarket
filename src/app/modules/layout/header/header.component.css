@@ -70,16 +70,7 @@
 }
 
 .add-button {
-    min-width: 10rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: large;
-    background-color: rgb(121, 235, 132);
-    border: none;
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 1.2rem;
+    min-width: 15rem;
 }
 
 .add-button mat-icon ,
@@ -89,11 +80,13 @@
 
 .sign-up:hover,
 .add-button:hover {
-    background-color: rgb(137, 191, 142);
+    /* background-color: rgb(137, 191, 142); */
+    background-color:rgb(68, 18, 18);
 }
 
 button {
-    cursor: pointer;
+    min-width: 8rem;
+    margin: 0.8rem;
 }
 
 .action-buttons{

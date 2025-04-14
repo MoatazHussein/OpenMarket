@@ -23,7 +23,6 @@
 
 .action-buttons button {
      min-width: 10 rem; 
-     
     display: flex; 
     align-items: center;
     justify-content: center; 
@@ -39,27 +38,24 @@
 }
 
 .call-button {
-    background-color: var(--primary-color);
-    color: white;
+    /* background-color: var(--primary-color);
+    color: white; */
     border: none;
 }
 
 
 .chat-button {
-    background-color: white;
-    color: #0864fc;
+    /* background-color: white;
+    color: #0864fc; */
     border: 2px solid #0864fc;
 }
 
 .favorite-button {
-    background-color: white;
-    color: red;
+    /* background-color: white;
+    color: red; */
     border: 2px solid black;
 }
 
-button:hover {
-    background-color: #b2ccf5;
-}
 
 .product-price {
     color: red;

@@ -40,15 +40,15 @@
     <mat-icon color="primary">person</mat-icon>
   </button>
 </div>
-<button *ngIf="!isLoggedIn" mat-raised-button color="primary" class="sign-up" (click)="Login()">
+<button *ngIf="!isLoggedIn" class="sign-up theme-button" (click)="Login()">
   Login
   <mat-icon>person_add</mat-icon>
 </button>
-<button *ngIf="isLoggedIn" mat-raised-button color="primary" class="sign-up" (click)="LogOut()">
+<button *ngIf="isLoggedIn" class="sign-up theme-button" (click)="LogOut()">
   Log Out
 </button>
 <div class="action-buttons col-md-3">
-  <button mat-raised-button color="primary" class="add-button" (click)="AddProduct()">
+  <button class="add-button theme-button" (click)="AddProduct()">
     <mat-icon>photo_camera</mat-icon>
     أضف إعلانك الآن
   </button>

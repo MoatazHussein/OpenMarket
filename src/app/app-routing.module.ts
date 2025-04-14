@@ -21,6 +21,7 @@ import { AuthGuard } from './core/auth/auth.guard';
 import { AccountDashboardComponent } from './modules/account/account-dashboard.component';
 import { AccountDetailsComponent } from './modules/account/account-details/account-details.component';
 import { AccountProductsComponent } from './modules/account/account-products/account-products.component';
+import { NotFoundComponent } from './feature-components/components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'SubCategory/:id', component: VehiclesforSaleComponent },
@@ -47,7 +48,9 @@ const routes: Routes = [
   { path: 'PrivacyPolicy', component: PrivacyPolicyComponent },
   { path: 'SafetyRules', component: SafetyRulesComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 
+  { path: 'not-found', component: NotFoundComponent },
   { path: '**', component: HomePageComponent }, 
+
 ];
 
 
