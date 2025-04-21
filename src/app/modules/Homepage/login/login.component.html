@@ -1,6 +1,6 @@
 <div class="login-container">
     <mat-card class="login-card">
-      <mat-card-title>Login</mat-card-title>
+      <mat-card-title style="margin-bottom: 20px;">تسجيل الدخول</mat-card-title>
       <mat-card-content>
         <form [formGroup]="loginForm" (ngSubmit)="login()">
           <!-- <mat-form-field appearance="outline" class="full-width">
@@ -27,5 +27,8 @@
         </form>
       </mat-card-content>
     </mat-card>
+    <div class="login-img">
+      <img src="/assets/login.jpg" alt="" width="400" height="400">
+    </div>
   </div>
   

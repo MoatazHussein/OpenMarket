@@ -19,10 +19,10 @@ export class AddProductAccessServiceService {
   AddProduct() {
     if (this.isLoggedIn) {
 
-      this.router.navigate(['/InsertItem'])
+      this.router.navigate(['/InsertItem']);
     } else {
-
-      const dialogRef = this.dialog.open(RegisterDialogComponent, {
+      this.router.navigate(['/register']);
+      /*const dialogRef = this.dialog.open(RegisterDialogComponent, {
         height: '650px',
         width: '450px',
 
@@ -30,7 +30,7 @@ export class AddProductAccessServiceService {
 
       dialogRef.afterClosed().subscribe((result) => {
         console.log('The dialog was closed');
-      });
+      });*/
     }
   }
 }
