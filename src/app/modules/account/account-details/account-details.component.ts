@@ -48,7 +48,7 @@ export class AccountDetailsComponent implements OnInit {
       birthDate: ['', [Validators.required]],
       isMale: [true],
       phone: [{value: '', disabled: true}, [Validators.required,Validators.maxLength(15)]],
-      email: [{value: '', disabled: true}, [Validators.required]]
+      email: [{value: '', disabled: false}, [Validators.required]]
     });
   }
 
@@ -59,7 +59,7 @@ export class AccountDetailsComponent implements OnInit {
   loadUserInformation(): void {
     this.isLoading = true;
     this.errorMessage = '';
-
+debugger;
     this.http.get<UserInformationDTO>(this.userApiUrl + '/GetUserInformation')
       .pipe(
         finalize(() => this.isLoading = false)

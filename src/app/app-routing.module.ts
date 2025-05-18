@@ -22,6 +22,7 @@ import { AccountDashboardComponent } from './modules/account/account-dashboard.c
 import { AccountDetailsComponent } from './modules/account/account-details/account-details.component';
 import { AccountProductsComponent } from './modules/account/account-products/account-products.component';
 import { NotFoundComponent } from './feature-components/components/not-found/not-found.component';
+import { RegisterComponent } from './modules/Homepage/register/register.component';
 
 const routes: Routes = [
   { path: 'SubCategory/:id', component: VehiclesforSaleComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'InsertItem/:id', component: CreateStep2Component },
   { path: 'InsertItem/:id/Details', component: CreateStep3Component },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'account', component: AccountDashboardComponent, children: [
     {path: 'details', component: AccountDetailsComponent},
     {path: 'items', component: AccountProductsComponent}

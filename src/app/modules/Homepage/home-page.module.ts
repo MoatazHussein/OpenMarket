@@ -11,6 +11,7 @@ import { RegisterDialogComponent } from './register-dialog/register-dialog.compo
 import { LoginComponent } from './login/login.component';
 import { LandingSliderComponent } from './landing-slider/landing-slider.component';
 import { VerificationDialogComponent } from './register-dialog/verification-dialog.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { VerificationDialogComponent } from './register-dialog/verification-dial
     RegisterDialogComponent,
     LoginComponent,
     LandingSliderComponent,
-    VerificationDialogComponent
+    VerificationDialogComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,

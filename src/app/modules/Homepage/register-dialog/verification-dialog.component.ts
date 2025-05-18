@@ -35,7 +35,7 @@ import { Router } from '@angular/router';
       </button>
       <button
         mat-raised-button
-        color="primary"
+        style="background-color: #6b2327; color: #fff;"
         [disabled]="verificationForm.invalid"
         (click)="verify()"
       >
