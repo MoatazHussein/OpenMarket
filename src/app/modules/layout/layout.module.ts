@@ -18,6 +18,7 @@ import { TermsOfUseComponent } from './footer/footer-pages/terms-of-use/terms-of
 import { PrivacyPolicyComponent } from './footer/footer-pages/privacy-policy/privacy-policy/privacy-policy.component';
 import { SafetyRulesComponent } from './footer/footer-pages/safety-rules/safety-rules/safety-rules.component';
 import { ContactCardComponent } from './contact-card/contact-card.component';
+import { ContactUsComponent } from './footer/footer-pages/contact-us/contact-us.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ContactCardComponent } from './contact-card/contact-card.component';
         TermsOfUseComponent,
         PrivacyPolicyComponent,
         SafetyRulesComponent,
-        ContactCardComponent
+        ContactCardComponent,
+        ContactUsComponent
     ],
     imports: [
         CommonModule,

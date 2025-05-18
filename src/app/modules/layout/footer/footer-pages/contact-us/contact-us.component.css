@@ -1,0 +1,11 @@
+.privacy-policy {
+    min-height: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.privacy-policy__element{
+    direction: rtl;
+    margin: 40px;
+}

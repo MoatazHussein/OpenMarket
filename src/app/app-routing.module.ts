@@ -23,6 +23,7 @@ import { AccountDetailsComponent } from './modules/account/account-details/accou
 import { AccountProductsComponent } from './modules/account/account-products/account-products.component';
 import { NotFoundComponent } from './feature-components/components/not-found/not-found.component';
 import { RegisterComponent } from './modules/Homepage/register/register.component';
+import { ContactUsComponent } from './modules/layout/footer/footer-pages/contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: 'SubCategory/:id', component: VehiclesforSaleComponent },
@@ -49,6 +50,7 @@ const routes: Routes = [
   { path: 'TermsOfUse', component: TermsOfUseComponent },
   { path: 'PrivacyPolicy', component: PrivacyPolicyComponent },
   { path: 'SafetyRules', component: SafetyRulesComponent },
+  { path: 'Contact-Us', component: ContactUsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', component: HomePageComponent }, 
