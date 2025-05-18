@@ -1,4 +1,11 @@
-<div class="sales-team">
-    <h1>فريق المبيعات</h1>
+<div class="contact-card-grid">
+  <app-contact-card
+    *ngFor="let contact of contacts"
+    [imageUrl]="contact.imageUrl"
+    [name]="contact.name"
+    [title]="contact.title"
+    [phoneNumber]="contact.phoneNumber"
+  >
+  </app-contact-card>
 </div>
 

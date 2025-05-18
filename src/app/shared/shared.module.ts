@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FeatureComponentsModule } from '../feature-components/feature-components.module';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
+
 // Add any other shared components, directives, or pipes here
 
 @NgModule({
@@ -14,6 +15,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     CommonModule, // Required for directives like *ngIf and *ngFor
     MaterialModule,
     FeatureComponentsModule,
+    FontAwesomeModule,
   ],
   exports: [
     CommonModule,

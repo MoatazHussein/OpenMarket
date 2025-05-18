@@ -17,6 +17,7 @@ import { SalesTeamComponent } from './footer/footer-pages/sales-team/sales-team/
 import { TermsOfUseComponent } from './footer/footer-pages/terms-of-use/terms-of-use/terms-of-use.component';
 import { PrivacyPolicyComponent } from './footer/footer-pages/privacy-policy/privacy-policy/privacy-policy.component';
 import { SafetyRulesComponent } from './footer/footer-pages/safety-rules/safety-rules/safety-rules.component';
+import { ContactCardComponent } from './contact-card/contact-card.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { SafetyRulesComponent } from './footer/footer-pages/safety-rules/safety-
         SalesTeamComponent,
         TermsOfUseComponent,
         PrivacyPolicyComponent,
-        SafetyRulesComponent
+        SafetyRulesComponent,
+        ContactCardComponent
     ],
     imports: [
         CommonModule,
