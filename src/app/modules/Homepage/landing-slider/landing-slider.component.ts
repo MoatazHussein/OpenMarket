@@ -23,7 +23,7 @@ export class LandingSliderComponent {
   }
 
   swiperConfig = {
-    slidesPerView: 2,
+    slidesPerView: 1,
     spaceBetween: 10,
     pagination: { clickable: true },
     navigation: true,

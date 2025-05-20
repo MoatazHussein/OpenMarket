@@ -1,6 +1,17 @@
-.help {
-    min-height: 20rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.qa-container {
+  max-width: 600px;
+  margin: 50px auto; 
+  text-align: center;
+}
+
+.qa-header {
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #3f51b5; 
+}
+
+mat-expansion-panel {
+  text-align: left;
+  margin-bottom: 15px; 
 }

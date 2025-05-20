@@ -1,0 +1,15 @@
+<div class="card custom-card mx-auto my-4">
+  <div class="image-wrapper">
+    <img [src]="imageUrl" class="custom-img" />
+  </div>
+  <hr>
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title">{{ title }}</h5>
+    <p class="card-text flex-grow-1">{{ description }}</p>
+    <div class="text-start mt-auto">
+      <button class="btn btn-primary" (click)="buttonClick?.()">
+        {{ buttonText }} &nbsp;&nbsp; &#9664;
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,17 @@
-.advertising-services {
-    min-height: 20rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 4rem;
+  direction: rtl;
 }
+
+.card-wrapper {
+  flex: 0 0 30%; 
+  margin: 1rem;
+}
+
+
+
+
+

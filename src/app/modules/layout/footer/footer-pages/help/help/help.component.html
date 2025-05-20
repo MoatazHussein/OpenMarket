@@ -1,4 +1,14 @@
-<div class="help">
-    <h1>المساعدة</h1>
-</div>
+<div class="qa-container">
+  <h2 class="qa-header">{{helptext}}</h2>
 
+  <mat-accordion multi>
+    <mat-expansion-panel *ngFor="let qa of qaList">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ qa.question }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{ qa.answer }}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

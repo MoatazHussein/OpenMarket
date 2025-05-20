@@ -19,6 +19,7 @@ import { PrivacyPolicyComponent } from './footer/footer-pages/privacy-policy/pri
 import { SafetyRulesComponent } from './footer/footer-pages/safety-rules/safety-rules/safety-rules.component';
 import { ContactCardComponent } from './contact-card/contact-card.component';
 import { ContactUsComponent } from './footer/footer-pages/contact-us/contact-us.component';
+import { InfoCardComponent } from './info-card/info-card.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ContactUsComponent } from './footer/footer-pages/contact-us/contact-us.
         PrivacyPolicyComponent,
         SafetyRulesComponent,
         ContactCardComponent,
-        ContactUsComponent
+        ContactUsComponent,
+        InfoCardComponent
     ],
     imports: [
         CommonModule,

@@ -4,7 +4,7 @@
     margin: auto;
   }
   
-  .slide-content {
+  /* .slide-content {
     position: relative;
     text-align: center;
   }
@@ -14,7 +14,22 @@
     height: 42rem;
     object-fit: cover;
     border-radius: 10px;
-  }
+  } */
+
+
+ .slide-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60rem;
+}
+
+.slide-image {
+  width: auto;
+  height: 90%;
+  object-fit: contain;
+}
+
   
   .slide-text {
     /* position: absolute;

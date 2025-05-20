@@ -1,4 +1,12 @@
-<div class="advertising-services">
-    <h1>الخدمات الاعلانية</h1>
+<div class="row cards-wrapper">
+  <div class="col-md-3 d-flex card-wrapper" *ngFor="let card of cards">
+    <app-info-card class="w-100 h-100 " 
+      [imageUrl]="card.imageUrl"
+      [title]="card.title"
+      [description]="card.description"
+      [buttonText]="card.buttonText"
+      [buttonClick]="card.buttonClick">
+  </app-info-card>
+  </div>
 </div>
 
