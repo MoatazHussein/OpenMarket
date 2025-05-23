@@ -10,16 +10,8 @@ export class HelpComponent {
 
   qaList = [
     {
-      question: 'What is Angular?',
-      answer: 'Angular is a platform for building mobile and desktop web applications.'
+      question: 'ما هو موقع وسيلتي؟',
+      answer: 'وسيلتي هي منصة كويتية ناشئة تأسست برؤية واضحة و أن نصبح الوجهة الأولى للإعلانات المبوبة والتجارية في الكويت وخارجها '
     },
-    {
-      question: 'What is a component?',
-      answer: 'A component controls a patch of screen called a view.'
-    },
-    {
-      question: 'How do I install Angular CLI?',
-      answer: 'Use npm: npm install -g @angular/cli'
-    }
   ];
 }

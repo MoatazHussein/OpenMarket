@@ -6,12 +6,25 @@
 
 .qa-header {
   margin-bottom: 30px;
-  font-size: 28px;
-  font-weight: 600;
   color: #3f51b5; 
+  direction: rtl;
 }
 
 mat-expansion-panel {
-  text-align: left;
+  /* text-align: right; */
   margin-bottom: 15px; 
 }
+
+mat-expansion-panel-header{
+  direction: rtl;
+}
+
+mat-panel-title{
+  font-size: 16px;
+  font-weight: 800;
+}
+
+
+
+
+
