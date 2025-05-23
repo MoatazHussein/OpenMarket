@@ -1,13 +1,13 @@
-<app-vehicles-filter></app-vehicles-filter>
+<!-- <app-vehicles-filter></app-vehicles-filter> -->
+<div class="main">
 
-<section dir="rtl">
-    <div class="container">
-        <h4>الأقسام</h4>
-        <app-sub-categories [items]="subCategories"></app-sub-categories>
-    </div>
-</section>
-
-<app-category-summary [category]="Cat" [topProducts]="topProducts"></app-category-summary>
-<app-category-summary [category]="Cat" [topProducts]="topProducts"></app-category-summary>
-<app-stores-summary [stores]="stores"></app-stores-summary>
-<app-category-summary [category]="Cat" [topProducts]="topProducts"></app-category-summary>
+    <section dir="rtl">
+        <div class="container">
+            <h4>الأقسام</h4>
+            <app-sub-categories [items]="subCategories"></app-sub-categories>
+        </div>
+    </section>
+    
+    <app-category-summary *ngFor="let subSummary of allSubsSummary" [category]="subSummary.Cat" [topProducts]="subSummary.Products"></app-category-summary>
+</div>
+<!-- <app-stores-summary [stores]="stores"></app-stores-summary> -->

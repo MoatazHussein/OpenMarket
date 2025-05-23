@@ -25,12 +25,12 @@ export class CategoryService {
     return this.http.get<any[]>(this.categoriesApiUrl,{ headers });
   }
 
-  getSubCategories(pageNumber: number = 1, pageSize: number = 10, search: string = ''): Observable<any[]> {
+  getSubCategories(pageNumber: number = 1, pageSize: number = 10, search: string = ''): Observable<any> {
     let params = new HttpParams()
       .set('pageNumber', pageNumber.toString())
       .set('pageSize', pageSize.toString())
       .set('search', search);
-    return this.http.get<any[]>(this.subCategoriesApiUrl,{
+    return this.http.get<any>(this.subCategoriesApiUrl,{
       params: params
     });
   }
@@ -39,5 +39,12 @@ export class CategoryService {
     //let params = new HttpParams().set('productId', productID);
 
     return this.http.get<{pricePerDay: number}>(this.subCategoriesApiUrl + '/GetPricePerDay/'+productID);
+  }
+  getSubCategoriesForSpecificCat(catID: number = 1): Observable<any> {
+    let params = new HttpParams()
+      .set('catID', catID.toString());
+    return this.http.get<any>(this.subCategoriesApiUrl+'/CatSubcategories',{
+      params: params
+    });
   }
 }

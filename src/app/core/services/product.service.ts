@@ -31,7 +31,7 @@ export class ProductService {
       .set('pageSize', pageSize.toString())
       .set('search', search);
 
-    return this.http.get<{ values: any[]; totalPageCount: number }>(this.productsApiUrl, { params }).pipe(
+    return this.http.get<{ values: any[], totalPageCount: number, totalItemsCount: number}>(this.productsApiUrl, { params }).pipe(
       map((response) => {
         console.log('API Response:', response); // Log the response to inspect its structure
         if (!response) {
@@ -39,7 +39,42 @@ export class ProductService {
           return { data: [], totalPageCount: 0 };
         }
         const mappedProduct=this.mapProduct(response.values);
-        return { data: mappedProduct, totalPageCount: response.totalPageCount };
+        return { data: mappedProduct, totalPageCount: response.totalPageCount, totalItemsCount: response.totalItemsCount };
+      })
+    );
+  }
+
+  getAllProductsForSearch(pageNumber: number = 1, pageSize: number = 10, search: string = ''): Observable<{ data: any[], totalPageCount: number, totalItemsCount: number }> {
+    let params = new HttpParams()
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString())
+      .set('search', search);
+
+    return this.http.get<{ values: any[], totalPageCount: number, totalItemsCount: number}>(this.productsApiUrl, { params }).pipe(
+      map((response) => {
+        console.log('API Response:', response); // Log the response to inspect its structure
+        if (!response) {
+          console.error('Invalid response format:', response);
+          return { data: [], totalPageCount: 0, totalItemsCount: 0 };
+        }
+        return { data: response.values, totalPageCount: response.totalPageCount, totalItemsCount: response.totalItemsCount };
+      })
+    );
+  }
+
+  getCommercialAds(pageNumber: number = 1, pageSize: number = 10): Observable<{ data: any[], totalPageCount: number, totalItemsCount: number }> {
+    let params = new HttpParams()
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString());
+
+    return this.http.get<{ values: any[], totalPageCount: number, totalItemsCount: number}>(this.productsApiUrl+'/CommercialAds', { params }).pipe(
+      map((response) => {
+        console.log('API Response:', response); // Log the response to inspect its structure
+        if (!response) {
+          console.error('Invalid response format:', response);
+          return { data: [], totalPageCount: 0, totalItemsCount: 0 };
+        }
+        return { data: response.values, totalPageCount: response.totalPageCount, totalItemsCount: response.totalItemsCount };
       })
     );
   }
@@ -55,6 +90,13 @@ export class ProductService {
     };
     const url = `${this.productSubCategoryApiUrl}/${subCategoryId}`;
     return this.http.post(url, params);
+  }
+
+  getCategorySummary(categoryID: number): Observable<any> {
+    let params = new HttpParams()
+      .set('catID', categoryID.toString());
+    const url = `${this.productSubCategoryApiUrl}/CategorySummary`;
+    return this.http.get(url, { params });
   }
 
   addProduct(product: FormGroup, subCategoryId: number, previewImages: PreviewImage[]) {

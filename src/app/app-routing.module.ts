@@ -24,15 +24,19 @@ import { AccountProductsComponent } from './modules/account/account-products/acc
 import { NotFoundComponent } from './feature-components/components/not-found/not-found.component';
 import { RegisterComponent } from './modules/Homepage/register/register.component';
 import { ContactUsComponent } from './modules/layout/footer/footer-pages/contact-us/contact-us.component';
+import { SearchPageComponent } from './modules/Categories/MainCategories/search-page/search-page.component';
+import { CommercialAdsComponent } from './modules/Categories/MainCategories/commercial-ads/commercial-ads.component';
 
 const routes: Routes = [
   { path: 'SubCategory/:id', component: VehiclesforSaleComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'Vehicles', component: VehiclesComponent },
+  { path: 'Category/:id', component: VehiclesComponent },
   { path: 'search/:id'
     , component: SingleProductPageComponent
     , resolve: {productData: productResolver}
   },
+  { path: 'items', component: SearchPageComponent },
+  { path: 'ads', component: CommercialAdsComponent },
   { path: 'InsertItem', component: CreateStep1Component,canActivate: [AuthGuard] },
   { path: 'InsertItem/:id', component: CreateStep2Component },
   { path: 'InsertItem/:id/Details', component: CreateStep3Component },

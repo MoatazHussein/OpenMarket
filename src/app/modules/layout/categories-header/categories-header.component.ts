@@ -34,7 +34,7 @@ export class CategoriesHeaderComponent implements OnInit {
     e.stopPropagation();
   }
   
-  mainCategoryRouting(category: {name: string, subCategories: { name: string; route: string; }[]}){
+  mainCategoryRouting(category: any){
     debugger;
     // switch(category.name){
       // case 'سيارات ومركبات':
@@ -46,6 +46,7 @@ export class CategoriesHeaderComponent implements OnInit {
         // this.router.navigate(['Carsforsale']);
         // break;
     // }
+    this.router.navigate(['/Category', category.id]);
   }
 
   loadCategories(): void {

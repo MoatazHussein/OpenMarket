@@ -1,5 +1,5 @@
 <div class="d-flex subCat">
-    <a href="" *ngFor="let item of items;">{{item.name}}
+    <a [routerLink]="['/SubCategory',item.id]" *ngFor="let item of items;">{{item.name}}
         <img alt="سيارات للبيع" width="60" height="50" loading="lazy" [src]="item.imageUrl">
     </a>
 </div>

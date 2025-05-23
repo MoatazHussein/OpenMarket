@@ -20,6 +20,7 @@ import { SafetyRulesComponent } from './footer/footer-pages/safety-rules/safety-
 import { ContactCardComponent } from './contact-card/contact-card.component';
 import { ContactUsComponent } from './footer/footer-pages/contact-us/contact-us.component';
 import { InfoCardComponent } from './info-card/info-card.component';
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { InfoCardComponent } from './info-card/info-card.component';
         CommonModule,
         RouterModule, // For navigation links in header/sidebar
         SharedModule, // Import SharedModule to access Angular Material
+        FormsModule
     ],
     exports: [
         HeaderComponent,

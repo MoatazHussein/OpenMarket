@@ -15,6 +15,8 @@ import { CheckboxSearchComponent } from './MainCategories/shared/checkbox-search
 import { SingleProductPageComponent } from './MainCategories/shared/single-product-page/single-product-page.component';
 import { SingleProductSidebarComponent } from './MainCategories/shared/single-product-page/single-product-sidebar/single-product-sidebar.component';
 import { SingleProductContentComponent } from './MainCategories/shared/single-product-page/single-product-content/single-product-content.component';
+import { SearchPageComponent } from './MainCategories/search-page/search-page.component';
+import { CommercialAdsComponent } from './MainCategories/commercial-ads/commercial-ads.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { SingleProductContentComponent } from './MainCategories/shared/single-pr
     SingleProductPageComponent,
     SingleProductSidebarComponent,
     SingleProductContentComponent,
+    SearchPageComponent,
+    CommercialAdsComponent
   ],
   imports: [
     CommonModule,

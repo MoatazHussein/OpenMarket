@@ -1,0 +1,41 @@
+.cars-category {
+  display: flex;
+  /* flex-direction: row-reverse; */
+  justify-content: space-evenly;
+  align-items: flex-start; 
+}
+.cars-category-ltr-layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.cars-category-rtl-layout {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.no-results {
+  min-width: 58.5rem;
+  min-height: 8rem;
+  text-align: center;
+}
+
+.sidebar-search {
+  display: block;
+  /* background-color: aqua; */
+  /* min-width: 8rem; */
+  direction: rtl;
+  border: 2px solid #edf1f6;
+  border-radius: 1.2rem;
+  /* margin: 2%; */
+  flex: initial; /* Prevents stretching */
+  align-self: flex-start; /* Aligns item based on content */
+}
+
+mat-paginator {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
+.product-card{
+  margin-bottom: 2rem;
+}
