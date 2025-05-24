@@ -37,7 +37,7 @@ export class AttributeService {
 
   getAttributesBySubCategory(subCategoryId: number): Observable<AllGenericDTO<AttributeDetailsDTO>> {
     return this.http.get<AllGenericDTO<AttributeDetailsDTO>>(
-      `${this.apiUrl}?pageNumber=1&pageSize=100`
+      `${this.apiUrl}?pageNumber=1&pageSize=9999999`
     );
   }
 
