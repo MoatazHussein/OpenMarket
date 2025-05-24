@@ -1,4 +1,4 @@
-.privacy-policy {
+/* .privacy-policy {
     min-height: 10rem;
     display: flex;
     flex-direction: column;
@@ -8,4 +8,261 @@
 .privacy-policy__element{
     direction: rtl;
     margin: 40px;
+} */
+
+
+/* Main Styles */
+.commercial-ads-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Tajawal', Arial, sans-serif;
+  color: #333;
+}
+
+/* Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-header h1 {
+  color: #2a5ea7;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  color: #666;
+  font-size: 1.2rem;
+}
+
+/* Contact Methods */
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.contact-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #f0f7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+  font-size: 24px;
+  color: #2a5ea7;
+}
+
+.contact-icon.whatsapp {
+  background: #e8f5e9;
+  color: #25D366;
+}
+
+.contact-icon.email {
+  background: #f3e5f5;
+  color: #9c27b0;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-info h3 {
+  margin: 0 0 5px 0;
+  color: #2a5ea7;
+}
+
+.contact-info p {
+  margin: 0 0 10px 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 15px;
+  background: #2a5ea7;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.contact-btn i {
+  margin-left: 8px;
+}
+
+.whatsapp-btn {
+  background: #25D366;
+}
+
+.email-btn {
+  background: #9c27b0;
+}
+
+/* Contact Form */
+.contact-form {
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+}
+
+.contact-form h2 {
+  color: #2a5ea7;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.submit-btn {
+  background: #2a5ea7;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background: #1e4b8f;
+}
+
+/* FAQ Section */
+.faq-section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.faq-section h2 {
+  color: #2a5ea7;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.faq-item {
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq-question h3 {
+  margin: 0;
+  color: #333;
+}
+
+.faq-question i {
+  color: #2a5ea7;
+  transition: transform 0.3s;
+}
+
+.faq-answer {
+  padding-top: 10px;
+  display: none;
+}
+
+.faq-answer p {
+  margin: 0;
+  color: #666;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+
+/* RTL Support */
+[dir="rtl"] .contact-icon {
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+[dir="rtl"] .contact-btn i {
+  margin-left: 0;
+  margin-right: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-methods {
+    grid-template-columns: 1fr;
+  }
+  
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .contact-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .contact-icon {
+    margin: 0 0 15px 0;
+  margin-left: 0;
+  }
 }
