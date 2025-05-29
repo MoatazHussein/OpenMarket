@@ -1,10 +1,10 @@
 <div class="contact-card-grid">
   <app-contact-card
-    *ngFor="let contact of contacts"
-    [imageUrl]="contact.imageUrl"
-    [name]="contact.name"
-    [title]="contact.title"
-    [phoneNumber]="contact.phoneNumber"
+    *ngFor="let section of sections"
+    [imageUrl]="contacts[0].imageUrl"
+    [name]="section.header"
+    [title]="section.subHeader"
+    [phoneNumber]="section.contentText"
   >
   </app-contact-card>
 </div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PageSection } from '../../../../../../models/page-section.model';
+import { PageSectionService } from '../../../../../../Services/page-section.service';
 
 @Component({
   selector: 'app-sales-team',
@@ -6,7 +8,21 @@ import { Component } from '@angular/core';
   styleUrl: './sales-team.component.css'
 })
 export class SalesTeamComponent {
+    pageKey: string = '4';
+    sections: PageSection[] = [];
+  constructor(
+    private sectionService : PageSectionService) {
+    }
 
+  ngOnInit() {
+
+     if (this.pageKey) {
+      this.sectionService.getSectionsByPageKey(this.pageKey).subscribe(data => {
+        this.sections = data.sort((a, b) => a.sectionOrder - b.sectionOrder)
+                             ;
+      });
+    }
+  }
   contacts = [
     {
       imageUrl: "assets/placeholder.jpg", name: 'عاصم تحسين', title: 'مندوب مبيعات',

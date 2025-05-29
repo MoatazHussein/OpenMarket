@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../../core/services/category.service';
+import { PageSection } from '../../../models/page-section.model';
+import { PageSectionService } from '../../../Services/page-section.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,6 +10,13 @@ import { CategoryService } from '../../../core/services/category.service';
 })
 export class FooterComponent implements OnInit {
   items: any[] = [];
+pageKey: string = '6';
+  sections: PageSection[] = [];
+facebookLink : string ="https://www.facebook.com/waseela.kw";
+instagramLink: string ="https://www.instagram.com/waseelati1";
+twitterLink: string ="https://twitter.com";
+linkedinLink: string ="https://linkedin.com";
+
 
   ngOnInit(): void {
     this.categoryService.getSubCategories(1,50,'cars,property,mobiles,appliances,satellite,furniture').subscribe({
@@ -30,9 +39,31 @@ export class FooterComponent implements OnInit {
 
       }
     })
+    if (this.pageKey) {
+      this.sectionService.getSectionsByPageKey(this.pageKey).subscribe(data => {
+        this.sections = data.sort((a, b) => a.sectionOrder - b.sectionOrder);
+        this.facebookLink =
+        this.sections.find(num => num.header.trim().toLowerCase() == "facebook" )?.subHeader.toString() ==undefined
+        ?this.facebookLink:this.sections.filter(num => num.header.toLowerCase() == "facebook" )[0]?.subHeader.toString();
+
+        this.instagramLink =
+        this.sections.find(num => num.header.trim().toLowerCase() == "instagram" )?.subHeader.toString() ==undefined
+        ?this.facebookLink:this.sections.filter(num => num.header.toLowerCase() == "instagram" )[0]?.subHeader.toString();
+
+        this.twitterLink =
+        this.sections.find(num => num.header.trim().toLowerCase() == "twitter" )?.subHeader.toString() ==undefined
+        ?this.facebookLink:this.sections.filter(num => num.header.toLowerCase() == "twitter" )[0]?.subHeader.toString();
+
+        this.linkedinLink =
+        this.sections.find(num => num.header.trim().toLowerCase() == "linkedin" )?.subHeader.toString() ==undefined
+        ?this.facebookLink:this.sections.filter(num => num.header.toLowerCase() == "linkedin" )[0]?.subHeader.toString();
+
+
+      });
+    }
   }
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService,private sectionService : PageSectionService) {
   }
   isRtl: boolean = true; 
   title_01:string = "عن وسيلتي";

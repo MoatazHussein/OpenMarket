@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { LanguageService } from '../../../../../core/services/language.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from '../../../../../contact-service.service';
+import { PageSection } from '../../../../../models/page-section.model';
+import { PageSectionService } from '../../../../../Services/page-section.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -15,6 +17,8 @@ export class ContactUsComponent {
   submitSuccess = false;
   submitError = false;
 
+
+  
   constructor(
     private languageService: LanguageService,
     private contactService: ContactService,
@@ -32,6 +36,7 @@ export class ContactUsComponent {
     this.languageService.language$.subscribe(lang => {
       this.currentLang = lang;
     });
+   
   }
 
   onSubmit() {
