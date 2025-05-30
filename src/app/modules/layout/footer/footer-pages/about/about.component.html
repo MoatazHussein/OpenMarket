@@ -1,4 +1,46 @@
-<div *ngIf="currentLang=='ar'">
+
+<div class="about">
+    <h1> ما هو موقع وسيلتي ؟</h1>
+</div>
+<div *ngFor="let section of sections" class="mb-4 about__element">
+  <h3 *ngIf="section.header">{{ section.header }}</h3>
+  <h5 *ngIf="section.subHeader">{{ section.subHeader }}</h5>
+
+  <div *ngIf="section.contentType === 'paragraph'">
+    <p>{{ section.contentText }}</p>
+  </div>
+
+  <ul *ngIf="section.contentType === 'bullets'">
+    <li *ngFor="let item of section.contentText.split('\n')">{{ item }}</li>
+  </ul>
+
+  <div *ngIf="section.contentType === 'image'">
+    <img [src]="section.contentText" [alt]="section.caption" class="img-fluid" />
+  </div>
+ <div *ngIf="section.caption">
+    <p>{{ section.caption}}</p>
+  </div>
+  <small *ngIf="section.footer" class="text-muted">{{ section.footer }}</small>
+  <hr />
+</div>
+        <div class="container my-5">
+            <div class="row align-items-center p-4 border rounded shadow-sm download-app-box">
+              
+              <div class="col-md-6 text-center text-md-end mb-4 mb-md-0">
+                <h4 class="fw-bold">📱 حمل التطبيق الآن</h4>
+                <p class="mb-0">قم بمسح رمز الاستجابة السريعة لتثبيت التطبيق الخاص بنا على جهازك على الفور.</p>
+              </div>
+          
+              <div class="col-md-6 text-center">
+                <img src="assets/QR-Code.png" alt="QR Code" class="img-fluid mb-3" style="max-width: 150px;">
+                <div>
+                  <img src="assets/logo.png" alt="App Logo" class="img-fluid" style="max-width: 100px;">
+                </div>
+              </div>
+          
+            </div>
+          </div>
+<!-- <div *ngIf="currentLang=='ar'">
     <div class="about__element">
         <h5> مهمتنا</h5>
         <p> في وسيلتي، نربط الأفراد والشركات والمشاريع في الكويت والمنطقة من خلال منصة إعلانات مبوبة وتجارية متكاملة
@@ -105,27 +147,8 @@
         <p>سواء كنت بائع أو مشتري، شركة أو شخص عادي – وسيلتي هي منصتك.</p>
         <p>سجّل مجانًا، وانشر أول إعلان، وجرب الفرق بنفسك.</p>
 
-        <!-- <p>📱 حمل التطبيق الآن</p> -->
 
-        <div class="container my-5">
-            <div class="row align-items-center p-4 border rounded shadow-sm download-app-box">
-              
-              <!-- Text column -->
-              <div class="col-md-6 text-center text-md-end mb-4 mb-md-0">
-                <h4 class="fw-bold">📱 حمل التطبيق الآن</h4>
-                <p class="mb-0">قم بمسح رمز الاستجابة السريعة لتثبيت التطبيق الخاص بنا على جهازك على الفور.</p>
-              </div>
-          
-              <!-- QR and Logo column -->
-              <div class="col-md-6 text-center">
-                <img src="assets/QR-Code.png" alt="QR Code" class="img-fluid mb-3" style="max-width: 150px;">
-                <div>
-                  <img src="assets/logo.png" alt="App Logo" class="img-fluid" style="max-width: 100px;">
-                </div>
-              </div>
-          
-            </div>
-          </div>
+
 
 
         <p>📞 تواصل معنا في أي وقت 22248493</p>
@@ -151,9 +174,9 @@
 
     </div>
 
-</div>
+</div> -->
 
-<div *ngIf="currentLang=='en'" class="lang-en">
+<!-- <div *ngIf="currentLang=='en'" class="lang-en">
     <div class="about__element">
         <h5> Our Mission</h5>
         <p> At Waseelati, we connect individuals, businesses, and projects across Kuwait and the region through a smart,
@@ -259,18 +282,15 @@
         Sign up for free, post your first ad, and feel the difference.
         </p>
 
-        <!-- <p>📱 Download the app now</p> -->
 
           <div class="container my-5">
             <div class="row align-items-center p-4 border rounded shadow-sm download-app-box">
               
-              <!-- Text column -->
               <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
                 <h4 class="fw-bold">📱 Download the App Now</h4>
                 <p class="mb-0">Scan the QR code to install our app instantly on your device.</p>
               </div>
           
-              <!-- QR and Logo column -->
               <div class="col-md-6 text-center">
                 <img src="assets/QR-Code.png" alt="QR Code" class="img-fluid mb-3" style="max-width: 150px;">
                 <div>
@@ -305,4 +325,4 @@
 
     </div>
 
-</div>
+</div> -->

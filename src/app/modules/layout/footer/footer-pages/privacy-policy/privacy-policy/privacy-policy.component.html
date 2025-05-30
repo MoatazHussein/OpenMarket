@@ -1,7 +1,31 @@
+
 <div class="privacy-policy ">
     <h1>سياسة الخصوصية</h1>
     <h5>سياسة الخصوصية لموقع وتطبيق وسيلتي</h5>
 </div>
+<div *ngFor="let section of sections" class="mb-4 privacy-policy__element">
+  <h3 *ngIf="section.header">{{ section.header }}</h3>
+  <h5 *ngIf="section.subHeader">{{ section.subHeader }}</h5>
+
+  <div *ngIf="section.contentType === 'paragraph'">
+    <p>{{ section.contentText }}</p>
+  </div>
+
+  <ul *ngIf="section.contentType === 'bullets'">
+    <li *ngFor="let item of section.contentText.split('\n')">{{ item }}</li>
+  </ul>
+
+  <div *ngIf="section.contentType === 'image'">
+    <img [src]="section.contentText" [alt]="section.caption" class="img-fluid" />
+  </div>
+ <div *ngIf="section.caption">
+    <p>{{ section.caption}}</p>
+  </div>
+  <small *ngIf="section.footer" class="text-muted">{{ section.footer }}</small>
+  <hr />
+</div>
+
+<!-- 
 <div class="privacy-policy__element">
     <h5> آخر تحديث : 23-03-2025</h5>
     <p>
@@ -80,4 +104,4 @@
     <p>
         قد نقوم بتحديث هذه السياسة من وقت لآخر، وسيتم نشر أي تغييرات على هذه الصفحة مع تاريخ التحديث الجديد. </p>
     <hr>
-</div>
+</div> -->

@@ -1,21 +1,86 @@
-<div class="cars-category" [ngClass]="currentLang =='ar' ? 'cars-category-rtl-layout' : 'cars-category-ltr-layout'">
-  <div class="product-container">
-    <div class="product-card" *ngFor="let product of paginatedProducts; trackBy: trackProductById">
-      <product-card [image]='product.imagesUrl[0] || "assets/placeholder.jpg"' [title]="product.name"
-        [description]="product.description" [location]="product.location" [mobile]="product.mobile"
-        [price]="product.price" [currency]="currency" [navigateTo]="product.navigateTo" [id]="product.id" [subCategoryName]="product.subCategoryName">
-      </product-card>
+<div class="commercial-ads-container" [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
+  <!-- Header -->
+  <div class="header">
+    <h1>الاعلانات التجارية</h1>
+  </div>
+
+  <!-- Products Grid (RTL) -->
+  <div class="products-grid">
+    <div class="product-card" 
+         *ngFor="let product of paginatedProducts; let i = index"
+         (click)="openModal(i)">
+      <img [src]="product.imagesUrl[0] || 'assets/placeholder.jpg'" 
+           alt="{{product.name}}">
+           <div class="modal-actions">
+        <a href="tel:{{product.mobile}}" class="action-btn call-btn">
+          <i class="fas fa-phone"></i>
+          <span>{{ currentLang === 'ar' ? 'اتصال' : 'Call' }}</span>
+        </a>
+        <a href="https://wa.me/{{product.mobile}}" class="action-btn whatsapp-btn" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+          <span>{{ currentLang === 'ar' ? 'واتساب' : 'WhatsApp' }}</span>
+        </a>
+      </div>
     </div>
-    <div class="no-results" *ngIf="paginatedProducts.length==0">
-      <h2 *ngIf="currentLang=='ar'">
-        لم يتم العثور على نتائج
-      </h2>
-      <h2 *ngIf="currentLang=='en'">
-        No results found </h2>
+  </div>
+
+  <!-- Modal Viewer -->
+  <!-- <div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closeModal()">
+        <i class="fas fa-times"></i>
+      </button>
+      <img [src]="currentProduct.imagesUrl[0] || 'assets/placeholder.jpg'" 
+           alt="{{currentProduct.name}}">
+      <div class="modal-actions">
+        <a href="tel:{{currentProduct.mobile}}" class="action-btn call-btn">
+          <i class="fas fa-phone"></i>
+          <span>{{ currentLang === 'ar' ? 'اتصال' : 'Call' }}</span>
+        </a>
+        <a href="https://wa.me/{{currentProduct.mobile}}" class="action-btn whatsapp-btn" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+          <span>{{ currentLang === 'ar' ? 'واتساب' : 'WhatsApp' }}</span>
+        </a>
+      </div>
+    </div>
+  </div> -->
+  <!-- Modal Viewer -->
+<div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="closeModal()">
+      <i class="fas fa-times"></i>
+    </button>
+    
+    <!-- Navigation Arrows -->
+    <button class="nav-arrow prev" (click)="prevProduct($event)" [disabled]="currentIndex === 0">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    
+    <img [src]="currentProduct.imagesUrl[0] || 'assets/placeholder.jpg'" 
+         alt="{{currentProduct.name}}">
+         
+    <button class="nav-arrow next" (click)="nextProduct($event)" [disabled]="currentIndex === paginatedProducts.length - 1">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    
+    <div class="modal-actions">
+      <a href="tel:{{currentProduct.mobile}}" class="action-btn call-btn">
+        <i class="fas fa-phone"></i>
+        <span>{{ currentLang === 'ar' ? 'اتصال' : 'Call' }}</span>
+      </a>
+      <a href="https://wa.me/{{currentProduct.mobile}}" class="action-btn whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>{{ currentLang === 'ar' ? 'واتساب' : 'WhatsApp' }}</span>
+      </a>
     </div>
   </div>
 </div>
-<!-- Paginator -->
-<mat-paginator [length]="totalProducts" [pageSize]="pageSize" [pageSizeOptions]="[5,10,20, 50]"
-  (page)="onPageChange($event)" showFirstLastButtons>
-</mat-paginator>
+
+  <!-- Paginator -->
+  <mat-paginator [length]="totalProducts"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[5,10,20,50]"
+                 (page)="onPageChange($event)"
+                 showFirstLastButtons>
+  </mat-paginator>
+</div>

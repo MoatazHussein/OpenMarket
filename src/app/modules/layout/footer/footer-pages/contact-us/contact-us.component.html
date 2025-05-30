@@ -1,4 +1,4 @@
-<div class="privacy-policy__element">
+<!-- <div class="privacy-policy__element">
     <h3>الاتصال بنا</h3>
     <p>
         إذا كان لديك أي استفسارات ، يمكنك التواصل معنا عبر: </p>
@@ -9,4 +9,131 @@
     </ul>
     <p>نشكرك على استخدامك وسيلتي، ونلتزم بحماية بياناتك وخصوصيتك.</p>
     <hr>
+</div> -->
+
+
+<div class="commercial-ads-page" [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
+  <!-- Header Section -->
+  <div class="page-header">
+    <h1>اتصل بنا</h1>
+    <p>نحن هنا لمساعدتك! تواصل معنا عبر أي من الطرق التالية</p>
+  </div>
+
+  <!-- Contact Methods -->
+  <div class="contact-methods">
+    <!-- Phone -->
+    <div class="contact-card">
+      <div class="contact-icon">
+        <i class="fas fa-phone-alt"></i>
+      </div>
+      <div class="contact-info">
+        <h3>الاتصال الهاتفي</h3>
+        <p>متاح من الاحد للخميس من الساعة 9 صباحاً حتى 5 مساءً</p>
+        <a href="tel:+96522248493" class="contact-btn" style="direction: ltr;">
+          <i class="fas fa-phone"></i> +965 222 484 93
+        </a>
+      </div>
+    </div>
+
+    <!-- WhatsApp -->
+    <!-- <div class="contact-card">
+      <div class="contact-icon whatsapp">
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <div class="contact-info">
+        <h3>واتساب</h3>
+        <p>رد سريع على استفساراتك</p>
+        <a href="https://wa.me/96512345678" class="contact-btn whatsapp-btn" target="_blank">
+          <i class="fab fa-whatsapp"></i> ابدأ المحادثة
+        </a>
+      </div>
+    </div> -->
+
+    <!-- Email -->
+    <div class="contact-card">
+      <div class="contact-icon email">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <div class="contact-info">
+        <h3>البريد الإلكتروني</h3>
+        <p>للاستفسارات العامة</p>
+        <a href="mailto:Waseelatikwt@gmail.com" class="contact-btn email-btn">
+          <i class="fas fa-envelope"></i> Waseelatikwt&#64;gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Form -->
+ <div class="contact-form">
+  <h2>أرسل رسالتك إلينا</h2>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">الاسم الكامل *</label>
+      <input type="text" id="name" formControlName="name" placeholder="أدخل اسمك الكامل">
+      <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="error-message">
+        الاسم الكامل مطلوب
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="email">البريد الإلكتروني</label>
+      <input type="email" id="email" formControlName="email" placeholder="أدخل بريدك الإلكتروني">
+    </div>
+    
+    <div class="form-group">
+      <label for="phone">رقم الهاتف *</label>
+      <input type="tel" id="phone" formControlName="phone" placeholder="أدخل رقم هاتفك">
+      <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" class="error-message">
+        رقم الهاتف مطلوب
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="message">الرسالة *</label>
+      <textarea id="message" rows="5" formControlName="message" placeholder="أدخل رسالتك هنا"></textarea>
+      <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="error-message">
+        الرسالة مطلوبة
+      </div>
+    </div>
+    
+    <div *ngIf="submitSuccess" class="success-message">
+      تم إرسال رسالتك بنجاح، شكراً لتواصلك معنا!
+    </div>
+    
+    <div *ngIf="submitError" class="error-message">
+      حدث خطأ أثناء إرسال الرسالة، يرجى المحاولة مرة أخرى
+    </div>
+    
+    <button type="submit" class="submit-btn" [disabled]="isSubmitting || contactForm.invalid">
+      <span *ngIf="!isSubmitting">إرسال الرسالة</span>
+      <span *ngIf="isSubmitting">جاري الإرسال...</span>
+    </button>
+  </form>
+</div>
+
+  <!-- FAQ Section -->
+  <!-- <div class="faq-section">
+    <h2>الأسئلة الشائعة</h2>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        <h3>ما هي أوقات الدعم الفني؟</h3>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        <p>فريق الدعم الفني متاح من الأحد إلى الخميس من الساعة 8 صباحاً حتى 5 مساءً.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        <h3>كيف يمكنني متابعة طلبي؟</h3>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        <p>يمكنك متابعة طلبك من خلال حسابك الشخصي أو التواصل مع فريق الدعم عبر الواتساب.</p>
+      </div>
+    </div>
+  </div> -->
 </div>

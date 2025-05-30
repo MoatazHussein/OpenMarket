@@ -8,11 +8,20 @@ import { ProductService } from '../../../../core/services/product.service';
 import { AttributeService } from '../../../../core/services/attributeDetails.service';
 import { FiltersService } from '../../../../core/services/filters.service';
 import { LanguageService } from '../../../../core/services/language.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'commercial-ads',
   templateUrl: './commercial-ads.component.html',
   styleUrl: './commercial-ads.component.css'
+  ,animations: [
+    trigger('fadeInOut', [
+      state('void', style({ opacity: 0 })),
+      transition(':enter, :leave', [
+        animate(200)
+      ])
+    ])
+  ]
 })
 export class CommercialAdsComponent {
   yearlyOptions: string[] = [];
@@ -35,7 +44,10 @@ export class CommercialAdsComponent {
   currentLang: string = 'ar';
   searchQuery: string = '';
 
-
+  selectedImage: string | null = null;
+showModal = false;
+  currentProduct: any = {};
+  currentIndex = 0;
   constructor(private route: ActivatedRoute, private productService: ProductService, private attributeService: AttributeService,private filtersService: FiltersService,private languageService: LanguageService) {
   }
   content$: Observable<string> | undefined; // Observable for content that depends on language
@@ -98,4 +110,33 @@ export class CommercialAdsComponent {
   trackProductById(index: number, item: any): any {
     return item.id;
   }
+
+ openModal(index: number) {
+    this.currentIndex = index;
+    this.currentProduct = this.paginatedProducts[index];
+    this.showModal = true;
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeModal() {
+    this.showModal = false;
+    document.body.style.overflow = 'auto';
+  }
+
+  // Add to your CommercialAdsComponent class
+prevProduct(event: Event) {
+  event.stopPropagation();
+  if (this.currentIndex > 0) {
+    this.currentIndex--;
+    this.currentProduct = this.paginatedProducts[this.currentIndex];
+  }
+}
+
+nextProduct(event: Event) {
+  event.stopPropagation();
+  if (this.currentIndex < this.paginatedProducts.length - 1) {
+    this.currentIndex++;
+    this.currentProduct = this.paginatedProducts[this.currentIndex];
+  }
+}
 }

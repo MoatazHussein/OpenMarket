@@ -19,7 +19,7 @@ export interface SubCategory {
   providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl = `${environment.apiUrl}/Category?pageNumber=1&pageSize=10`;
+  private apiUrl = `${environment.apiUrl}/Category?pageNumber=1&pageSize=9999999`;
 
   constructor(private http: HttpClient) {}
 

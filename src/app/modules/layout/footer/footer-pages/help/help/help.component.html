@@ -2,13 +2,13 @@
   <h2 class="qa-header">{{helptext}}</h2>
 
   <mat-accordion multi>
-    <mat-expansion-panel *ngFor="let qa of qaList">
+    <mat-expansion-panel *ngFor="let section of sections">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{ qa.question }}
+          {{ section.header }}
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>{{ qa.answer }}</p>
+      <p>{{ section.subHeader }}</p>
     </mat-expansion-panel>
   </mat-accordion>
 </div>

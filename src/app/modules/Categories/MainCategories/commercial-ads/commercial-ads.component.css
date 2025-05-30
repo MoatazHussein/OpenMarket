@@ -1,41 +1,199 @@
-.cars-category {
-  display: flex;
-  /* flex-direction: row-reverse; */
-  justify-content: space-evenly;
-  align-items: flex-start; 
-}
-.cars-category-ltr-layout {
-  display: flex;
-  flex-direction: row;
+/* Main Container */
+.commercial-ads-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.cars-category-rtl-layout {
-  display: flex;
-  flex-direction: row-reverse;
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
 }
-.no-results {
-  min-width: 58.5rem;
-  min-height: 8rem;
+
+.header h1 {
+  color: #2a5ea7;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+/* Products Grid - RTL by default */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  direction: rtl; /* Force RTL layout */
+}
+
+.product-card {
+  cursor: pointer;
+  transition: transform 0.3s;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90vh;
   text-align: center;
 }
 
-.sidebar-search {
-  display: block;
-  /* background-color: aqua; */
-  /* min-width: 8rem; */
-  direction: rtl;
-  border: 2px solid #edf1f6;
-  border-radius: 1.2rem;
-  /* margin: 2%; */
-  flex: initial; /* Prevents stretching */
-  align-self: flex-start; /* Aligns item based on content */
+.modal-content img {
+  max-height: 60vh; /* Slightly reduced to accommodate arrows */
+  max-width: calc(100% - 80px); /* Make space for arrows */
+  object-fit: contain;
+  border-radius: 8px;
+  margin: 0 20px; /* Add space for arrows */
 }
 
-mat-paginator {
-  margin: 20px;
+.close-btn {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-actions {
   display: flex;
   justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
 }
-.product-card{
-  margin-bottom: 2rem;
+
+.action-btn {
+  padding: 12px 20px;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.call-btn {
+  background-color: #2a5ea7;
+}
+
+.whatsapp-btn {
+  background-color: #25D366;
+}
+
+/* RTL Adjustments */
+[dir="rtl"] .products-grid {
+  direction: ltr; /* Reverse for Arabic to show proper RTL */
+}
+
+[dir="rtl"] .close-btn {
+  right: auto;
+  left: 0;
+}
+
+/* Paginator */
+mat-paginator {
+  margin-top: 30px;
+  direction: ltr; /* Keep paginator LTR */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .action-btn {
+    width: 100%;
+  }
+}
+
+/* Add to your existing CSS */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+.nav-arrow:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: translateY(-50%);
+}
+
+.nav-arrow.prev {
+  left: 20px;
+}
+
+.nav-arrow.next {
+  right: 20px;
+}
+
+/* RTL adjustments */
+[dir="rtl"] .nav-arrow.prev {
+  left: auto;
+  right: 20px;
+}
+
+[dir="rtl"] .nav-arrow.next {
+  right: auto;
+  left: 20px;
+}
+
+.modal-content {
+  position: relative; /* Ensure this is set for arrow positioning */
 }
