@@ -77,7 +77,11 @@ LogOut() {
 }
 toggleLanguage() {
     const newLang = this.currentLang === 'en' ? 'ar' : 'en';
+      localStorage.setItem('preferredLanguage', newLang);
+
     this.languageService.setLanguage(newLang);
+      window.location.reload();
+
   }
 
   onSearchInput(): void {

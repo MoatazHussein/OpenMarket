@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/services/interceptors/auth.service';
 import { AccountModule } from './modules/account/account.module';
+import { LanguageInterceptor } from './core/services/interceptors/language.interceptor';
 @NgModule({
   declarations: [
     AppComponent
@@ -35,6 +36,10 @@ import { AccountModule } from './modules/account/account.module';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },{
+      provide: HTTP_INTERCEPTORS,
+      useClass: LanguageInterceptor,
       multi: true
     }
   ],
