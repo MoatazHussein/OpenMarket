@@ -13,21 +13,32 @@ export class AboutComponent {
 
   currentLang: string = 'ar';
   pageKey: string = '1';
+  pageHeader: string = '';
   sections: PageSection[] = [];
-  constructor(private router: Router,private languageService: LanguageService,
-    private sectionService : PageSectionService) {
-    }
+  isRtl: Boolean = true;
+
+  constructor(private router: Router, private languageService: LanguageService,
+    private sectionService: PageSectionService) {
+  }
 
   ngOnInit() {
     this.languageService.language$.subscribe(lang => {
       this.currentLang = lang;
     });
-     if (this.pageKey) {
+    if (this.pageKey) {
       this.sectionService.getSectionsByPageKey(this.pageKey).subscribe(data => {
         this.sections = data.sort((a, b) => a.sectionOrder - b.sectionOrder);
       });
+      if (this.currentLang == 'ar') {
+        this.isRtl = true;
+        this.pageHeader = 'ما هو موقع وسيلتي ؟';
+      }
+      else {
+        this.isRtl = false;
+        this.pageHeader = 'What is the of Wasselati?';
+      }
     }
   }
 
-  
+
 }

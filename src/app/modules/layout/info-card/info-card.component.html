@@ -1,4 +1,4 @@
-<div class="card custom-card mx-auto my-4">
+<div class="card custom-card mx-auto my-4" [ngClass]="{'rtl': this.lang == 'ar', 'ltr': this.lang != 'ar'}">
   <div class="image-wrapper">
     <img [src]="imageUrl" class="custom-img" />
   </div>
@@ -6,9 +6,9 @@
   <div class="card-body d-flex flex-column">
     <h5 class="card-title">{{ title }}</h5>
     <p class="card-text flex-grow-1">{{ description }}</p>
-    <div class="text-start mt-auto">
+    <div class="mt-auto" [ngClass]="{'text-start': lang=='ar', 'text-end': lang!='ar'}">
       <button class="btn btn-primary" (click)="buttonClick?.()">
-        {{ buttonText }} &nbsp;&nbsp; &#9664;
+        {{ buttonText }}
       </button>
     </div>
   </div>

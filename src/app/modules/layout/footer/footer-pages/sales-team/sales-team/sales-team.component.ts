@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PageSection } from '../../../../../../models/page-section.model';
 import { PageSectionService } from '../../../../../../Services/page-section.service';
+import { LanguageService } from '../../../../../../core/services/language.service';
 
 @Component({
   selector: 'app-sales-team',
@@ -8,19 +9,24 @@ import { PageSectionService } from '../../../../../../Services/page-section.serv
   styleUrl: './sales-team.component.css'
 })
 export class SalesTeamComponent {
-    pageKey: string = '4';
-    sections: PageSection[] = [];
+  pageKey: string = '4';
+  currentLang: string = 'ar';
+  isRtl: Boolean = true;
+  sections: PageSection[] = [];
   constructor(
-    private sectionService : PageSectionService) {
-    }
+    private sectionService: PageSectionService, private languageService: LanguageService,) {
+  }
 
   ngOnInit() {
-
-     if (this.pageKey) {
+    this.languageService.language$.subscribe(lang => {
+      this.currentLang = lang;
+    });
+    if (this.pageKey) {
       this.sectionService.getSectionsByPageKey(this.pageKey).subscribe(data => {
         this.sections = data.sort((a, b) => a.sectionOrder - b.sectionOrder)
-                             ;
+          ;
       });
+      this.isRtl = this.currentLang == 'ar' ? true : false;
     }
   }
   contacts = [

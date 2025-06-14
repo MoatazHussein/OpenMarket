@@ -12,4 +12,5 @@ export class InfoCardComponent {
   @Input() description = 'description';
   @Input() buttonText = 'Learn More';
   @Input() buttonClick?: () => void; 
+  @Input() lang = 'ar';
 }

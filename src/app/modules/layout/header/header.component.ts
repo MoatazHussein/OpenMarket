@@ -14,10 +14,10 @@ import { LanguageService } from '../../../core/services/language.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  AddText="أضف إعلانك الآن";
-  isRtl: boolean = true; 
+  AddText = "أضف إعلانك الآن";
+  isRtl: boolean = true;
   searchInput = '';
-  options: string[] = ['جميع المدن', 'مدينة الكويت', 'الفروانية','الجهراء'];
+  options: string[] = ['جميع المدن', 'مدينة الكويت', 'الفروانية', 'الجهراء'];
   filteredOptions!: Observable<string[]>;
   currentLang: string = 'ar';
 
@@ -26,63 +26,62 @@ export class HeaderComponent {
 
   searchValue: string = '';
   showButton: boolean = false;
-  
+
   isLoggedIn = false;
   constructor(private homePageService: HomePageService
     , private router: Router
-    ,public dialog: MatDialog
-    ,private authService :AuthService
-    ,private addProductAccessServiceService :AddProductAccessServiceService
-    ,private languageService: LanguageService
-  ) {}
+    , public dialog: MatDialog
+    , private authService: AuthService
+    , private addProductAccessServiceService: AddProductAccessServiceService
+    , private languageService: LanguageService
+  ) { }
 
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    
+
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  
-ngOnInit() {
-  this.filteredOptions = this.myControl.valueChanges.pipe(
-    startWith(''),
-    map((value: any) => this._filter(value || '')),
-  );
-  this.authService.isLoggedIn().subscribe(status => {
-    this.isLoggedIn = status;
-  });
+
+  ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map((value: any) => this._filter(value || '')),
+    );
+    this.authService.isLoggedIn().subscribe(status => {
+      this.isLoggedIn = status;
+    });
     this.languageService.language$.subscribe(lang => {
       this.currentLang = lang;
-     this.isRtl = lang=='ar' ? true:false; 
-
+      this.isRtl = lang == 'ar' ? true : false;
     });
 
-  // console.log("Categories",this.homePageService.getCategories());
-}
+    // console.log("Categories",this.homePageService.getCategories());
+  }
 
- // Method to update notification count dynamically
- updateNotificationCount(newCount: number) {
-  this.notificationCount = newCount;
-}
+  // Method to update notification count dynamically
+  updateNotificationCount(newCount: number) {
+    this.notificationCount = newCount;
+  }
 
-AddProduct(){
-  debugger;
- this.addProductAccessServiceService.AddProduct();
-}
-Login(){
-  this.router.navigateByUrl("/login");
-}
-LogOut() {
-  this.authService.logout();
-  this.router.navigate(['/login']);
-}
-toggleLanguage() {
+  AddProduct() {
+    debugger;
+    this.addProductAccessServiceService.AddProduct();
+  }
+  Login() {
+    this.router.navigateByUrl("/login");
+  }
+  LogOut() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
+  toggleLanguage() {
     const newLang = this.currentLang === 'en' ? 'ar' : 'en';
-      localStorage.setItem('preferredLanguage', newLang);
+    localStorage.setItem('preferredLanguage', newLang);
 
     this.languageService.setLanguage(newLang);
-      window.location.reload();
+    window.location.reload();
 
   }
 
@@ -93,8 +92,8 @@ toggleLanguage() {
 
   onSearchSubmit(): void {
     if (this.searchValue.trim()) {
-      this.router.navigate(['/items'], { 
-        queryParams: { search: this.searchValue.trim() } 
+      this.router.navigate(['/items'], {
+        queryParams: { search: this.searchValue.trim() }
       });
     }
   }

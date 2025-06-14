@@ -1,11 +1,12 @@
-<div class="row cards-wrapper">
+<div class="row cards-wrapper" [ngClass]="{'rtl': isRtl, 'ltr': !isRtl}">
   <div class="col-md-3 d-flex card-wrapper" *ngFor="let card of cards">
     <app-info-card class="w-100 h-100 " 
       [imageUrl]="card.imageUrl"
-      [title]="card.title"
-      [description]="card.description"
-      [buttonText]="card.buttonText"
-      [buttonClick]="card.buttonClick">
+      [title]="card.title[currentLang]"
+      [description]="card.description[currentLang]"
+      [buttonText]="card.buttonText[currentLang]"
+      [buttonClick]="card.buttonClick"
+      [lang]="currentLang">
   </app-info-card>
   </div>
 </div>

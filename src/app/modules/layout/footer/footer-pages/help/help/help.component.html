@@ -1,8 +1,8 @@
 <div class="qa-container">
-  <h2 class="qa-header">{{helptext}}</h2>
+  <h2 class="qa-header">{{pageHeader}}</h2>
 
   <mat-accordion multi>
-    <mat-expansion-panel *ngFor="let section of sections">
+    <mat-expansion-panel *ngFor="let section of sections" [ngClass]="{'rtl': isRtl, 'ltr': !isRtl}">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{ section.header }}

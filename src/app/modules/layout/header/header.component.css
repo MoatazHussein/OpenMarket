@@ -139,6 +139,11 @@ button {
     /* font-size: 14px;
     line-height: 20px; */
 }
+.language-container {
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 .language-toggle{
   padding: 4px 8px;
   border: none;
@@ -147,7 +152,7 @@ button {
   color: black;
   font-weight: 500;
   z-index: 20;
-  cursor: pointer;
+  /* cursor: pointer; */
   margin: 0;
   height: 28px;
 }
@@ -187,3 +192,6 @@ form button{
 .sa-flag {
   background-image: url('assets/flags/sa-flag.svg');
 } */
+
+
+

@@ -1,8 +1,8 @@
 
 <div class="about">
-    <h1> ما هو موقع وسيلتي ؟</h1>
+    <h1>{{pageHeader}}</h1>
 </div>
-<div *ngFor="let section of sections" class="mb-4 about__element">
+<div *ngFor="let section of sections" class="mb-4 about__element" [ngClass]="{'rtl': isRtl, 'ltr': !isRtl}">
   <h3 *ngIf="section.header">{{ section.header }}</h3>
   <h5 *ngIf="section.subHeader">{{ section.subHeader }}</h5>
 
@@ -26,9 +26,14 @@
         <div class="container my-5">
             <div class="row align-items-center p-4 border rounded shadow-sm download-app-box">
               
-              <div class="col-md-6 text-center text-md-end mb-4 mb-md-0">
+              <div *ngIf="currentLang =='ar'" class="col-md-6 text-center text-md-end mb-4 mb-md-0">
                 <h4 class="fw-bold">📱 حمل التطبيق الآن</h4>
                 <p class="mb-0">قم بمسح رمز الاستجابة السريعة لتثبيت التطبيق الخاص بنا على جهازك على الفور.</p>
+              </div>
+
+              <div  *ngIf="currentLang =='en'" class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                <h4 class="fw-bold">📱 Download the App Now</h4>
+                <p class="mb-0">Scan the QR code to install our app instantly on your device.</p>
               </div>
           
               <div class="col-md-6 text-center">

@@ -1,4 +1,4 @@
-<div class="contact-card-grid">
+<div class="contact-card-grid" [ngClass]="{'rtl': isRtl, 'ltr': !isRtl}">
   <app-contact-card
     *ngFor="let section of sections"
     [imageUrl]="contacts[0].imageUrl"

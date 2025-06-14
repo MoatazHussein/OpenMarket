@@ -1,7 +1,7 @@
 <div class="terms-of-use">
-    <h1>شروط الاستخدام للابليكشن و الويب سايت</h1>
+    <h1>{{pageHeader}}</h1>
 </div>
-<div *ngFor="let section of sections" class="mb-4 term-element">
+<div *ngFor="let section of sections" class="mb-4 term-element" [ngClass]="{'rtl': isRtl, 'ltr': !isRtl}">
   <h3 *ngIf="section.header">{{ section.header }}</h3>
   <h5 *ngIf="section.subHeader">{{ section.subHeader }}</h5>
 
