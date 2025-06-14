@@ -7,6 +7,7 @@
       <app-category-summary
       [category]="product.category"
       [topProducts]="product.topProducts"
+      [lang]="currentLang"
       >
     </app-category-summary> 
     </div>
@@ -16,6 +17,6 @@
 <!-- <app-category-summary2></app-category-summary2>
 <app-category-summary [category]="category" [topProducts]="topProducts"></app-category-summary>
 <app-category-summary2></app-category-summary2> -->
-<div class="container d-flex rtl my-3" style="gap: 20px;">
-    <app-item1 *ngFor="let item of item1SectionArray" [itemData]="item" style="width: 50%;"></app-item1>
+<div class="container d-flex my-3" [ngClass]="{'rtl': isRtl, 'ltr': !isRtl}" style="gap: 20px;">
+    <app-item1 *ngFor="let item of item1SectionArray" [itemData]="item" [lang]="currentLang" style="width: 50%;"></app-item1>
 </div>

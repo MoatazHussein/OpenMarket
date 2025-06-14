@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../../core/services/category.service';
 import { PageSection } from '../../../models/page-section.model';
 import { PageSectionService } from '../../../Services/page-section.service';
+import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
   selector: 'app-footer',
@@ -16,6 +17,7 @@ facebookLink : string ="https://www.facebook.com/waseela.kw";
 instagramLink: string ="https://www.instagram.com/waseelati1";
 twitterLink: string ="https://twitter.com";
 linkedinLink: string ="https://linkedin.com";
+currentLang: string = 'ar';
 
 
   ngOnInit(): void {
@@ -27,12 +29,12 @@ linkedinLink: string ="https://linkedin.com";
         this.items = res.values.filter((val: any) => filterArr.includes(val.nameAr));
         let elements = this.items.map((val: any) => {
           return {
-            name: val.nameAr,
+            name: { ar: val.nameAr, en: val.nameEn },
             link: 'SubCategory/'+val.id
           }
         });
-        elements.push({name: 'مقاولات',link: 'Category/12'});
-        elements.push({name: 'اثاث',link: 'Category/10'});
+        elements.push({name: { ar: "مقاولات", en: "Contractors" },link: 'Category/12'});
+        elements.push({name: { ar: "اثاث", en: "Furniture" } ,link: 'Category/10'});
         this.ElementsColumn_03 = elements;
       },
       error: (err)=>{
@@ -61,22 +63,41 @@ linkedinLink: string ="https://linkedin.com";
 
       });
     }
+
+    this.languageService.language$.subscribe(lang => {
+        this.currentLang = lang;
+        this.isRtl = this.currentLang == 'ar' ? true : false;
+      });
   }
 
-  constructor(private categoryService: CategoryService,private sectionService : PageSectionService) {
+  constructor(private categoryService: CategoryService,private sectionService : PageSectionService,private languageService: LanguageService) {
   }
   isRtl: boolean = true; 
-  title_01:string = "عن وسيلتي";
-  title_02:string = "الدعم الفني";
-  title_03:string = "كتلوجات";
+  title_01 :any = { ar: "عن وسيلتي", en: "About Waseelti" };
+  title_02 :any = { ar: "الدعم الفني", en:  "Technical Support" };
+  title_03 :any = { ar: "كتلوجات", en: "Catalogs" };
 
 
-  ElementsColumn_01:any= [{name : "ما هو موقع وسيلتي؟",link:"About"},{name : "الخدمات الاعلانية",link:"AdvertisingServices"},{name : "خريطة الموقع",link:"not-found"}/*,{name : "دول أخرى",link:"about"}*/];
+  ElementsColumn_01:any=
+   [
+    {name : { ar: "ما هو موقع وسيلتي؟" , en: "What is Waseelti" },link:"About"},
+    {name : { ar: "الخدمات الاعلانية", en: "Advertising services" },link:"AdvertisingServices"},
+     /*{name : { ar: "خريطة الموقع", en: "Website Map" } ,link:"not-found"},{name : { ar: "دول أخرى", en: "other Countries" },link:"about"}*/];
   
-  ElementsColumn_02:any= [{name : "مساعدة",link:"Help"},{name : "فريق المبيعات",link:"SalesTeam"},{name : "شروط الاستخدام",link:"TermsOfUse"},{name : "سياسة الخصوصية",link:"PrivacyPolicy"},{name:"قواعد السلامة",link:"not-found"}];
+  ElementsColumn_02:any=[
+     {name : { ar: "مساعدة", en: "Help" },link:"Help"}
+    ,{name : { ar: "فريق المبيعات", en: "Sales Team" },link:"SalesTeam"}
+    ,{name : { ar: "شروط الاستخدام", en: "Terms Of Use" },link:"TermsOfUse"}
+    ,{name : { ar: "سياسة الخصوصية" , en: "Privacy Policy" },link:"PrivacyPolicy"}
+    ,{name : { ar: "قواعد السلامة" , en: "Safety Rules" },link:"not-found"}];
   
   ElementsColumn_03:any= [
   ];
+
+
+   getTextAlignment(): string {
+    return this.isRtl ? 'text-lg-end' : 'text-lg-start';
+  }
 
 }
 

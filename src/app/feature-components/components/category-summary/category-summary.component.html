@@ -1,11 +1,11 @@
 <div class="container" style="border-bottom: 1px solid rgb(220, 220, 220)" *ngIf="topProducts.length > 0">
     <div class="row">
-        <app-homepage-sections-header leftText="المزيد" leftLink="/SubCategory/{{category.id}}" [rightText]="category.name"></app-homepage-sections-header>
+        <app-homepage-sections-header [lang]="lang" [leftText]="navigationText" leftLink="/SubCategory/{{category.id}}" [rightText]="category.name"></app-homepage-sections-header>
     </div>
     <div class="row rtl">
         <app-subcategories-links [categories]="category.subCategories"></app-subcategories-links>
     </div>
-    <div class="d-flex rtl my-3 products">
+    <div class="d-flex my-3 products" [ngClass]="{'rtl': isRtl, 'ltr': !isRtl}">
         <app-single-product *ngFor="let product of topProducts" [product]="product"></app-single-product>
     </div>
 </div>

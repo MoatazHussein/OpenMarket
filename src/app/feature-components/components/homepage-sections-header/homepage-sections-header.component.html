@@ -1,11 +1,15 @@
-<div class="row justify-content-between my-2 fw-bold">
+<div class="row justify-content-between my-2 fw-bold" [ngClass]="{'ltr': isRtl, 'rtl': !isRtl}">
     <div class="col-3 left">
-        <a [href]="leftLink">
+        <a *ngIf="isRtl" [href]="leftLink">
             <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.70863 12.5476L11.8133 18.7525L9.60724 20.9947L1.57134 13.1448C0.366896 11.9683 0.366395 10.0311 1.57023 8.85391L9.60725 0.994758L11.8133 3.23701L5.72755 9.42264L20.9906 9.42264L20.9906 12.5476L5.70863 12.5476Z" fill="#0179FF"></path></svg>
             {{leftText}}
         </a>
+        <a *ngIf="!isRtl" [href]="leftLink">
+           <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" transform="matrix(-1,0,0,1,0,0)"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.70863 12.5476L11.8133 18.7525L9.60724 20.9947L1.57134 13.1448C0.366896 11.9683 0.366395 10.0311 1.57023 8.85391L9.60725 0.994758L11.8133 3.23701L5.72755 9.42264L20.9906 9.42264L20.9906 12.5476L5.70863 12.5476Z" fill="#0179FF"></path></svg>
+            {{leftText}}
+        </a>
     </div>
-    <div class="col-3 text-end right">
+    <div class="col-3" [ngClass]="{'text-end': isRtl, 'text-start': !isRtl}">
         <h1 *ngIf="!rightIsLink">{{rightText}}</h1>
         <a *ngIf="rightIsLink" href="" class="block" style="color: black;">
             <h3>{{rightText}}</h3>

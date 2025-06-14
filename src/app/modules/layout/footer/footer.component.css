@@ -1,9 +1,14 @@
 .footer-elements{
     background-color: #e5ede9;
     display: flex;
-    direction: rtl;
+    /* direction: rtl; */
     justify-content: space-evenly;
 }
+
+.rtl-direction {
+  direction: rtl;
+  text-align: right;
+  }
 
 
 .footer-element{

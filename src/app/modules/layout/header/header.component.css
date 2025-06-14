@@ -5,7 +5,7 @@
     justify-content: space-evenly;
     /* padding: 0.5rem; */
     color: white;
-    direction: rtl;
+    /* direction: rtl; */
 }
 
 .locaions-search {
@@ -136,8 +136,8 @@ button {
     color: #0062ff;
     border: none;
     background-color: transparent;
-    font-size: 14px;
-    line-height: 20px;
+    /* font-size: 14px;
+    line-height: 20px; */
 }
 .language-toggle{
   padding: 4px 8px;
@@ -172,3 +172,18 @@ form button{
     position: absolute;
     margin: 4px 0;
 }
+
+.flag-icon {
+  /* width: 50px;  */
+  height: 20px; 
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* .uk-flag {
+  background-image: url('assets/flags/uk-flag.svg');
+}
+
+.sa-flag {
+  background-image: url('assets/flags/sa-flag.svg');
+} */

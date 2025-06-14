@@ -10,7 +10,8 @@ import { ViewportScroller } from '@angular/common';
 })
 export class LanguageSelectorComponent {
   currentLang: string = 'ar';
-  contact: string = this.currentLang == 'en' ? 'Contact Us' : 'إتصل بنا';
+  isRtl: boolean = true; 
+  contact: string = 'Contact Us' ;
 
   constructor(
     private languageService: LanguageService
@@ -18,10 +19,12 @@ export class LanguageSelectorComponent {
     , private viewportScroller: ViewportScroller) {}
 
   ngOnInit() {
-    this.currentLang = this.languageService.getLanguage();
+    // this.currentLang = this.languageService.getLanguage();
     this.languageService.language$.subscribe(lang => {
       this.currentLang = lang;
     });
+     this.contact = this.currentLang == 'en' ? 'Contact Us' : 'إتصل بنا';
+     this.isRtl = this.currentLang == 'en' ? false : true;
   }
 
   toggleLanguage() {

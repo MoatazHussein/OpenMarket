@@ -8,6 +8,8 @@ import { AddProductAccessServiceService } from '../../../../core/services/add-pr
 })
 export class Item1Component {
   @Input() itemData: any;
+  @Input() lang: string ='ar';
+
 
    constructor(private addProductAccessServiceService :AddProductAccessServiceService
     ) {}

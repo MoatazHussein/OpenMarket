@@ -1,9 +1,10 @@
-<div class="footer-elements">
-    <div class="footer-element col-md-2 text-center text-lg-end">
+<div class="footer-elements" [class.rtl-direction]="isRtl">
+    <div class="footer-element col-md-2 text-center" [ngClass]="getTextAlignment()">
         <a class="logo-anchor" href="#">
             <img src="assets/logo.png" alt="Logo" class="logo-image" />
         </a>
-        <p class="footer-rights"> جميع الحقوق محفوظة <br>لموقع وسيلتي <span>© <!-- -->2025</span></p>
+        <p *ngIf="currentLang=='ar'" class="footer-rights"> جميع الحقوق محفوظة <br>لموقع وسيلتي <span>© <!-- -->2025</span></p>
+        <p *ngIf="currentLang=='en'" class="footer-rights"> All rights reserved <br>waseelti <span>© <!-- -->2025</span></p>
         <div class="social-media-icons">
             <a [href]="facebookLink" target="_blank" aria-label="facebook">
                 <i class="fab fa-facebook"></i>
@@ -20,20 +21,20 @@
     </div>
 
     </div>
-    <div class="footer-element col-md-2 text-center text-lg-end">
-        <h4>{{title_01}}</h4>
+    <div class="footer-element col-md-2 text-center" [ngClass]="getTextAlignment()">
+        <h4>{{title_01[currentLang]}}</h4>
         <a *ngFor="let element of ElementsColumn_01;" [routerLink]="element.link">
-            {{element.name}} </a>
+            {{element.name[currentLang]}} </a>
     </div>
 
-    <div class="footer-element col-md-2 text-center text-lg-end">
-        <h4>{{title_02}}</h4>
+    <div class="footer-element col-md-2 text-center" [ngClass]="getTextAlignment()">
+        <h4>{{title_02[currentLang]}}</h4>
         <a *ngFor="let element of ElementsColumn_02;" [routerLink]="element.link">
-            {{element.name}} </a>
+            {{element.name[currentLang]}} </a>
     </div>
-   <div class="footer-element col-md-2 text-center text-lg-end">
-        <h4>{{title_03}}</h4>
+   <div class="footer-element col-md-2 text-center" [ngClass]="getTextAlignment()">
+        <h4>{{title_03[currentLang]}}</h4>
         <a *ngFor="let element of ElementsColumn_03;" [routerLink]="element.link">
-            {{element.name}} </a>
+            {{element.name[currentLang]}} </a>
     </div>
 </div>

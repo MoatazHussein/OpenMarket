@@ -54,6 +54,8 @@ ngOnInit() {
   });
     this.languageService.language$.subscribe(lang => {
       this.currentLang = lang;
+     this.isRtl = lang=='ar' ? true:false; 
+
     });
 
   // console.log("Categories",this.homePageService.getCategories());

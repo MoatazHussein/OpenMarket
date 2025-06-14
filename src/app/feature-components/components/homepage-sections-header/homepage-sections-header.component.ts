@@ -11,4 +11,11 @@ export class HomepageSectionsHeaderComponent {
   @Input() leftText?: string = '';
   @Input() leftLink?: string = '';
   @Input() rightIsLink: boolean = false;
+  @Input() lang: string = 'ar';
+
+  isRtl: boolean = false;
+
+  ngOnInit() {
+    this.isRtl = this.lang == 'ar' ? true : false;
+  }
 }

@@ -1,6 +1,4 @@
-<div class="language-container">
-  
-  
+<div class="language-container" [ngClass]="{'rtl': isRtl, 'ltr': !isRtl}">
   <!-- <button class="language-toggle" [ngClass]="{ 'right': currentLang === 'en', 'left': currentLang === 'ar' }"
     (click)="toggleLanguage()">
     {{ currentLang === 'ar' ? 'English' : 'عربي' }}

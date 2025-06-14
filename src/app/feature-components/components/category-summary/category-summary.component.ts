@@ -9,7 +9,22 @@ import { Product } from '../../../models/product.model';
 })
 export class CategorySummaryComponent {
   @Input() category!: Category;
-
   @Input() topProducts: any[] = [];
+  @Input() lang: string = 'ar';
+  
+  
+  navigationText: string = '';
+  isRtl:boolean=false;
 
+  ngOnInit(){
+    if(this.lang=='ar'){
+    this.navigationText='المزيد';
+    this.isRtl=true;
+    }
+    else{
+    this.navigationText='More';
+    this.isRtl=false;
+    }
+  }
+ 
 }
