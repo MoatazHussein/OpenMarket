@@ -29,18 +29,18 @@
     </swiper>
 </div>
 <div class="info">
-    <h4>المعلومات</h4>
+    <h4>{{lang == 'ar' ? 'المعلومات' : 'Information'}}</h4>
     <p>{{product.description}}</p>
-    <ul class="d-flex">
-        <li class="d-flex" *ngFor="let item of product.informations; let i = index;" [ngClass]="{'greyBg': i%4==0 || i%4==1}">
+    <ul class="d-flex" [class.flex-row-reverse]="lang != 'ar'">
+        <li class="d-flex" [class.flex-row-reverse]="lang != 'ar'" *ngFor="let item of product.informations; let i = index;" [ngClass]="{'greyBg': i%4==0 || i%4==1}">
             <p>{{item.key}}</p>
             <span>{{item.value}}</span>
         </li>
     </ul>
 </div>
 <div class="similiar">
-    <h4>اعلانات مشابهة</h4>
-    <div class="products d-flex">
+    <h4>{{lang == 'ar' ? 'اعلانات مشابهة' : 'Similiar Products'}}</h4>
+    <div class="products d-flex" [class.flex-row-reverse]="lang != 'ar'">
         <app-single-product style="width: 24%;" *ngFor="let product of topProducts" [product]="product"></app-single-product>
     </div>
 </div>

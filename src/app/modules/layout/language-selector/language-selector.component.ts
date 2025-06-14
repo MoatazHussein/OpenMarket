@@ -31,6 +31,8 @@ export class LanguageSelectorComponent {
     const newLang = this.currentLang === 'en' ? 'ar' : 'en';
     this.languageService.setLanguage(newLang);
     this.contact = this.currentLang == 'en' ? 'Contact Us' : 'إتصل بنا';
+    this.router.navigate(['/']);
+    
   }
   navigateToRouteAndScroll() {
     this.router.navigate(['/PrivacyPolicy']).then(() => {

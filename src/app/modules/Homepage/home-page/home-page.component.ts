@@ -67,7 +67,7 @@ export class HomePageComponent {
                   var image = p.productImages[0] ? p.productImages[0] : "assets/placeholder.jpg"
                   this.products.push({ id: p.id, name: p.name, imageUrl: image, price: p.price });
                 });
-                this.categorysummary.push({ category: { id: e.id, name:this.currentLang == 'ar' ? e.nameAr:e.nameEn, imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp' }, topProducts: this.products });
+                this.categorysummary.push({ category: { id: e.id, name:this.currentLang == 'ar' ? e.nameAr:e.nameEn, imageUrl: 'https://opensooqui2.os-cdn.com/api/apiV/web/categories/Gaming.webp',nameEn: e.nameEn }, topProducts: this.products });
               }
             },
 

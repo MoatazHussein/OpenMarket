@@ -4,6 +4,7 @@ import { SwiperComponent } from 'swiper/angular';
 import { Category } from '../../../../../../models/category.model';
 import { ProductService } from '../../../../../../core/services/product.service';
 import { Subscription } from 'rxjs';
+import { LanguageService } from '../../../../../../core/services/language.service';
 
 SwiperCore.use([FreeMode, Navigation, Thumbs]);
 
@@ -17,7 +18,7 @@ SwiperCore.use([FreeMode, Navigation, Thumbs]);
 
 export class SingleProductContentComponent implements OnInit, OnChanges, OnDestroy{
 
-  constructor(private productService: ProductService){
+  constructor(private productService: ProductService, private languageService: LanguageService){
 
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -25,10 +26,12 @@ export class SingleProductContentComponent implements OnInit, OnChanges, OnDestr
   }
   ngOnInit(): void {
     this.getProducts();
+    this.lang = this.languageService.getLanguage();
   }  
 
   @Input() product: any = {};
   private sub: Subscription = new Subscription();
+  lang:string = 'ar';
 
   thumbsSwiper: any;
 

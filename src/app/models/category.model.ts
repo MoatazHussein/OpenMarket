@@ -2,5 +2,6 @@ export interface Category{
     id: number;
     name?: string;
     imageUrl?: string;
-    subCategories?: Category[]
+    subCategories?: Category[];
+    nameEn?: string;
 }

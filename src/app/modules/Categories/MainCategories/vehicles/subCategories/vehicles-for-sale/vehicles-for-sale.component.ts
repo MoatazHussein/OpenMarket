@@ -41,7 +41,10 @@ export class VehiclesforSaleComponent {
 
   ngOnInit() {
     this.getYearlyOptions();
-
+    this.currentLang = this.languageService.getLanguage();
+    if(this.currentLang == 'en'){
+      this.currency = 'KWD';
+    }
     // this.currentLang = this.languageService.getLanguage();
     // this.languageService.language$.subscribe(lang => {
     //   console.log("gg",lang);

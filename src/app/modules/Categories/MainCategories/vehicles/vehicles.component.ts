@@ -5,6 +5,7 @@ import { CategoryService } from '../../../../core/services/category.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../../core/services/product.service';
 import { HomePageService } from '../../../../core/services/home-page.service';
+import { LanguageService } from '../../../../core/services/language.service';
 
 @Component({
   selector: 'app-vehicles',
@@ -14,11 +15,13 @@ import { HomePageService } from '../../../../core/services/home-page.service';
 export class VehiclesComponent implements OnInit {
       categoryID: number = 0;
       allSubsSummary: any;
+      lang: string = 'ar';
 
       ngOnInit(): void {
-        this.catService.getSubCategories
+        this.catService.getSubCategories();
+        this.lang = this.languageService.getLanguage();
       }
-      constructor(private catService: CategoryService,private route: ActivatedRoute, private productService: ProductService, private home: HomePageService){
+      constructor(private catService: CategoryService,private route: ActivatedRoute, private productService: ProductService, private home: HomePageService, private languageService: LanguageService){
         this.route.paramMap.subscribe({
           next: (res) => {
             this.categoryID = Number(res.get('id'));
@@ -51,11 +54,13 @@ export class VehiclesComponent implements OnInit {
         this.allSubsSummary = [];
         this.catService.getSubCategoriesForSpecificCat(this.categoryID).subscribe({
           next: (res) => {
+            debugger;
             this.subCategories = res.values.map((val: any) => {
               return {
                 id: val.id,
                 name: val.nameAr,
-                imageUrl: val.imageURL
+                imageUrl: val.imageURL,
+                nameEn: val.nameEn
               };
             });
             if(this.subCategories.length > 0){
@@ -67,7 +72,8 @@ export class VehiclesComponent implements OnInit {
                       Cat: {
                         id: item.id,
                         name: item.name,
-                        imageUrl: item.imageURL
+                        imageUrl: item.imageURL,
+                        nameEn: item.nameEn
                       },
                       Products: item.products.values.map((p:any) => {
                         return {

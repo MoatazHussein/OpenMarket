@@ -1,5 +1,5 @@
-<div class="d-flex subCat">
-    <a [routerLink]="['/SubCategory',item.id]" *ngFor="let item of items;">{{item.name}}
+<div class="d-flex subCat" [class.flex-row-reverse]="lang != 'ar'">
+    <a [routerLink]="['/SubCategory',item.id]" *ngFor="let item of items;" [class.flex-row-reverse]="lang != 'ar'" [class.text-start]="lang != 'ar'">{{lang == 'ar' ? item.name : item.nameEn}}
         <img alt="سيارات للبيع" width="60" height="50" loading="lazy" [src]="item.imageUrl">
     </a>
 </div>

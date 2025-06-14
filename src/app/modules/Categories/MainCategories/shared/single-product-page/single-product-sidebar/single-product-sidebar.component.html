@@ -1,5 +1,5 @@
 <div class="mainCard">
-    <div class="price">{{product.price}} دينار</div>
+    <div class="price">{{lang == 'ar' ? product.price + ' دينار' : product.price + ' KWD'}}</div>
     <button class="call-button theme-button">
         <mat-icon>call</mat-icon>
         {{product.contactNumber}}
@@ -9,19 +9,19 @@
         <span style="margin-right: 10px;">دردش</span> 
     </button>
     <div class="mt-5">
-        <h6>نصائح عامة</h6>
-        <ol>
-            <li>اجتمع في الأماكن العامة فقط.</li>
-            <li>لا تقم بإرسال المال مسبقاً.</li>
-            <li>قم بتفقد المنتج جيداً قبل شرائه.</li>
+        <h6>{{lang == 'ar' ? 'نصائح عامة' : 'General tips'}}</h6>
+        <ol [dir]="lang != 'ar' ? 'ltr' : 'rtl'">
+            <li>{{lang == 'ar' ? 'اجتمع في الأماكن العامة فقط.' : 'Meet in public places only.'}}</li>
+            <li>{{lang == 'ar' ? 'لا تقم بإرسال المال مسبقاً.' : 'Do not send money in advance.'}}</li>
+            <li>{{lang == 'ar' ? 'قم بتفقد المنتج جيداً قبل شرائه.' : 'Check the product carefully before purchasing it.'}}</li>
         </ol>
     </div>
 </div>
 <div class="ownerCard">
-    <div class="d-flex">
-        <h3>صاحب الإعلان</h3>
+    <div class="d-flex" [class.flex-row-reverse]="lang != 'ar'">
+        <h3>{{lang == 'ar' ? 'صاحب الإعلان' : 'Advertiser'}}</h3>
     </div>
-    <a href="" class="d-flex">
+    <a href="" class="d-flex" [class.flex-row-reverse]="lang != 'ar'">
         <div>
             <img width="90" height="90" alt=" امان" loading="lazy" src="https://opensooqui2.os-cdn.com/api/v/icons/misc/no_profile.png">
         </div>
@@ -34,12 +34,12 @@
     </a>
 </div>
 <div class="locationCard">
-    <div class="d-flex mb-1">
-        <h3>الموقع</h3>
+    <div class="d-flex mb-1" [class.flex-row-reverse]="lang != 'ar'">
+        <h3>{{lang == 'ar' ? 'الموقع' : 'Location'}}</h3>
     </div>
     <h6>{{product.cityName}}</h6>
     <a href="" (click)="mapClick($event)">
         <img src="https://opensooqui2.os-cdn.com/prod/public/images/postMap.webp" alt="map" width="100%" height="100%">
-        <span>عرض على الخريطة</span>
+        <span>{{lang == 'ar' ? 'عرض على الخريطة' : 'Show On Map'}}</span>
     </a>
 </div>

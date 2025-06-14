@@ -44,6 +44,9 @@ export class SearchPageComponent {
 
     this.languageService.language$.subscribe((lang) => {
       this.currentLang = lang;
+      if(lang == 'en'){
+        this.currency = 'KWD';
+      }
     });
 
     this.route.queryParams.subscribe(params => {

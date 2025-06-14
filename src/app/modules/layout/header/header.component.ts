@@ -81,7 +81,7 @@ export class HeaderComponent {
     localStorage.setItem('preferredLanguage', newLang);
 
     this.languageService.setLanguage(newLang);
-    window.location.reload();
+    //this.router.navigate(['/']);
 
   }
 

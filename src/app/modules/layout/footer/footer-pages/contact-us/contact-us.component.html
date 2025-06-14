@@ -15,8 +15,9 @@
 <div class="commercial-ads-page" [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
   <!-- Header Section -->
   <div class="page-header">
-    <h1>اتصل بنا</h1>
-    <p>نحن هنا لمساعدتك! تواصل معنا عبر أي من الطرق التالية</p>
+    <h1>{{currentLang == 'ar' ? 'اتصل بنا' : 'Contact us'}}</h1>
+    <p>{{currentLang == 'ar' ? 'نحن هنا لمساعدتك! تواصل معنا عبر أي من الطرق التالية' : 'We\'re here to help! Contact us via any of the following methods.'}}</p>
+    <p></p>
   </div>
 
   <!-- Contact Methods -->
@@ -27,8 +28,8 @@
         <i class="fas fa-phone-alt"></i>
       </div>
       <div class="contact-info">
-        <h3>الاتصال الهاتفي</h3>
-        <p>متاح من الاحد للخميس من الساعة 9 صباحاً حتى 5 مساءً</p>
+        <h3>{{currentLang == 'ar' ? 'الاتصال الهاتفي' : 'Phone Contact'}}</h3>
+        <p>{{currentLang == 'ar' ? 'متاح من الاحد للخميس من الساعة 9 صباحاً حتى 5 مساءً' : 'Available from Sunday to Thursday from 9 am to 5 pm'}}</p>
         <a href="tel:+96522248493" class="contact-btn" style="direction: ltr;">
           <i class="fas fa-phone"></i> +965 222 484 93
         </a>
@@ -55,8 +56,8 @@
         <i class="fas fa-envelope"></i>
       </div>
       <div class="contact-info">
-        <h3>البريد الإلكتروني</h3>
-        <p>للاستفسارات العامة</p>
+        <h3>{{currentLang == 'ar' ? 'البريد الإلكتروني' : 'Email'}}</h3>
+        <p>{{currentLang == 'ar' ? 'للاستفسارات العامة' : 'For general inquiries'}}</p>
         <a href="mailto:Waseelatikwt@gmail.com" class="contact-btn email-btn">
           <i class="fas fa-envelope"></i> Waseelatikwt&#64;gmail.com
         </a>
@@ -66,48 +67,48 @@
 
   <!-- Contact Form -->
  <div class="contact-form">
-  <h2>أرسل رسالتك إلينا</h2>
+  <h2>{{currentLang == 'ar' ? 'أرسل رسالتك إلينا' : 'Send your message to us'}}</h2>
   <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="name">الاسم الكامل *</label>
-      <input type="text" id="name" formControlName="name" placeholder="أدخل اسمك الكامل">
+      <label for="name">{{currentLang == 'ar' ? 'الاسم الكامل *' : 'Full Name *'}}</label>
+      <input type="text" id="name" formControlName="name" [placeholder]="currentLang == 'ar' ? 'أدخل اسمك الكامل' : 'Enter Full Name'">
       <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="error-message">
-        الاسم الكامل مطلوب
+        {{currentLang == 'ar' ? 'الاسم الكامل مطلوب' : 'Full Name Required'}}
       </div>
     </div>
     
     <div class="form-group">
-      <label for="email">البريد الإلكتروني</label>
-      <input type="email" id="email" formControlName="email" placeholder="أدخل بريدك الإلكتروني">
+      <label for="email">{{currentLang == 'ar' ? 'البريد الإلكتروني' : 'Email'}}</label>
+      <input type="email" id="email" formControlName="email" [placeholder]="currentLang =='ar' ?'أدخل بريدك الإلكتروني' : 'Enter your email'">
     </div>
     
     <div class="form-group">
-      <label for="phone">رقم الهاتف *</label>
-      <input type="tel" id="phone" formControlName="phone" placeholder="أدخل رقم هاتفك">
+      <label for="phone">{{currentLang == 'ar' ? 'رقم الهاتف *' : 'Phone Number *'}}</label>
+      <input type="tel" id="phone" formControlName="phone" [placeholder]="currentLang=='ar'? 'أدخل رقم هاتفك': 'Enter Your Phone Number'" [ngStyle]="{'direction': currentLang=='ar'? 'rtl' : ''}">
       <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" class="error-message">
-        رقم الهاتف مطلوب
+        {{currentLang =='ar'?'رقم الهاتف مطلوب':'Phone Number Is Required'}}
       </div>
     </div>
     
     <div class="form-group">
-      <label for="message">الرسالة *</label>
-      <textarea id="message" rows="5" formControlName="message" placeholder="أدخل رسالتك هنا"></textarea>
+      <label for="message">{{currentLang=='ar'?'الرسالة *':'Message *'}}</label>
+      <textarea id="message" rows="5" formControlName="message" [placeholder]="currentLang=='ar'? 'أدخل رسالتك هنا' : 'Enter Your Message Here'"></textarea>
       <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="error-message">
-        الرسالة مطلوبة
+        {{currentLang=='ar'?'الرسالة مطلوبة':'Message is required'}}
       </div>
     </div>
     
     <div *ngIf="submitSuccess" class="success-message">
-      تم إرسال رسالتك بنجاح، شكراً لتواصلك معنا!
+      {{currentLang=='ar'?'تم إرسال رسالتك بنجاح، شكراً لتواصلك معنا!':'Your message has been sent successfully, thank you for contacting us!'}}
     </div>
     
     <div *ngIf="submitError" class="error-message">
-      حدث خطأ أثناء إرسال الرسالة، يرجى المحاولة مرة أخرى
+      {{currentLang=='ar'?'حدث خطأ أثناء إرسال الرسالة، يرجى المحاولة مرة أخرى':'An error occurred while sending the message, please try again.'}}
     </div>
     
     <button type="submit" class="submit-btn" [disabled]="isSubmitting || contactForm.invalid">
-      <span *ngIf="!isSubmitting">إرسال الرسالة</span>
-      <span *ngIf="isSubmitting">جاري الإرسال...</span>
+      <span *ngIf="!isSubmitting">{{currentLang=='ar'?'إرسال الرسالة':'Send'}}</span>
+      <span *ngIf="isSubmitting">{{currentLang=='ar'?'جاري الإرسال...':'Sending ...'}}</span>
     </button>
   </form>
 </div>

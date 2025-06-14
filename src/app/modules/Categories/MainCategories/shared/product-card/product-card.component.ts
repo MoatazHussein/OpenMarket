@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { LanguageService } from '../../../../../core/services/language.service';
 
 @Component({
   selector: 'product-card',
@@ -7,23 +8,25 @@ import { Router } from '@angular/router';
   styleUrl: './product-card.component.css'
 })
 export class ProductCardComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private languageService: LanguageService) {}
 
   @Input() image: string="assets/car.png";
-  @Input() title: string="للبيع سوبر 8 براغي hd دبل قير شرط الفحص";
-  @Input() description: string="مستعمل ,‏ جي إم سي ,‏ سوبربان ,‏ 2008 ,‏ ‏ +200,000 كم ‏,‏ اس يو في";
-  @Input() location: string="مدينة الكويت, جابر الأحمد";
-  @Input() mobile: string="556221XX";
-  @Input() price:string="880";
+  @Input() title: string="";
+  @Input() description: string="";
+  @Input() location: string="";
+  @Input() mobile: string="";
+  @Input() price:string="";
   @Input() currency:string="دينار";
   @Input() navigateTo:string="/home";
   @Input() id:string="";
   @Input() subCategoryName:string='';
 
   modifiedMobile:string='';
+  lang: string = 'ar';
 
   ngOnInit() {
     this.modifiedMobile=this.replaceLastTwoNumbers(this.mobile);
+    this.lang = this.languageService.getLanguage();
   }
   // Navigate to the desired route
   navigateToRoute() {

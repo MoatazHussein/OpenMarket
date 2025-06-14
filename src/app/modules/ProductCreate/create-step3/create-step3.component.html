@@ -1,50 +1,50 @@
 
 <section>
   <div *ngIf="attributeForm" class="container">
-    <h3 dir="rtl">أضف تفاصيل الاعلان</h3>
+    <h3 [dir]="lang == 'ar' ? 'rtl' : 'ltr'">{{lang == 'ar' ? 'أضف تفاصيل الاعلان' : 'Add Advertisement Details'}}</h3>
     <div class="row">
-      <div class="col-md-9 form-container" dir="rtl">
+      <div class="col-md-9 form-container" [dir]="lang == 'ar' ? 'rtl' : 'ltr'" [ngStyle]="{'margin-left': lang == 'ar' ? 'auto' : ''}">
         <form [formGroup]="attributeForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
           <div class="form-group">
-            <label>اسم المنتج</label>
+            <label [class.text-start]="lang != 'ar'">{{lang == 'ar' ? 'اسم المنتج' : 'Name'}}</label>
             <input [formControlName]="'Name'" type="text" class="form-control" required="true">
           </div>
           <div class="form-group">
-            <label>وصف المنتج</label>
+            <label [class.text-start]="lang != 'ar'">{{lang == 'ar' ? 'وصف المنتج' : 'Description'}}</label>
             <textarea [formControlName]="'Description'" class="form-control" required="true" rows="5"></textarea>
           </div>
           <div class="form-group">
-            <label> المدينة  </label>
-            <select [formControlName]="'CityID'" class="form-control">
+            <label [class.text-start]="lang != 'ar'">{{lang == 'ar' ? 'المدينة' : 'City'}}</label>
+            <select [formControlName]="'CityID'" class="form-control" [class.text-start]="lang != 'ar'">
               <option *ngFor="let option of cityOptions" [value]="option.id">{{ option.name }}</option>
             </select>
           </div>
           <div class="form-group">
-            <label>العنوان</label>
+            <label [class.text-start]="lang != 'ar'">{{lang == 'ar' ? 'العنوان' : 'Address'}}</label>
             <input [formControlName]="'Address'" type="text" class="form-control" required="true" min="1">
           </div>
           <div class="form-group">
-            <label>رقم التواصل</label>
+            <label [class.text-start]="lang != 'ar'">{{lang == 'ar' ? 'رقم التواصل' : 'Contact Number'}}</label>
             <input [formControlName]="'ContactNumber'" type="text" pattern="^[0-9+()-\s]*$" class="form-control"
               required="true" min="1">
           </div>
           <div class="form-group">
-            <label>السعر</label>
+            <label [class.text-start]="lang != 'ar'">{{lang == 'ar' ? 'السعر' : 'Price'}}</label>
             <input [formControlName]="'Price'" type="number" class="form-control" required="true" min="1">
           </div>
 
           <div *ngFor="let attribute of attributes" class="form-group">
             <ng-container [ngSwitch]="attribute.type">
-              <label *ngSwitchCase="1">
-                {{ attribute.nameEn }}
+              <label *ngSwitchCase="1" [class.text-start]="lang != 'ar'">
+                {{ lang=='ar'? attribute.nameAr : attribute.nameEn }}
               </label>
               <input *ngSwitchCase="1" 
               [formControlName]="'attribute_' + attribute.id" 
               type="text" 
               class="form-control">
 
-              <label *ngSwitchCase="2">
-                {{ attribute.nameEn }}
+              <label *ngSwitchCase="2" [class.text-start]="lang != 'ar'">
+                {{ lang=='ar'? attribute.nameAr : attribute.nameEn }}
               </label>
               <input *ngSwitchCase="2" 
               [formControlName]="'attribute_' + attribute.id" 
@@ -52,15 +52,16 @@
               class="form-control">
 
               <!-- <ng-container *ngIf="attributeOptionsMap[attribute.id].length > 0"> -->
-              <label *ngSwitchCase="0">
-                {{ attribute.nameEn }}
+              <label *ngSwitchCase="0" [class.text-start]="lang != 'ar'">
+                {{ lang=='ar'? attribute.nameAr : attribute.nameEn }}
               </label>
               <select *ngSwitchCase="0" 
               [formControlName]="'attribute_' + attribute.id" 
               class="form-control"
               (change)="onAttributeChange(attribute)" 
               [attr.data-id]="attribute.id"
-              [attr.data-parent]="attribute.filterId">
+              [attr.data-parent]="attribute.filterId"
+              [class.text-start]="lang != 'ar'">
                 <option *ngFor="let option of attributeOptionsMap[attribute.id]" 
                 [value]="option">
                   {{ option }}
@@ -91,14 +92,14 @@
             >
 
             <button type="button" class="theme-button" (click)="fileInput.click()">
-              اختر الصور
+              {{lang == 'ar' ? 'اختر الصور' : 'Choose Images'}}
             </button>
 
             <div class="preview-container" *ngIf="previewImages.length">
               <div class="image-preview" *ngFor="let image of previewImages; let i = index">
                 <img [src]="image.url" alt="Preview">
                 <button type="button" class="remove-btn" (click)="removeImage(i)">
-                  Remove
+                  {{lang == 'ar' ? 'احذف' : 'Remove'}}
                 </button>
               </div>
             </div>
@@ -108,7 +109,7 @@
           <button type="submit" 
           [disabled]="attributeForm.invalid" 
           class="btn btn-primary theme-button">
-            أضف اعلانك الان
+            {{lang == 'ar' ? 'أضف اعلانك الان' : 'Add Advertisment'}}
           </button>
         </form>
       </div>
