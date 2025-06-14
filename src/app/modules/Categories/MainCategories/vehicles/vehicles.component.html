@@ -3,7 +3,7 @@
 
     <section dir="rtl">
         <div class="container">
-            <h4>الأقسام</h4>
+            <h4 [class.text-start]="lang != 'ar'">{{lang == 'ar' ? 'الأقسام' : 'Subcategories'}}</h4>
             <app-sub-categories [items]="subCategories"></app-sub-categories>
         </div>
     </section>

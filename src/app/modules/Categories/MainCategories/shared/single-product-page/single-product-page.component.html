@@ -1,11 +1,11 @@
 <section>
     <div class="container">
-        <h5>{{product.name}}</h5>
-        <div class="row">
-            <div class="col-md-3">
+        <h5 [class.text-start]="lang != 'ar'">{{product.name}}</h5>
+        <div class="row" [class.flex-row-reverse]="lang != 'ar'">
+            <div class="col-md-3" [class.text-start]="lang != 'ar'" [dir]="lang != 'ar' ? 'ltr' : 'rtl'">
                 <app-single-product-sidebar [product]="product"></app-single-product-sidebar>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9" [class.text-start]="lang != 'ar'" [dir]="lang != 'ar' ? 'ltr' : 'rtl'">
                 <app-single-product-content [product]="product"></app-single-product-content>
             </div>
         </div>

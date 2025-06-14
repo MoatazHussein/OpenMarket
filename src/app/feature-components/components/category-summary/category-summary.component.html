@@ -1,6 +1,6 @@
 <div class="container" style="border-bottom: 1px solid rgb(220, 220, 220)" *ngIf="topProducts.length > 0">
     <div class="row">
-        <app-homepage-sections-header [lang]="lang" [leftText]="navigationText" leftLink="/SubCategory/{{category.id}}" [rightText]="category.name"></app-homepage-sections-header>
+        <app-homepage-sections-header [lang]="lang" [leftText]="navigationText" leftLink="/SubCategory/{{category.id}}" [rightText]="lang == 'ar' ? category.name : category.nameEn"></app-homepage-sections-header>
     </div>
     <div class="row rtl">
         <app-subcategories-links [categories]="category.subCategories"></app-subcategories-links>

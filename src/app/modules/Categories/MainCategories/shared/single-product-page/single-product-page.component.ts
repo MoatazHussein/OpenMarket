@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LanguageService } from '../../../../../core/services/language.service';
 
 @Component({
   selector: 'app-single-product-page',
@@ -9,8 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 export class SingleProductPageComponent implements OnInit{
 
   public product: any = {};
+  lang: string = 'ar';
 
-  constructor(private activatedRoute: ActivatedRoute){
+  constructor(private activatedRoute: ActivatedRoute,private languageService: LanguageService){
 
   }
 
@@ -20,6 +22,7 @@ export class SingleProductPageComponent implements OnInit{
         this.product = productData;
         console.log(productData);
       });
+      this.lang = this.languageService.getLanguage();
   }
 
 }

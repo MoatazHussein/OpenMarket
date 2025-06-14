@@ -7,6 +7,7 @@ import { ProductService } from '../../../core/services/product.service';
 import { HomePageService } from '../../../core/services/home-page.service';
 import { CityService } from '../../../core/services/city.service';
 import { BaseEntity } from '../../../models/Base-Entity.model';
+import { LanguageService } from '../../../core/services/language.service';
 
 interface PreviewImage {
   url: string;
@@ -31,6 +32,7 @@ export class CreateStep3Component {
   productContactNumber: FormControl = new FormControl('', Validators.required);
   productPrice: FormControl = new FormControl('', Validators.required);
   productImages: FormControl = new FormControl(null, Validators.required);
+  lang: string = 'ar';
 
   cityOptions: BaseEntity[] = [];
   attributes: AttributeDetailsDTO[] = [];
@@ -56,6 +58,7 @@ export class CreateStep3Component {
     private productService: ProductService,
     private router: Router,
     private cityService: CityService,
+    private languageService: LanguageService
   ) { }
 
   ngOnInit() {
@@ -68,6 +71,7 @@ export class CreateStep3Component {
     console.log(this.attributeForm);
     this.loadAttributes();
     this.loadCities();
+    this.lang = this.languageService.getLanguage();
   }
 
   loadCities() {

@@ -1,14 +1,14 @@
 <section>
 
   <div class="container">
-    <h3 dir="rtl">ما الذي تود بيعه او الإعلان عنه؟</h3>
+    <h3 [dir]="lang == 'ar' ? 'rtl' : 'ltr'">{{lang == 'ar' ? 'ما الذي تود بيعه او الإعلان عنه؟' : 'What do you want to sell or advertise?'}}</h3>
     <div class="row">
-      <div class="col-md-9 categories-container">
+      <div class="col-md-9 categories-container" [ngStyle]="{'margin-left': lang == 'ar' ? 'auto' : ''}">
         <ul>
           <li 
           *ngFor="let category of categories" 
           (click)="navigateToSubcategories(category.id)"
-          class="category-item"
+          class="category-item" [class.text-start]="lang != 'ar'"
           >
           {{ category.name }}
           </li>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {  CategoryService } from '../../../core/services/categories.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '../../../models/category.model';
+import { LanguageService } from '../../../core/services/language.service';
 
 
 @Component({
@@ -11,11 +12,13 @@ import { Category } from '../../../models/category.model';
 })
 export class CreateStep2Component {
   category: Category | null = null;
+  lang: string = 'ar';
 
   constructor(
     private route: ActivatedRoute,
     private categoryService: CategoryService,
-    private router: Router
+    private router: Router,
+    private languageService: LanguageService
   ) {}
 
   ngOnInit() {
@@ -28,6 +31,7 @@ export class CreateStep2Component {
         }
       );
     });
+    this.lang = this.languageService.getLanguage();
   }
 
   navigateToForm(categoryId: number) {

@@ -1,11 +1,11 @@
-<div class="commercial-ads-container" [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
+<div class="commercial-ads-container">
   <!-- Header -->
   <div class="header">
-    <h1>الاعلانات التجارية</h1>
+    <h1>{{currentLang == 'ar' ? 'الاعلانات التجارية' : 'Commercial Ads'}}</h1>
   </div>
 
   <!-- Products Grid (RTL) -->
-  <div class="products-grid">
+  <div class="products-grid" [class.ltr]="currentLang != 'ar'">
     <div class="product-card" 
          *ngFor="let product of paginatedProducts; let i = index"
          (click)="openModal(i)">

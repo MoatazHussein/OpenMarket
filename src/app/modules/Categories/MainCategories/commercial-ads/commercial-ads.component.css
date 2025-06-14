@@ -22,7 +22,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  direction: rtl; /* Force RTL layout */
+  direction: rtl; /*Force RTL layout */
 }
 
 .product-card {
@@ -113,8 +113,11 @@
 }
 
 /* RTL Adjustments */
-[dir="rtl"] .products-grid {
-  direction: ltr; /* Reverse for Arabic to show proper RTL */
+.products-grid {
+  direction: rtl; /* Reverse for Arabic to show proper RTL */
+}
+.products-grid.ltr {
+  direction: ltr;
 }
 
 [dir="rtl"] .close-btn {
@@ -125,7 +128,6 @@
 /* Paginator */
 mat-paginator {
   margin-top: 30px;
-  direction: ltr; /* Keep paginator LTR */
 }
 
 /* Responsive */

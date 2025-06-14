@@ -1,4 +1,4 @@
-<h1 style="text-align: center;margin: 10px;">"{{searchQuery}}" بحث عن</h1>
+<h1 style="text-align: center;margin: 10px;" [ngStyle]="{'direction': currentLang == 'ar' ? 'rtl' : 'ltr'}">{{currentLang == 'ar' ? 'بحث عن "'+searchQuery : 'Search For "' +searchQuery}}"</h1>
 <div class="cars-category" [ngClass]="currentLang =='ar' ? 'cars-category-rtl-layout' : 'cars-category-ltr-layout'">
   <div class="product-container">
     <div class="product-card" *ngFor="let product of paginatedProducts; trackBy: trackProductById">
