@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -7,24 +7,27 @@ import { MatDialog } from '@angular/material/dialog';
 import { VerificationDialogComponent } from '../register-dialog/verification-dialog.component';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   profilePicture: File | null = null;
   isLoading = false;
+  lang: string = 'ar';
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private languageService: LanguageService
   ) {
     this.registerForm = this.fb.group({
       // fullName: ['', Validators.required],
@@ -35,6 +38,9 @@ export class RegisterComponent {
       // password: ['', [Validators.required, Validators.minLength(6)]],
       // email: ['', [Validators.required, Validators.email]]
     });
+  }
+  ngOnInit(): void {
+    this.lang = this.languageService.getLanguage();
   }
 
   /*Old_login() {

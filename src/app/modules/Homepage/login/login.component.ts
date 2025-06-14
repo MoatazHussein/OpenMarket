@@ -1,26 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { VerificationDialogComponent } from '../register-dialog/verification-dialog.component';
+import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isLoading = false;
+  lang: string = 'ar';
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private languageService: LanguageService
   ) {
     // this.loginForm = this.fb.group({
     //   email: ['', [Validators.required, Validators.email]],
@@ -29,6 +32,9 @@ export class LoginComponent {
     this.loginForm = this.fb.group({
       phone: ['', [Validators.required]]
     });
+  }
+  ngOnInit(): void {
+    this.lang = this.languageService.getLanguage();
   }
 
   Old_login() {
