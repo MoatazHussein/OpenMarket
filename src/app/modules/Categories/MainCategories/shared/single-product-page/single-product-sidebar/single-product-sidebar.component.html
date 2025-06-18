@@ -1,6 +1,6 @@
 <div class="mainCard">
     <div class="price">{{lang == 'ar' ? product.price + ' دينار' : product.price + ' KWD'}}</div>
-    <button class="call-button theme-button">
+    <button class="call-button theme-button" (click)="onContactClick(product.contactNumber)">
         <mat-icon>call</mat-icon>
         {{product.contactNumber}}
     </button>

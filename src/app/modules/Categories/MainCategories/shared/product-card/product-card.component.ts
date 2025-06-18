@@ -27,6 +27,9 @@ export class ProductCardComponent {
   ngOnInit() {
     this.modifiedMobile=this.replaceLastTwoNumbers(this.mobile);
     this.lang = this.languageService.getLanguage();
+    if(this.lang == 'en'){
+      this.currency = 'KWD';
+    }
   }
   // Navigate to the desired route
   navigateToRoute() {
@@ -35,8 +38,10 @@ export class ProductCardComponent {
 
   onCallButtonClick(event: MouseEvent){
     event.stopPropagation(); // Prevents the click event from bubbling up to the parent div
-    console.log('onCallButtonClick inside div clicked!');
+    // console.log('onCallButtonClick inside div clicked!');
+    this.contactWhatsapp(this.mobile);
   }
+
   onChatButtonClick(event: MouseEvent){
     event.stopPropagation(); // Prevents the click event from bubbling up to the parent div
     console.log('onChatButtonClick inside div clicked!');
@@ -49,5 +54,10 @@ export class ProductCardComponent {
 
   replaceLastTwoNumbers(input: string): string {
     return input.replace(/(\d{2})(?!.*\d)/, 'XX');
+  }
+
+  contactWhatsapp(phoneNumber:string): void {
+    const cleanNumber = phoneNumber.replace(/\D/g, '');
+    window.open(`https://wa.me/${cleanNumber}`, '_blank');
   }
 }
