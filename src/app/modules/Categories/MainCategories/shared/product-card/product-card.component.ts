@@ -58,6 +58,6 @@ export class ProductCardComponent {
 
   contactWhatsapp(phoneNumber:string): void {
     const cleanNumber = phoneNumber.replace(/\D/g, '');
-    window.open(`https://wa.me/${cleanNumber}`, '_blank');
+    window.open(`https://wa.me/+965${cleanNumber}`, '_blank');
   }
 }
