@@ -1,6 +1,6 @@
 <div class="login-container">
     <mat-card class="login-card">
-      <mat-card-title style="margin-bottom: 20px;">تسجيل الدخول</mat-card-title>
+      <mat-card-title style="margin-bottom: 20px;">{{lang=='ar'?'تسجيل الدخول':'Login'}}</mat-card-title>
       <mat-card-content>
         <form [formGroup]="loginForm" (ngSubmit)="login()">
           <!-- <mat-form-field appearance="outline" class="full-width">
@@ -22,7 +22,7 @@
   
           <button type="submit" class="full-width theme-button" [disabled]="isLoading">
             <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
-            Login
+            {{lang=='ar'?'تسجيل الدخول':'Login'}}
           </button>
         </form>
       </mat-card-content>

@@ -1,37 +1,40 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../../../core/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
   selector: 'app-verification-dialog',
   template: `
-    <h2 mat-dialog-title>Verify Your Account</h2>
+    <h2 mat-dialog-title>{{lang=='ar'?'التحقق من حسابك':'Verify Your Account'}}</h2>
     <mat-dialog-content>
       <p>
-        A verification code has been sent to your WhatsApp. Please enter it
-        below:
+        {{lang=='ar'?'تم إرسال رمز التحقق إلى واتساب الخاص بك. يُرجى إدخاله أدناه':'A verification code has been sent to your WhatsApp. Please enter it below:'}}
       </p>
       <form [formGroup]="verificationForm">
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Verification Code</mat-label>
+          <mat-label>{{lang=='ar'?'رمز التحقق':'Verification Code'}}</mat-label>
           <input
             maxlength="6"
             matInput
             formControlName="code"
-            placeholder="Enter verification code"
+            [placeholder]="lang=='ar'?'ادخل رمز التحقق':'Enter verification code'"
           />
           <mat-error *ngIf="verificationForm.get('code')?.hasError('required')">
-            Verification code is required
+            {{lang=='ar'?'رمز التحقق اجباري':'Verification code is required'}}
           </mat-error>
         </mat-form-field>
       </form>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-      <button mat-button (click)="resendCode()" [disabled]="isResendDisabled">
+      <button mat-button (click)="resendCode()" [disabled]="isResendDisabled" *ngIf="lang!='ar'">
       {{ isResendDisabled ? 'Resend Code (' + timeRemaining + 's)' : 'Resend Code' }}
+      </button>
+      <button mat-button (click)="resendCode()" [disabled]="isResendDisabled" *ngIf="lang=='ar'">
+      {{ isResendDisabled ? 'اعادة ارسال ('+timeRemaining+') ثانية' : 'اعادة ارسال' }}
       </button>
       <button
         mat-raised-button
@@ -39,7 +42,7 @@ import { Router } from '@angular/router';
         [disabled]="verificationForm.invalid"
         (click)="verify()"
       >
-        Verify
+        {{lang=='ar'?'التحقق':'Verify'}}
       </button>
     </mat-dialog-actions>
   `,
@@ -51,12 +54,13 @@ import { Router } from '@angular/router';
     `,
   ],
 })
-export class VerificationDialogComponent {
+export class VerificationDialogComponent implements OnInit {
   verificationForm: FormGroup;
   isResendDisabled: boolean = true;
   timeRemaining = 30;
   private timer: any;
   private countdownInterval: any;
+  lang: string = 'ar';
 
   constructor(
     private fb: FormBuilder,
@@ -64,6 +68,7 @@ export class VerificationDialogComponent {
     private router: Router,
     public dialogRef: MatDialogRef<VerificationDialogComponent>,
     private snackBar: MatSnackBar,
+    private languageService: LanguageService,
     @Inject(MAT_DIALOG_DATA) public data: { phone: string }
   ) {
     this.verificationForm = this.fb.group({
@@ -136,6 +141,7 @@ export class VerificationDialogComponent {
   ngOnInit(){
     this.resendCode();
     this.startTimer();
+    this.lang = this.languageService.getLanguage();
   }
 
   private startTimer() {
