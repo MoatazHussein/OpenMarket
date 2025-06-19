@@ -20,6 +20,10 @@
   text-align: center;
 }
 
+.product-container{
+  min-width: 58.5rem;
+}
+
 .sidebar-search {
   display: block;
   /* background-color: aqua; */

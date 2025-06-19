@@ -20,4 +20,13 @@ export class SingleProductSidebarComponent implements OnInit {
   mapClick(e: Event){
     e.preventDefault();
   }
+
+  onContactClick(phoneNumber:string){
+    this.contactWhatsapp(phoneNumber);
+  }
+
+  contactWhatsapp(phoneNumber:string){
+    const cleanNumber = phoneNumber.replace(/\D/g, '');
+    window.open(`https://wa.me/+965${cleanNumber}`, '_blank');
+  }
 }
