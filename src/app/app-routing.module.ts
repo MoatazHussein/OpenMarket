@@ -26,6 +26,7 @@ import { RegisterComponent } from './modules/Homepage/register/register.componen
 import { ContactUsComponent } from './modules/layout/footer/footer-pages/contact-us/contact-us.component';
 import { SearchPageComponent } from './modules/Categories/MainCategories/search-page/search-page.component';
 import { CommercialAdsComponent } from './modules/Categories/MainCategories/commercial-ads/commercial-ads.component';
+import { UserProductsComponent } from './modules/account/user-products/user-products.component';
 
 const routes: Routes = [
   { path: 'SubCategory/:id', component: VehiclesforSaleComponent },
@@ -46,6 +47,7 @@ const routes: Routes = [
     {path: 'details', component: AccountDetailsComponent},
     {path: 'items', component: AccountProductsComponent}
   ] },
+  { path: 'user/:id', component: UserProductsComponent },
   { path: 'About', component: AboutComponent },
   { path: 'AdvertisingServices', component: AdvertisingServicesComponent },
   { path: 'SiteMap', component: SiteMapComponent },

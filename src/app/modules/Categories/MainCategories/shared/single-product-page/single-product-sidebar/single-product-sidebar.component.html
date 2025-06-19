@@ -21,7 +21,7 @@
     <div class="d-flex" [class.flex-row-reverse]="lang != 'ar'">
         <h3>{{lang == 'ar' ? 'صاحب الإعلان' : 'Advertiser'}}</h3>
     </div>
-    <a href="" class="d-flex" [class.flex-row-reverse]="lang != 'ar'">
+    <a [routerLink]="['/user',product.id]" class="d-flex" [class.flex-row-reverse]="lang != 'ar'">
         <div>
             <img width="90" height="90" alt=" امان" loading="lazy" src="https://opensooqui2.os-cdn.com/api/v/icons/misc/no_profile.png">
         </div>

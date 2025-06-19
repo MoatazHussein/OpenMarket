@@ -1,4 +1,4 @@
-<div class="card mb-3 text-end product-card" dir="rtl" style="max-width: 840px;">
+<div class="card mb-3 product-card" [class.text-end]="lang!='en'" [dir]="lang=='ar' ? 'rtl': 'ltr'" style="max-width: 840px;cursor: pointer;" (click)="goToProduct()">
     <div class="row g-0">
         <!-- Left: Image -->
         <div class="col-md-4 product-image ">
@@ -7,7 +7,8 @@
         <!-- Right: Content -->
         <div class="col-md-6">
             <div class="card-body p-0">
-                <h4 class="card-title">القسم: {{subCategoryName}} ({{IsApproved ? 'Approved' : 'Not Approved'}})</h4>
+                <h4 *ngIf="lang=='ar' && !hideInfo" class="card-title">القسم: {{subCategoryName}} ({{IsApproved ? 'تم الموافقة عليه' : 'لم يتم الموافقة عليه'}})</h4>
+                <h4 *ngIf="lang!='ar' && !hideInfo" class="card-title">Subcategory: {{subCategoryName}} ({{IsApproved ? 'Approved' : 'Not Approved'}})</h4>
                 <h5 class="card-title">{{name}}</h5>
                 <p class="card-text">
                     {{description}}
@@ -20,14 +21,17 @@
             <!-- Footer: Buttons and Price -->
             <div class="d-flex justify-content-between align-items-center flex-wrap p-0">
                 <!-- Buttons -->
-                <div class="d-flex gap-2 flex-wrap action-buttons" *ngIf="IsPaid == true">
+                <div class="d-flex gap-2 flex-wrap action-buttons" *ngIf="IsPaid == true && !hideInfo && lang =='ar'">
                     مدفوع حتى {{PaidUntilDate | date:'dd-MM-yyyy'}}
                 </div>
+                <div class="d-flex gap-2 flex-wrap action-buttons" *ngIf="IsPaid == true && !hideInfo && lang != 'ar'">
+                    Paid Until {{PaidUntilDate | date:'dd-MM-yyyy'}}
+                </div>
                 <!-- Price -->
-                <p class="mb-0 fw-bold text-start me-auto product-price" style="white-space: nowrap;"> {{price}} {{'دينار'}}</p>
+                <p class="mb-0 fw-bold text-start product-price" [class.me-auto]="lang=='ar'" style="white-space: nowrap;"> {{price}} {{lang=='ar' ? 'دينار' : 'KWD'}}</p>
             </div>
         </div>
-        <div class="col-md-2" *ngIf="IsApproved == true">
+        <div class="col-md-2" *ngIf="false">
             <button class="add-button mt-5 theme-button" (click)="PayProduct()">Pay</button>
         </div>
     </div>

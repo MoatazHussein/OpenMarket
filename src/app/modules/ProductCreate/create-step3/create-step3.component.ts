@@ -154,7 +154,7 @@ export class CreateStep3Component {
     return this.http.get<string[]>(`https://localhost:7012/api/AttributeDetails/dataLimition/${attribute.id}`);
   }*/
   onAttributeChange(attribute: AttributeDetailsDTO) {
-    //debugger;
+    debugger;
     const dependentSelects = document.querySelectorAll(`select[data-parent="${attribute.id}"]`);
 
     dependentSelects.forEach((select: any) => {
@@ -189,9 +189,22 @@ export class CreateStep3Component {
     return this.attributeService.getDependentDropdownOptions(dependentAttributeId)
       .pipe(
         map(response => {
+          debugger;
           const filteredOptions = response.detailRows
-            .filter(row => row.dataLimition == parentSelectedValue)
-            .map(row => row.type);
+            .filter(row => {
+              if(row.dataLimition.includes(parentSelectedValue)){
+                if(this.lang=='en' && row.type.includes('||')){
+                  return true;
+                } else if(this.lang=='ar') {
+                  return true;
+                } else {
+                  return false;
+                }
+              }
+              else
+                return false;
+            })
+            .map(row => this.lang == 'en'&&row.type.includes('||') ? row.type.split('||')[1] : row.type.split('||')[0]);
 
           return filteredOptions;
         })

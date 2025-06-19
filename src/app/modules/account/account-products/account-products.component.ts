@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductService } from "../../../core/services/product.service";
+import { LanguageService } from "../../../core/services/language.service";
 
 @Component({
     selector: 'app-account-products',
@@ -9,8 +10,9 @@ import { ProductService } from "../../../core/services/product.service";
 
 export class AccountProductsComponent implements OnInit {
     public products: any[] = [];
+    lang: string = 'ar';
 
-    constructor(private productService: ProductService){
+    constructor(private productService: ProductService,private languageService: LanguageService){
 
     }
     ngOnInit(): void {
@@ -21,7 +23,8 @@ export class AccountProductsComponent implements OnInit {
                 console.log(data.values);
             }
         }
-        )
+        );
+        this.lang = this.languageService.getLanguage();
     }
 
 

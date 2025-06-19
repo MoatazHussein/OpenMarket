@@ -209,9 +209,22 @@ export class VehiclesforSaleComponent {
     return this.attributeService.getDependentDropdownOptions(dependentAttributeId)
       .pipe(
         map(response => {
+          debugger;
           const filteredOptions = response.detailRows
-            .filter(row => row.dataLimition == parentSelectedValue)
-            .map(row => row.type);
+            .filter(row => {
+              if(row.dataLimition.includes(parentSelectedValue)){
+                if(this.currentLang=='en' && row.type.includes('||')){
+                  return true;
+                } else if(this.currentLang=='ar') {
+                  return true;
+                } else {
+                  return false;
+                }
+              }
+              else
+                return false;
+            })
+            .map(row => this.currentLang == 'en'&&row.type.includes('||') ? row.type.split('||')[1] : row.type.split('||')[0]);
 
           return filteredOptions;
         })

@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, finalize } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { environment } from "../../../../environments/environment";
+import { LanguageService } from "../../../core/services/language.service";
 
 interface UserInformationDTO {
     fullName?: string;
@@ -38,10 +39,12 @@ export class AccountDetailsComponent implements OnInit {
   selectedFile: File | null = null;
   profileImagePreview: string | null = null;
   private userApiUrl = `${environment.apiUrl}/UserProfile`;
+  lang: string = 'ar';
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private languageService: LanguageService
   ) {
     this.userForm = this.fb.group({
       fullName: ['', [Validators.required]],
@@ -54,6 +57,7 @@ export class AccountDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUserInformation();
+    this.lang = this.languageService.getLanguage();
   }
 
   loadUserInformation(): void {
@@ -148,7 +152,7 @@ debugger;
       )
       .subscribe({
         next: (response) => {
-            this.successMessage = 'Profile updated successfully';
+            this.successMessage = this.lang=='ar'? 'تم التحديث' : 'Profile updated successfully';
             // Optionally reload user data
             this.loadUserInformation();
           },

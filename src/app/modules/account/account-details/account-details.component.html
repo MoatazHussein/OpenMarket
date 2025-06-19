@@ -1,9 +1,9 @@
 <!-- user-profile.component.html -->
 <div class="user-profile-container">
-    <h2>User Profile</h2>
+    <h2>{{lang=='ar'? 'الملف الشخصي' : 'User Profile'}}</h2>
     
     <div *ngIf="isLoading" class="loading-indicator">
-      <p>Loading user information...</p>
+      <p>{{lang=='ar'?'جاري تحميل البيانات ...':'Loading user information...'}}</p>
     </div>
     
     <div *ngIf="errorMessage" class="error-message">
@@ -22,54 +22,57 @@
         </div>
         <div class="upload-controls">
           <input type="file" id="profile-picture" (change)="onFileSelected($event)" accept="image/*">
-          <label for="profile-picture">Change Profile Picture</label>
+          <label for="profile-picture">{{lang=='ar'?'تغيير الصورة':'Change Profile Picture'}}</label>
         </div>
       </div>
       
       <div class="form-group">
-        <label for="fullName">Full Name</label>
+        <label for="fullName">{{lang=='ar'?'الاسم كامل':'Change Profile Picture'}}</label>
         <input type="text" id="fullName" formControlName="fullName">
         <div *ngIf="userForm.get('fullName')?.errors?.['required'] && userForm.get('fullName')?.touched" class="error">
-          Full name is required
+          {{lang=='ar'?'الاسم حقل اجباري':'Full name is required'}}
         </div>
       </div>
       
       <div class="form-group">
-        <label for="birthDate">Birth Date</label>
-        <input type="date" id="birthDate" formControlName="birthDate">
+        <label for="birthDate">{{lang=='ar'?'تاريخ الميلاد':'Birth Date'}}</label>
+        <input type="date" id="birthDate" formControlName="birthDate" [class.text-end]="lang == 'ar'">
         <div *ngIf="userForm.get('birthDate')?.errors?.['required'] && userForm.get('birthDate')?.touched" class="error">
-          Birth date is required
+          {{lang=='ar'?'تاريخ الميلاد حقل اجباري':'Birth date is required'}}
         </div>
       </div>
       
       <div class="form-group">
-        <label>Gender</label>
+        <label>{{lang=='ar'?'الجنس':'Gender'}}</label>
         <div class="radio-group">
           <label>
-            <input type="radio" [value]="true" formControlName="isMale"> Male
+            <input type="radio" [value]="true" formControlName="isMale"> {{lang=='ar'?'ذكر':'Male'}}
           </label>
           <label>
-            <input type="radio" [value]="false" formControlName="isMale"> Female
+            <input type="radio" [value]="false" formControlName="isMale"> {{lang=='ar'?'انثى':'Female'}}
           </label>
         </div>
       </div>
       
       <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="tel" id="phone" formControlName="phone" class="disabled-input">
+        <label for="phone">{{lang=='ar'?'رقم الموبايل':'Phone'}}</label>
+        <input type="tel" id="phone" formControlName="phone" class="disabled-input" [class.text-end]="lang == 'ar'">
         <div *ngIf="userForm.get('phone')?.errors?.['maxlength']" class="error">
-          Phone number must be less than 15 characters
+          {{lang=='ar'?'تأكد من الرقم':'Phone number must be less than 15 characters'}}
         </div>
       </div>
       
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">{{lang=='ar'?'الايميل':'Email'}}</label>
         <input type="email" id="email" formControlName="email" class="">
       </div>
       
       <div class="actions">
-        <button type="submit" class="theme-button" [disabled]="userForm.invalid || isSaving">
+        <button *ngIf="lang!='ar'" type="submit" class="theme-button" [disabled]="userForm.invalid || isSaving">
           {{ isSaving ? 'Updating...' : 'Update Profile' }}
+        </button>
+        <button *ngIf="lang=='ar'" type="submit" class="theme-button" [disabled]="userForm.invalid || isSaving">
+          {{ isSaving ? 'جاري التحديث ...' : 'تحديث' }}
         </button>
       </div>
     </form>

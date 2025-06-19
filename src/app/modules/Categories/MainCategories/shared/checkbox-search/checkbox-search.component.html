@@ -12,7 +12,7 @@
             <div class="option all-option" style="display: hide;">
                 <input type="checkbox" id="all" [checked]="allSelected" (change)="toggleAllOptions($event)"
                 />
-                <label for="all">الكل</label>
+                <label for="all">{{currentLang=='en'?'All':'الكل'}}</label>
             </div>
             <div *ngFor="let option of filteredOptions" class="option selected-options">
                 <input type="checkbox" [id]="option" [checked]="selectedOptions.includes(option)"

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AccountPayComponent } from '../account-pay/account-pay.component';
 import { CategoryService } from '../../../core/services/category.service';
+import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
   selector: 'account-product-card',
@@ -11,7 +12,7 @@ import { CategoryService } from '../../../core/services/category.service';
 })
 export class AccountProductCardComponent {
 
-  constructor(private router: Router, private categoryService: CategoryService) {}
+  constructor(private router: Router, private categoryService: CategoryService,private languageService: LanguageService) {}
 
   @Input() image: string="";
   @Input() name: string="";
@@ -24,8 +25,10 @@ export class AccountProductCardComponent {
   @Input() IsApproved:boolean=false;
   @Input() IsPaid:boolean=false;
   @Input() PaidUntilDate:Date= new Date(1900,1,1);
+  @Input() hideInfo:boolean= false;
   dialog = inject(MatDialog);
   rate: number = 0;
+  lang: string = 'ar';
 
 
   ngOnInit() {
@@ -39,6 +42,7 @@ export class AccountProductCardComponent {
     //     })
     //   }
     // });
+    this.lang = this.languageService.getLanguage();
   }
 
   PayProduct() {
@@ -58,6 +62,10 @@ export class AccountProductCardComponent {
       }
     })
     
+  }
+
+  goToProduct(){
+    this.router.navigate(['/search', this.id]);
   }
 
 }

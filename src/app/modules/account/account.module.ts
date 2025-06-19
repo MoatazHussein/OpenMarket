@@ -7,6 +7,7 @@ import { AccountDashboardComponent } from "./account-dashboard.component";
 import { AccountProductsComponent } from "./account-products/account-products.component";
 import { AccountProductCardComponent } from "./account-product-card/account-product-card.component";
 import { AccountPayComponent } from "./account-pay/account-pay.component";
+import { UserProductsComponent } from "./user-products/user-products.component";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AccountPayComponent } from "./account-pay/account-pay.component";
     AccountDetailsComponent,
     AccountProductsComponent,
     AccountProductCardComponent,
-    AccountPayComponent
+    AccountPayComponent,
+    UserProductsComponent
   ],
   imports: [
     CommonModule,

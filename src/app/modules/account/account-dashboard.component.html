@@ -1,12 +1,12 @@
 <section>
     <div class="container">
-        <div class="row rtl">
+        <div class="row" [class.rtl]="lang=='ar'">
             <div class="col-md-3 mt-4">
                 <div class="list-group">
                     <a [routerLink]="['/account','details']" class="list-group-item list-group-item-action" routerLinkActive="active" aria-current="true">
-                      حسابي
+                      {{lang=='ar'?'حسابي':'My Account'}}
                     </a>
-                    <a [routerLink]="['/account','items']" class="list-group-item list-group-item-action" routerLinkActive="active">اعلاناتي</a>
+                    <a [routerLink]="['/account','items']" class="list-group-item list-group-item-action" routerLinkActive="active">{{lang=='ar'?'اعلاناتي':'My Advertisments'}}</a>
                   </div>
             </div>
             <div class="col-md-9 mt-4">
