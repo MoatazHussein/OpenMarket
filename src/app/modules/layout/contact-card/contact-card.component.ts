@@ -31,7 +31,7 @@ export class ContactCardComponent {
 
   whatsappUser(): void {
     const cleanNumber = this.phoneNumber.replace(/\D/g, '');
-    window.open(`https://wa.me/+965${cleanNumber}`, '_blank');
+    window.open(`https://wa.me/${cleanNumber}`, '_blank');
   }
 
 
