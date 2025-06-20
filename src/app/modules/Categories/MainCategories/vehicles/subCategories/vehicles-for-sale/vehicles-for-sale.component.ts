@@ -135,7 +135,7 @@ export class VehiclesforSaleComponent {
           next: (OptionsData) => {
             if (attribute.parentId == null) {
               if (attribute.type == 0) {
-                attribute.options = OptionsData;
+                attribute.options = OptionsData.map(row => this.currentLang == 'en'&&row.includes('||') ? row.split('||')[1] : row.split('||')[0]);
               }
               else if (attribute.type == 2 && attribute.nameEn == "Year") {
                 attribute.options = this.yearlyOptions;
