@@ -1,4 +1,31 @@
-<div class="safety-rules">
+<!-- <div class="safety-rules">
     <h1>قواعد السلامة</h1>
-</div>
+</div> -->
 
+<!-- ---------------------------------------- -->
+
+<div class="safety-rules">
+    <h1>{{pageHeader}}</h1>
+    <h1>{{pageSubHeader}}</h1>
+</div>
+<div *ngFor="let section of sections" class="mb-4 safety-rules__element" [ngClass]="{'rtl': isRtl, 'ltr': !isRtl}">
+  <h3 *ngIf="section.header">{{ section.header }}</h3>
+  <h5 *ngIf="section.subHeader">{{ section.subHeader }}</h5>
+
+  <div *ngIf="section.contentType === 'paragraph'">
+    <p>{{ section.contentText }}</p>
+  </div>
+
+  <ul *ngIf="section.contentType === 'bullets'">
+    <li *ngFor="let item of section.contentText.split('\n')">{{ item }}</li>
+  </ul>
+
+  <div *ngIf="section.contentType === 'image'">
+    <img [src]="section.contentText" [alt]="section.caption" class="img-fluid" />
+  </div>
+ <div *ngIf="section.caption">
+    <p>{{ section.caption}}</p>
+  </div>
+  <small *ngIf="section.footer" class="text-muted">{{ section.footer }}</small>
+  <hr />
+</div>
