@@ -89,7 +89,7 @@ currentLang: string = 'ar';
     ,{name : { ar: "فريق المبيعات", en: "Sales Team" },link:"SalesTeam"}
     ,{name : { ar: "شروط الاستخدام", en: "Terms Of Use" },link:"TermsOfUse"}
     ,{name : { ar: "سياسة الخصوصية" , en: "Privacy Policy" },link:"PrivacyPolicy"}
-    ,{name : { ar: "قواعد السلامة" , en: "Safety Rules" },link:"not-found"}];
+    ,{name : { ar: "قواعد السلامة" , en: "Safety Rules" },link:"SafetyRules"}];
   
   ElementsColumn_03:any= [
   ];

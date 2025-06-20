@@ -54,7 +54,7 @@ export class HomePageComponent {
   products: any[] = [];
 
   ngOnInit() {
-    this.categoryService.getSubCategories(1, 5).subscribe(
+    this.categoryService.getSubCategories(1, 999999).subscribe(
       (categories: any) => {
         categories.values.forEach((e: any) => {
           this.productService.getProducts(e.id, 1, 5, '', 'Date', 'desc', []).subscribe({
